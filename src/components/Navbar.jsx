@@ -1,60 +1,100 @@
+import { useEffect, useState } from "react";
+
 function Navbar() {
-    return (
-        <nav className="fixed top-0 left-0 z-50 w-full bg-black/80 backdrop-blur-md">
-            <div className="mx-auto flex max-w-7xl items-center justify-between px-8 py-6">
+  const [scrolled, setScrolled] = useState(false);
 
-                {/* Logo */}
-                <div>
-                    <h1 className="text-xl font-bold tracking-tight text-white">
-                        Seif.
-                    </h1>
-                </div>
+  const navLinks = [
+    "About",
+    "Projects",
+    "Experience",
+    "Contact",
+  ];
 
-                {/* Navigation Links */}
-                <div className="hidden gap-8 md:flex">
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
 
-                    <a
-                        href="#about"
-                        className="text-gray-400 transition hover:text-white"
-                    >
-                        About
-                    </a>
+    window.addEventListener("scroll", handleScroll);
 
-                    <a
-                        href="#projects"
-                        className="text-gray-400 transition hover:text-white"
-                    >
-                        Projects
-                    </a>
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
-                    <a
-                        href="#experience"
-                        className="text-gray-400 transition hover:text-white"
-                    >
-                        Experience
-                    </a>
+  return (
+    <nav
+      className={`fixed top-0 left-0 z-50 w-full transition-all duration-300 ${
+        scrolled
+          ? "border-b border-white/10 bg-black/70 backdrop-blur-md"
+          : "bg-transparent"
+      }`}
+    >
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-8 py-6">
 
-                    <a
-                        href="#contact"
-                        className="text-gray-400 transition hover:text-white"
-                    >
-                        Contact
-                    </a>
+        {/* Logo */}
+        <a
+          href="#"
+          className="text-xl font-bold tracking-tight text-white transition duration-300 hover:text-blue-400"
+        >
+          Seif.
+        </a>
 
-                </div>
+        {/* Navigation */}
+        <div className="hidden gap-8 md:flex">
+          {navLinks.map((link) => (
+            <a
+              key={link}
+              href={`#${link.toLowerCase()}`}
+              className="
+                relative
+                text-gray-400
+                transition-all
+                duration-300
+                hover:text-white
+                after:absolute
+                after:left-0
+                after:-bottom-1
+                after:h-[2px]
+                after:w-0
+                after:bg-blue-400
+                after:transition-all
+                after:duration-300
+                hover:after:w-full
+              "
+            >
+              {link}
+            </a>
+          ))}
+        </div>
 
-                {/* Resume Button */}
-                <div>
+        {/* Resume Button */}
+        <button
+          className="
+            rounded-full
+            border
+            border-white/20
+            bg-white/5
+            px-5
+            py-2
+            text-sm
+            font-medium
+            text-white
+            backdrop-blur-sm
+            transition-all
+            duration-300
+            hover:scale-105
+            hover:border-blue-400/50
+            hover:bg-blue-500/10
+            hover:text-blue-400
+          "
+        >
+          Resume
+        </button>
 
-                    <button className="rounded-full border border-white/20 bg-white/5 px-5 py-2 text-sm font-medium text-white backdrop-blur-sm transition-all duration-300 hover:border-white/40 hover:bg-white/10">
-                        Resume
-                    </button>
-
-                </div>
-
-            </div>
-        </nav>
-    );
+      </div>
+    </nav>
+  );
 }
 
 export default Navbar;
