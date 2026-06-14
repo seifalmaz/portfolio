@@ -1,10 +1,13 @@
+import Hero from "./components/Hero";
+import Navbar from "./components/Navbar";
+import Cursor from "./components/Cursor";
 function App() {
   return (
-    <div>
-      <h1>Seif Ahmed</h1>
-      <p>Data Science Student</p>
-    </div>
+    <>
+      <Cursor />
+      <Navbar />
+      <Hero />
+    </>
   );
 }
-
 export default App;
