@@ -1,12 +1,12 @@
-import profileImage from "../assets/profile.png";
+
 
 function Hero() {
   return (
     <section className="min-h-screen bg-[radial-gradient(circle_at_80%_30%,rgba(37,99,235,0.12),transparent_35%),linear-gradient(to_bottom,#000,#020617,#000)] text-white">
-      <div className="mx-auto flex min-h-screen max-w-7xl flex-col items-center justify-center px-8 lg:flex-row lg:justify-between">
+      <div className="mx-auto flex min-h-screen max-w-7xl items-center px-8 pt-12">
 
         {/* Left Side */}
-        <div className="max-w-2xl">
+        <div className="max-w-4xl">
 
           <p className="mb-6 text-sm font-medium uppercase tracking-[0.35em] text-blue-400">
             DATA ANALYTICS • MACHINE LEARNING • AI
@@ -18,11 +18,11 @@ function Hero() {
             Almaz
           </h1>
 
-          <h2 className="mb-8 text-xl font-light text-gray-300 lg:text-2xl">
-            Transforming raw data into insights, dashboards, and machine learning solutions.
+          <h2 className="mb-8 max-w-4xl text-xl font-light text-gray-300 lg:text-2xl">
+            Transforming complex data into actionable insights, business intelligence, and machine learning solutions.
           </h2>
 
-          <p className="mb-10 max-w-lg text-base leading-relaxed text-gray-400 lg:text-lg">
+          <p className="mb-10 max-w-2xl text-base leading-relaxed text-gray-400 lg:text-lg">
             I build data-driven solutions using Python, SQL, Power BI, and
             Machine Learning, transforming complex data into actionable
             insights and intelligent systems.
@@ -41,18 +41,6 @@ function Hero() {
           </div>
 
         </div>
-
-        {/* Right Side */}
-        <div className="mt-12 lg:mt-0 flex justify-center">
-
-          <img
-            src={profileImage}
-            alt="Seif Ahmed Almaz"
-            className="max-h-[620px] object-contain"
-          />
-
-        </div>
-
       </div>
     </section>
   );
