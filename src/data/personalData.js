@@ -2,10 +2,10 @@ export const personalData = {
   name: "Seif Ahmed Almaz",
   title: "Data Analytics • Machine Learning • AI Engineer",
   roles: [
-    "Data Analyst & BI Specialist",
-    "Machine Learning Engineer",
-    "Data Engineering Trainee",
-    "Algorithms & ICPC Mentor"
+    "Machine Learning Models",
+    "Executive BI Dashboards",
+    "End-to-End Data Pipelines",
+    "Intelligent AI Systems"
   ],
   tagline: "Transforming complex data into actionable insights, business intelligence, and intelligent solutions.",
   location: "Cairo, Egypt",
