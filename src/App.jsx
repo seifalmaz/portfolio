@@ -1,17 +1,21 @@
-import Hero from "./components/Hero";
-import Navbar from "./components/Navbar";
-import Cursor from "./components/Cursor";
-import About from "./components/About";
-import Experience from "./components/Experience";
+import { Routes, Route } from "react-router-dom";
+import RootLayout from "./components/layout/RootLayout";
+import HomePage from "./pages/HomePage";
+import ProjectsPage from "./pages/ProjectsPage";
+import ProjectDetailPage from "./pages/ProjectDetailPage";
+import NotFoundPage from "./pages/NotFoundPage";
+
 function App() {
   return (
-    <>
-      <Cursor />
-      <Navbar />
-      <Hero />
-      <About />
-      <Experience />
-    </>
+    <Routes>
+      <Route path="/" element={<RootLayout />}>
+        <Route index element={<HomePage />} />
+        <Route path="projects" element={<ProjectsPage />} />
+        <Route path="projects/:slug" element={<ProjectDetailPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Route>
+    </Routes>
   );
 }
+
 export default App;

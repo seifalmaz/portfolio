@@ -1,8 +1,6 @@
-
-
 function Hero() {
   return (
-    <section className="min-h-screen bg-[radial-gradient(circle_at_80%_30%,rgba(37,99,235,0.12),transparent_35%),linear-gradient(to_bottom,#000,#020617,#000)] text-white">
+    <section id="hero" className="min-h-screen bg-[radial-gradient(circle_at_80%_30%,rgba(37,99,235,0.12),transparent_35%),linear-gradient(to_bottom,#000,#020617,#000)] text-white">
       <div className="mx-auto flex min-h-screen max-w-7xl items-center px-8 pt-12">
 
         {/* Left Side */}
