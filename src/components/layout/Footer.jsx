@@ -1,12 +1,18 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin, FaKaggle, FaEnvelope, FaArrowUp } from "react-icons/fa6";
+import MostaqlIcon from "../ui/MostaqlIcon";
 import { personalData } from "../../data/personalData";
 import { navItems, handleHybridNavigation } from "../../data/navigationData";
+import { usePortfolio } from "../../context/PortfolioContext";
 
 function Footer() {
   const location = useLocation();
   const navigate = useNavigate();
+  const { profile } = usePortfolio();
+
+  const currentProfile = profile || personalData;
+  const socials = currentProfile.socials || personalData.socials;
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -22,48 +28,68 @@ function Footer() {
               Seif<span className="text-blue-400">.</span>
             </Link>
             <p className="mt-4 max-w-md text-sm text-gray-400 leading-relaxed">
-              {personalData.tagline}
+              {currentProfile.tagline || personalData.tagline}
             </p>
 
             {/* Social Icons */}
             <div className="mt-6 flex items-center gap-4">
+              {socials.github && (
+                <a
+                  href={socials.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="GitHub Profile"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-gray-300 transition duration-300 hover:scale-110 hover:border-blue-400/50 hover:bg-blue-500/10 hover:text-blue-400"
+                >
+                  <FaGithub className="h-4 w-4" />
+                </a>
+              )}
+
+              {socials.linkedin && (
+                <a
+                  href={socials.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn Profile"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-gray-300 transition duration-300 hover:scale-110 hover:border-blue-400/50 hover:bg-blue-500/10 hover:text-blue-400"
+                >
+                  <FaLinkedin className="h-4 w-4" />
+                </a>
+              )}
+
+              {socials.kaggle && (
+                <a
+                  href={socials.kaggle}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Kaggle Profile"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-gray-300 transition duration-300 hover:scale-110 hover:border-blue-400/50 hover:bg-blue-500/10 hover:text-blue-400"
+                >
+                  <FaKaggle className="h-4 w-4" />
+                </a>
+              )}
+
+              {/* Mostaql Freelance Profile */}
               <a
-                href={personalData.socials.github}
+                href={socials.mostaql || "https://mostaql.com/u/seifalmaz"}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="GitHub Profile"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-gray-300 transition duration-300 hover:scale-110 hover:border-blue-400/50 hover:bg-blue-500/10 hover:text-blue-400"
+                aria-label="Mostaql freelance profile"
+                title="Mostaql Freelance Profile"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-teal-500/20 bg-teal-500/5 text-teal-300 transition duration-300 hover:scale-110 hover:border-teal-400/60 hover:bg-teal-500/15 hover:text-teal-200"
               >
-                <FaGithub className="h-4 w-4" />
+                <MostaqlIcon className="h-3.5 w-auto max-w-[24px]" />
               </a>
 
-              <a
-                href={personalData.socials.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn Profile"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-gray-300 transition duration-300 hover:scale-110 hover:border-blue-400/50 hover:bg-blue-500/10 hover:text-blue-400"
-              >
-                <FaLinkedin className="h-4 w-4" />
-              </a>
-
-              <a
-                href={personalData.socials.kaggle}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Kaggle Profile"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-gray-300 transition duration-300 hover:scale-110 hover:border-blue-400/50 hover:bg-blue-500/10 hover:text-blue-400"
-              >
-                <FaKaggle className="h-4 w-4" />
-              </a>
-
-              <a
-                href={personalData.socials.email}
-                aria-label="Send Email"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-gray-300 transition duration-300 hover:scale-110 hover:border-blue-400/50 hover:bg-blue-500/10 hover:text-blue-400"
-              >
-                <FaEnvelope className="h-4 w-4" />
-              </a>
+              {socials.email && (
+                <a
+                  href={socials.email.startsWith('mailto:') ? socials.email : `mailto:${socials.email}`}
+                  aria-label="Send Email"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/5 text-gray-300 transition duration-300 hover:scale-110 hover:border-blue-400/50 hover:bg-blue-500/10 hover:text-blue-400"
+                >
+                  <FaEnvelope className="h-4 w-4" />
+                </a>
+              )}
             </div>
           </div>
 
@@ -106,9 +132,10 @@ function Footer() {
                 Download my latest resume summarizing my technical experience & credentials.
               </p>
               <a
-                href={personalData.resumeUrl}
+                href={currentProfile.resumeUrl || personalData.resumeUrl}
                 target="_blank"
                 rel="noopener noreferrer"
+                download={currentProfile.resumeFilename || personalData.resumeFilename || "Seif_Almaz_CV.pdf"}
                 className="mt-4 inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 px-5 py-2 text-xs font-semibold text-blue-300 transition duration-300 hover:border-blue-400 hover:bg-blue-500/20"
               >
                 Download Resume (PDF)

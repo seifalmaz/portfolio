@@ -1,14 +1,20 @@
 import { Link } from "react-router-dom";
-import { projectsData } from "../../data/projectsData";
+import { motion } from "framer-motion";
 import SectionHeader from "../ui/SectionHeader";
 import ProjectCard from "../ui/ProjectCard";
 import Button from "../ui/Button";
+import { usePortfolio } from "../../context/PortfolioContext";
+import { staggerContainer, fadeInUp } from "../../lib/motion";
 
 function FeaturedProjectsSection() {
-  const featuredProjects = projectsData.filter((p) => p.featured === true);
+  const { projects: contextProjects } = usePortfolio();
+  const featuredProjects = Array.isArray(contextProjects)
+    ? contextProjects.filter((p) => p.featured === true)
+    : [];
 
   return (
-    <section id="featured-projects" className="scroll-mt-28 bg-black px-6 py-28 text-white border-t border-white/5">
+    <section id="projects" data-section="projects" className="scroll-mt-28 bg-black px-6 py-28 text-white border-t border-white/5 relative">
+      <span id="featured-projects" className="absolute -top-28" aria-hidden="true" />
       <div className="mx-auto max-w-7xl">
         <SectionHeader
           subtitle="FEATURED CASE STUDIES"
@@ -17,12 +23,20 @@ function FeaturedProjectsSection() {
           description="Selected technical case studies demonstrating real-world problem solving, analytics dashboards, and machine learning models."
         />
 
-        {/* Featured Projects Grid */}
-        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {featuredProjects.map((project) => (
-            <ProjectCard key={project.id} project={project} />
+        {/* Featured Projects Grid with Staggered Viewport Reveal */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-60px" }}
+          variants={staggerContainer(0.12, 0.05)}
+          className="grid gap-8 md:grid-cols-2 lg:grid-cols-3"
+        >
+          {featuredProjects.map((project, idx) => (
+            <motion.div key={project.id || project.slug} variants={fadeInUp(idx * 0.05, 20)}>
+              <ProjectCard project={project} />
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* View All Projects CTA */}
         <div className="mt-16 text-center">

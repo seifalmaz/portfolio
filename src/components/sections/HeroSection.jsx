@@ -1,24 +1,32 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaGraduationCap, FaLocationDot, FaBriefcase, FaArrowDown } from "react-icons/fa6";
-import { personalData } from "../../data/personalData";
+import { FaGraduationCap, FaLocationDot, FaArrowDown } from "react-icons/fa6";
+import { usePortfolio } from "../../context/PortfolioContext";
 
 function HeroSection() {
+  const { profile, settings } = usePortfolio();
   const [roleIndex, setRoleIndex] = useState(0);
+
+  const roles = profile?.roles && profile.roles.length > 0 ? profile.roles : ["Data Science & AI Solutions"];
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setRoleIndex((prev) => (prev + 1) % personalData.roles.length);
+      setRoleIndex((prev) => (prev + 1) % roles.length);
     }, 3000);
     return () => clearInterval(interval);
-  }, []);
+  }, [roles.length]);
 
   const scrollToFeaturedProjects = () => {
-    const el = document.getElementById("featured-projects");
+    const el = document.getElementById("projects") || document.getElementById("featured-projects");
     if (el) {
       el.scrollIntoView({ behavior: "smooth" });
     }
   };
+
+  // Split name for styling
+  const nameParts = (profile?.name || "Seif Ahmed Almaz").split(" ");
+  const firstName = nameParts.slice(0, -1).join(" ") || "Seif Ahmed";
+  const lastName = nameParts[nameParts.length - 1] || "Almaz";
 
   return (
     <section
@@ -34,13 +42,13 @@ function HeroSection() {
         >
           {/* Top Domain Badge */}
           <p className="mb-6 inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.3em] text-blue-400 backdrop-blur-sm">
-            DATA ANALYTICS • MACHINE LEARNING • AI
+            {profile?.title || "DATA ANALYTICS • MACHINE LEARNING • AI"}
           </p>
 
           {/* Headline */}
           <h1 className="mb-6 text-5xl font-black tracking-tight text-white md:text-7xl lg:text-8xl">
-            Seif Ahmed <br />
-            <span className="text-blue-400">Almaz</span>
+            {firstName} <br />
+            <span className="text-blue-400">{lastName}</span>
           </h1>
 
           {/* Smooth Animated Capability Rotator */}
@@ -56,7 +64,7 @@ function HeroSection() {
                   transition={{ duration: 0.3, ease: "easeOut" }}
                   className="font-semibold text-blue-400"
                 >
-                  {personalData.roles[roleIndex]}
+                  {roles[roleIndex % roles.length]}
                 </motion.span>
               </AnimatePresence>
             </p>
@@ -64,25 +72,31 @@ function HeroSection() {
 
           {/* Subtitle Tagline */}
           <p className="mb-10 max-w-2xl text-base leading-relaxed text-gray-400 md:text-lg">
-            {personalData.tagline}
+            {profile?.tagline}
           </p>
 
           {/* Trust Indicators / Badges */}
           <div className="mb-12 flex flex-wrap items-center gap-4 text-xs font-medium text-gray-300">
-            <div className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 backdrop-blur-md">
-              <FaGraduationCap className="text-blue-400 h-4 w-4" />
-              <span>Final Year Data Science Student</span>
-            </div>
+            {profile?.degree && (
+              <div className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 backdrop-blur-md">
+                <FaGraduationCap className="text-blue-400 h-4 w-4" />
+                <span>{profile.degree}</span>
+              </div>
+            )}
 
-            <div className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 backdrop-blur-md">
-              <FaLocationDot className="text-blue-400 h-3.5 w-3.5" />
-              <span>Helwan National University</span>
-            </div>
+            {profile?.university && (
+              <div className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 backdrop-blur-md">
+                <FaLocationDot className="text-blue-400 h-3.5 w-3.5" />
+                <span>{profile.university}</span>
+              </div>
+            )}
 
-            <div className="flex items-center gap-2 rounded-full border border-green-500/30 bg-green-500/10 px-4 py-2 text-green-300 backdrop-blur-md">
-              <span className="h-2 w-2 rounded-full bg-green-400 animate-pulse" />
-              <span>Open for Opportunities</span>
-            </div>
+            {profile?.isAvailable !== false && (
+              <div className="flex items-center gap-2 rounded-full border border-green-500/30 bg-green-500/10 px-4 py-2 text-green-300 backdrop-blur-md">
+                <span className="h-2 w-2 rounded-full bg-green-400 animate-pulse" />
+                <span>{profile?.availabilityStatus || "Open for Opportunities"}</span>
+              </div>
+            )}
           </div>
 
           {/* CTA Buttons */}
@@ -95,14 +109,17 @@ function HeroSection() {
               <FaArrowDown className="h-3.5 w-3.5" />
             </button>
 
-            <a
-              href={personalData.resumeUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-8 py-3.5 text-sm font-medium text-white backdrop-blur-sm transition duration-300 hover:border-blue-400/50 hover:bg-blue-500/10 hover:text-blue-400"
-            >
-              Download CV (PDF)
-            </a>
+            {settings?.show_resume_button !== false && profile?.resumeUrl && (
+              <a
+                href={profile.resumeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                download={profile.resumeFilename || "Seif_Almaz_CV.pdf"}
+                className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-8 py-3.5 text-sm font-medium text-white backdrop-blur-sm transition duration-300 hover:border-blue-400/50 hover:bg-blue-500/10 hover:text-blue-400 shadow-sm"
+              >
+                Download CV (PDF)
+              </a>
+            )}
           </div>
         </motion.div>
       </div>

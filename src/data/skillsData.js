@@ -9,7 +9,6 @@ export const skillsData = [
       { name: "Pandas & NumPy", level: "Advanced", icon: "SiPandas" },
       { name: "Computer Vision (OpenCV)", level: "Intermediate", icon: "SiOpencv" },
       { name: "NLP & Transformers", level: "Intermediate", icon: "SiHuggingface" },
-      { name: "MLOps & Azure AI", level: "Intermediate", icon: "SiMicrosoftazure" }
     ]
   },
   {
@@ -28,7 +27,7 @@ export const skillsData = [
     category: "Data Engineering & Databases",
     description: "Designing robust data pipelines, database schemas, and ETL integration workflows.",
     skills: [
-      { name: "SQL (PostgreSQL, MySQL)", level: "Advanced", icon: "SiPostgresql" },
+      { name: "SQL", level: "Advanced", icon: "SiPostgresql" },
       { name: "Informatica PowerCenter", level: "Intermediate", icon: "FaDatabase" },
       { name: "ETL Pipeline Design", level: "Advanced", icon: "FaGears" },
       { name: "Data Warehousing", level: "Intermediate", icon: "FaServer" },
@@ -39,11 +38,10 @@ export const skillsData = [
     category: "Languages & Core CS",
     description: "Strong foundational computer science skills, data structures, and algorithms.",
     skills: [
-      { name: "C++", level: "Advanced", icon: "SiCplusplus" },
+      { name: "C++", level: "Intermediate", icon: "SiCplusplus" },
       { name: "Python", level: "Advanced", icon: "FaPython" },
-      { name: "JavaScript / React", level: "Intermediate", icon: "FaReact" },
       { name: "Algorithms & Data Structures", level: "Advanced", icon: "FaBrain" },
-      { name: "Competitive Programming", level: "Advanced", icon: "FaTrophy" }
+      { name: "Competitive Programming", level: "Intermediate", icon: "FaTrophy" }
     ]
   }
 ];

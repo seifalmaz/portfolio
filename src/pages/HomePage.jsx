@@ -5,18 +5,23 @@ import FeaturedProjectsSection from "../components/sections/FeaturedProjectsSect
 import ExperienceSection from "../components/sections/ExperienceSection";
 import CertificationsSection from "../components/sections/CertificationsSection";
 import ContactSection from "../components/sections/ContactSection";
+import PageTransition from "../components/layout/PageTransition";
+import { usePortfolio } from "../context/PortfolioContext";
 
 function HomePage() {
+  const { settings } = usePortfolio();
+  const vis = settings?.section_visibility || {};
+
   return (
-    <>
-      <HeroSection />
-      <AboutSection />
-      <SkillsSection />
-      <FeaturedProjectsSection />
-      <ExperienceSection />
-      <CertificationsSection />
-      <ContactSection />
-    </>
+    <PageTransition>
+      {vis.hero !== false && <HeroSection />}
+      {vis.about !== false && <AboutSection />}
+      {vis.skills !== false && <SkillsSection />}
+      {vis.projects !== false && <FeaturedProjectsSection />}
+      {vis.experience !== false && <ExperienceSection />}
+      {vis.certifications !== false && <CertificationsSection />}
+      {vis.contact !== false && <ContactSection />}
+    </PageTransition>
   );
 }
 

@@ -1,17 +1,34 @@
-import { experienceData } from "../../data/experienceData";
+import { useState, useCallback } from "react";
+import { motion } from "framer-motion";
+import { FaAward } from "react-icons/fa6";
 import SectionHeader from "../ui/SectionHeader";
 import Card from "../ui/Card";
 import Badge from "../ui/Badge";
+import CertificateModal from "../ui/CertificateModal";
+import { usePortfolio } from "../../context/PortfolioContext";
 
 function ExperienceSection() {
+  const { experience } = usePortfolio();
+  const [activeCert, setActiveCert] = useState(null);
+
+  const handleOpenCert = useCallback((certificate) => {
+    setActiveCert(certificate);
+  }, []);
+
+  const handleCloseCert = useCallback(() => {
+    setActiveCert(null);
+  }, []);
+
+  const experiences = Array.isArray(experience) ? experience : [];
+
   return (
     <section id="experience" className="scroll-mt-28 bg-gradient-to-b from-black via-slate-950 to-black px-6 py-28 text-white">
       <div className="mx-auto max-w-7xl">
         <SectionHeader
           subtitle="CAREER TIMELINE"
-          title="Professional Experience &amp;"
+          title="Professional Experience &"
           titleHighlight="Traineeships"
-          description="A chronological history of my engineering internships, Microsoft &amp; Google professional tracks, and ICPC community mentorship."
+          description="A chronological history of my engineering internships, Microsoft & Google professional tracks, and ICPC community mentorship."
         />
 
         {/* Timeline Container */}
@@ -20,17 +37,30 @@ function ExperienceSection() {
           <div className="absolute left-7 top-0 bottom-0 w-[2px] bg-gradient-to-b from-blue-500/70 via-white/10 to-transparent md:left-8" />
 
           <div className="space-y-12">
-            {experienceData.map((exp) => (
-              <div key={exp.id} className="relative flex gap-6 md:gap-8 items-start">
+            {experiences.map((exp, idx) => (
+              <motion.div
+                key={exp.id}
+                initial={{ opacity: 0, x: -16 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.5, delay: idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
+                className="relative flex gap-6 md:gap-8 items-start"
+              >
                 {/* Timeline Dot / Logo */}
                 <div className="relative z-10 shrink-0">
                   <div className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-full border-2 border-blue-500 bg-white shadow-[0_0_25px_rgba(59,130,246,0.55)] md:h-16 md:w-16">
-                    <img
-                      src={exp.logo}
-                      alt={exp.organization}
-                      loading="lazy"
-                      className="h-full w-full object-cover scale-110"
-                    />
+                    {exp.logo || exp.logo_url ? (
+                      <img
+                        src={exp.logo || exp.logo_url}
+                        alt={exp.organization}
+                        loading="lazy"
+                        className="h-full w-full object-cover scale-110"
+                      />
+                    ) : (
+                      <span className="text-xs font-bold text-slate-800">
+                        {exp.organization?.substring(0, 3)}
+                      </span>
+                    )}
                   </div>
                 </div>
 
@@ -68,22 +98,46 @@ function ExperienceSection() {
                   )}
 
                   {/* Tech Stack Pills */}
-                  <div className="flex flex-wrap gap-1.5 pt-2 border-t border-white/10">
-                    {exp.technologies.map((tech) => (
-                      <span
-                        key={tech}
-                        className="rounded-full border border-blue-500/20 bg-blue-500/10 px-3 py-0.5 text-xs text-blue-300"
+                  {exp.technologies && exp.technologies.length > 0 && (
+                    <div className="flex flex-wrap gap-1.5 pt-2 border-t border-white/10">
+                      {exp.technologies.map((tech) => (
+                        <span
+                          key={tech}
+                          className="rounded-full border border-blue-500/20 bg-blue-500/10 px-3 py-0.5 text-xs text-blue-300"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Certificate Action — only rendered when certificate data exists */}
+                  {exp.certificate && (
+                    <div className="mt-4 pt-3 border-t border-white/10">
+                      <button
+                        type="button"
+                        onClick={() => handleOpenCert(exp.certificate)}
+                        className="inline-flex items-center gap-2 text-xs font-semibold text-blue-400 hover:text-blue-300 transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-400 rounded"
+                        aria-label={`View certificate for ${exp.role}`}
                       >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
+                        <FaAward className="w-3.5 h-3.5" />
+                        View Certificate
+                      </button>
+                    </div>
+                  )}
                 </Card>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </div>
+
+      {/* Certificate Modal — rendered once outside the loop */}
+      <CertificateModal
+        isOpen={activeCert !== null}
+        onClose={handleCloseCert}
+        certificate={activeCert}
+      />
     </section>
   );
 }

@@ -1,0 +1,8 @@
+# Robots.txt for Seif Ahmed Almaz Portfolio
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /login
+
+# Custom domain sitemap
+Sitemap: /sitemap.xml

@@ -1,6 +1,13 @@
 import depiLogo from "../assets/experience/depi.png";
 import banqueLogo from "../assets/experience/banque-du-caire.png";
 import icpcLogo from "../assets/experience/icpc.png";
+import cibLogo from "../assets/experience/cib.png";
+
+// Certificate images (optimized WebP)
+import certificateDepiMl from "../assets/certificates/certificate-depi-ml.webp";
+import certificateBanque from "../assets/certificates/certificate-banque-du-caire.webp";
+import certificateCib from "../assets/certificates/certificate-cib.webp";
+import certificateDepiAnalytics from "../assets/certificates/certificate-depi-analytics.webp";
 
 export const experienceData = [
   {
@@ -18,7 +25,12 @@ export const experienceData = [
       "Leveraged Azure AI services and MLflow for experiment tracking and model deployment.",
       "Developed automated feature engineering and evaluation pipelines."
     ],
-    technologies: ["Python", "PyTorch", "Azure AI", "MLflow", "Hugging Face", "Scikit-Learn"]
+    technologies: ["Python", "PyTorch", "Azure AI", "MLflow", "Hugging Face", "Scikit-Learn"],
+    certificate: {
+      image: certificateDepiMl,
+      title: "Microsoft Machine Learning Certificate",
+      issuer: "Digital Egypt Pioneers Initiative (DEPI)"
+    }
   },
   {
     id: "banque-du-caire",
@@ -35,11 +47,16 @@ export const experienceData = [
       "Engineered automated ETL mappings using Informatica PowerCenter.",
       "Parsed XML and structured banking transaction files into relational staging databases."
     ],
-    technologies: ["SQL", "Informatica", "ETL", "XML", "Oracle DB", "Data Warehousing"]
+    technologies: ["SQL", "Informatica", "ETL", "XML", "Oracle DB", "Data Warehousing"],
+    certificate: {
+      image: certificateBanque,
+      title: "Data Engineering Internship Certificate",
+      issuer: "Banque du Caire"
+    }
   },
   {
     id: "cib-internship",
-    logo: banqueLogo, // Fallback icon/logo for CIB
+    logo: cibLogo,
     type: "Internship",
     role: "Commercial International Bank Trainee",
     organization: "CIB Egypt",
@@ -51,7 +68,12 @@ export const experienceData = [
       "Analyzed customer banking behavior patterns for retail banking reporting.",
       "Collaborated with cross-functional banking teams to present data insight summaries."
     ],
-    technologies: ["Data Analytics", "Financial Modeling", "Excel", "SQL"]
+    technologies: ["Data Analytics", "Financial Modeling", "Excel", "SQL"],
+    certificate: {
+      image: certificateCib,
+      title: "Banking Internship Certificate",
+      issuer: "Commercial International Bank (CIB Egypt)"
+    }
   },
   {
     id: "depi-analytics",
@@ -59,7 +81,7 @@ export const experienceData = [
     type: "Professional Program",
     role: "Google Data Analytics Trainee",
     organization: "Digital Egypt Pioneers Initiative (DEPI)",
-    period: "Oct 2024 – Jun 2025",
+    period: "Nov 2024 – May 2025",
     location: "Cairo, Egypt",
     description:
       "Designed interactive Power BI dashboards and automated ETL workflows using Python and SQL to generate actionable business insights from real-world datasets.",
@@ -68,7 +90,12 @@ export const experienceData = [
       "Built automated data cleaning scripts in Python (Pandas/NumPy) reducing data processing time by 40%.",
       "Performed exploratory data analysis (EDA) and cohort retention modeling."
     ],
-    technologies: ["Python", "Pandas", "Matplotlib", "SQL", "Power BI", "Tableau", "DAX"]
+    technologies: ["Python", "Pandas", "Matplotlib", "SQL", "Power BI", "Tableau", "DAX"],
+    certificate: {
+      image: certificateDepiAnalytics,
+      title: "Google Data Analytics Certificate",
+      issuer: "Digital Egypt Pioneers Initiative (DEPI)"
+    }
   },
   {
     id: "icpc-mentor",
@@ -85,5 +112,6 @@ export const experienceData = [
       "Coached student teams on time complexity analysis and optimal problem-solving techniques."
     ],
     technologies: ["C++", "Python", "Algorithms", "Data Structures", "Problem Solving"]
+    // No certificate for this entry
   }
 ];

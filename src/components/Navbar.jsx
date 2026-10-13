@@ -4,22 +4,26 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FaBars, FaXmark } from "react-icons/fa6";
 import { navItems, handleHybridNavigation } from "../data/navigationData";
 import { personalData } from "../data/personalData";
+import { usePortfolio } from "../context/PortfolioContext";
 import { useActiveSection } from "../hooks/useActiveSection";
 
+const HOMEPAGE_SECTIONS = ["hero", "about", "skills", "projects", "experience", "contact"];
+
 function Navbar() {
+  const { profile, settings } = usePortfolio();
+  const currentProfile = profile || personalData;
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
 
-  // Observed section IDs on the homepage
-  const homepageSections = ["hero", "about", "skills", "projects", "experience", "contact"];
-  const activeSection = useActiveSection(homepageSections);
+  const activeSection = useActiveSection(HOMEPAGE_SECTIONS, 140);
 
-  // Scroll detection for backdrop blur
+  // Scroll detection for backdrop blur (only updates when boolean threshold transitions)
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 40);
+      const isPast = window.scrollY > 40;
+      setScrolled(prev => (prev !== isPast ? isPast : prev));
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -108,7 +112,7 @@ function Navbar() {
                     <motion.div
                       layoutId="activeNavPill"
                       className="absolute inset-0 z-0 rounded-full bg-blue-500/10 border border-blue-500/20"
-                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                      transition={{ type: "spring", stiffness: 450, damping: 32 }}
                     />
                   )}
                 </div>
@@ -118,22 +122,23 @@ function Navbar() {
 
           {/* Right Action: Resume Download & Mobile Toggle */}
           <div className="flex items-center gap-4">
-            {/* Resume Button */}
-            <a
-              href={personalData.resumeUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-full border border-white/20 bg-white/5 px-4 py-2 text-xs font-medium text-white backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:border-blue-400/50 hover:bg-blue-500/10 hover:text-blue-400 focus-visible:outline-2 focus-visible:outline-blue-400"
-            >
-              Resume
-            </a>
+            {settings?.show_resume_button !== false && (
+              <a
+                href={currentProfile.resumeUrl || personalData.resumeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-full border border-white/20 bg-white/5 px-4 py-2 text-xs font-medium text-white backdrop-blur-sm transition duration-200 hover:border-blue-400/50 hover:bg-blue-500/10 hover:text-blue-400 focus-visible:outline-2 focus-visible:outline-blue-400"
+              >
+                Resume
+              </a>
+            )}
 
             {/* Mobile Menu Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-expanded={mobileMenuOpen}
               aria-label={mobileMenuOpen ? "Close Menu" : "Open Menu"}
-              className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-gray-300 transition hover:text-white focus-visible:outline-2 focus-visible:outline-blue-400 md:hidden"
+              className="flex h-10 w-10 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-gray-300 transition duration-200 hover:text-white focus-visible:outline-2 focus-visible:outline-blue-400 md:hidden"
             >
               {mobileMenuOpen ? <FaXmark className="h-5 w-5" /> : <FaBars className="h-5 w-5" />}
             </button>
@@ -150,6 +155,7 @@ function Navbar() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
               onClick={() => setMobileMenuOpen(false)}
               className="fixed inset-0 z-40 bg-black/70 backdrop-blur-sm md:hidden"
             />
@@ -159,7 +165,7 @@ function Navbar() {
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
-              transition={{ type: "spring", stiffness: 300, damping: 30 }}
+              transition={{ type: "spring", stiffness: 400, damping: 35 }}
               className="fixed top-0 right-0 z-50 h-full w-4/5 max-w-sm border-l border-white/10 bg-slate-950 p-6 shadow-2xl md:hidden"
             >
               <div className="flex items-center justify-between border-b border-white/10 pb-4">
@@ -219,16 +225,19 @@ function Navbar() {
               </div>
 
               {/* Mobile Footer Action */}
-              <div className="mt-12 pt-6 border-t border-white/10 text-center">
-                <a
-                  href={personalData.resumeUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block w-full rounded-full bg-blue-500 py-3 text-center text-sm font-medium text-white transition hover:bg-blue-600 shadow-lg shadow-blue-500/25"
-                >
-                  Download Resume (PDF)
-                </a>
-              </div>
+              {settings?.show_resume_button !== false && (
+                <div className="mt-12 pt-6 border-t border-white/10 text-center">
+                  <a
+                    href={currentProfile.resumeUrl || personalData.resumeUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    download={currentProfile.resumeFilename || personalData.resumeFilename || "Seif_Almaz_CV.pdf"}
+                    className="block w-full rounded-full bg-blue-500 py-3 text-center text-sm font-medium text-white transition hover:bg-blue-600 shadow-lg shadow-blue-500/25"
+                  >
+                    Download Resume (PDF)
+                  </a>
+                </div>
+              )}
             </motion.div>
           </>
         )}

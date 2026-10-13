@@ -1,3 +1,5 @@
+import { personalData } from "../data/personalData";
+
 function Hero() {
   return (
     <section id="hero" className="min-h-screen bg-[radial-gradient(circle_at_80%_30%,rgba(37,99,235,0.12),transparent_35%),linear-gradient(to_bottom,#000,#020617,#000)] text-white">
@@ -28,13 +30,19 @@ function Hero() {
 
           <div className="flex flex-wrap gap-4">
 
-            <button className="rounded-full bg-white px-8 py-3 font-medium text-black transition-all duration-300 hover:scale-105">
+            <a href="#projects" className="rounded-full bg-white px-8 py-3 font-medium text-black transition-all duration-300 hover:scale-105 inline-block text-center">
               View Projects
-            </button>
+            </a>
 
-            <button className="rounded-full border border-gray-700 px-8 py-3 transition-all duration-300 hover:border-blue-400 hover:text-blue-400">
+            <a
+              href={personalData.resumeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              download={personalData.resumeFilename || "Seif_Almaz_CV.pdf"}
+              className="rounded-full border border-gray-700 px-8 py-3 transition-all duration-300 hover:border-blue-400 hover:text-blue-400 inline-block text-center"
+            >
               Download CV
-            </button>
+            </a>
 
           </div>
 

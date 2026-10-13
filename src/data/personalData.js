@@ -1,3 +1,5 @@
+import resumePdf from "../assets/resume/Seif_Almaz_CV.pdf";
+
 export const personalData = {
   name: "Seif Ahmed Almaz",
   title: "Data Analytics • Machine Learning • AI Engineer",
@@ -16,9 +18,11 @@ export const personalData = {
     github: "https://github.com/seifalmaz",
     linkedin: "https://www.linkedin.com/in/seif-almaz",
     kaggle: "https://kaggle.com/seifalmaz",
+    mostaql: "https://mostaql.com/u/seifalmaz",
     email: "mailto:siefalmaz3@gmail.com"
   },
-  resumeUrl: "/resume.pdf",
+  resumeUrl: resumePdf,
+  resumeFilename: "Seif_Almaz_CV.pdf",
   bioHeadline: "The Person Behind The Data.",
   bioParagraphs: [
     "I'm Seif Ahmed Almaz, a Data Analytics and Machine Learning enthusiast dedicated to bridging the gap between raw data and impactful business decisions. My work spans predictive modeling, ETL pipelines, Power BI dashboard design, and deep learning solutions.",
