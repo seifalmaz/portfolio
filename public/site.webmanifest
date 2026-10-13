@@ -1,0 +1,24 @@
+{
+  "name": "Seif Ahmed Almaz | Data Analytics & AI Engineer",
+  "short_name": "Seif Almaz",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#040b1b",
+  "background_color": "#040b1b",
+  "display": "standalone"
+}
