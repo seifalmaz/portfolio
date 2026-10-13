@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet-async";
 const DEFAULT_TITLE = "Seif Almaz (Seif Ahmed Almaz) | Data Analytics & AI Engineer";
 const DEFAULT_DESCRIPTION =
   "Official portfolio of Seif Almaz (Seif Ahmed Almaz) — Data Analytics & AI Engineer. Explore verified case studies in Machine Learning, predictive modeling, and executive Power BI dashboards.";
-const BASE_URL = "https://seifalmaz.site";
+const BASE_URL = "https://www.seifalmaz.site";
 const DEFAULT_IMAGE = `${BASE_URL}/about-profile.webp`;
 
 function SEO({

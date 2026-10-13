@@ -1,4 +1,4 @@
-# Robots.txt for Seif Almaz Portfolio (https://seifalmaz.site)
+# Robots.txt for Seif Almaz Portfolio (https://www.seifalmaz.site)
 User-agent: *
 Allow: /
 Disallow: /admin
@@ -14,4 +14,4 @@ User-agent: Googlebot-Image
 Allow: /
 
 # Canonical XML Sitemap
-Sitemap: https://seifalmaz.site/sitemap.xml
+Sitemap: https://www.seifalmaz.site/sitemap.xml
