@@ -9,6 +9,7 @@ import {
 } from "react-icons/fa6";
 import { isPdfUrl, getFileName } from "../../utils/fileUtils";
 import { certificationsData } from "../../data/certificationsData";
+import { experienceData } from "../../data/experienceData";
 import PdfDocumentViewer from "./PdfDocumentViewer";
 
 /**
@@ -56,8 +57,13 @@ function CertificateModal({ isOpen, onClose, certificate }) {
     const local = certificationsData.find(
       (c) => c.id === certificate.id || c.title === certificate.title
     );
+    const localExp = experienceData.find(
+      (e) => e.certificate?.title === certificate.title || e.id === certificate.id
+    );
     if (local?.image || local?.imageUrl) {
       docUrl = local.image || local.imageUrl;
+    } else if (localExp?.certificate?.image) {
+      docUrl = localExp.certificate.image;
     }
   }
 

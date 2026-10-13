@@ -195,9 +195,14 @@ export default function ExperienceTab({
               </div>
 
               {/* Logo Preview */}
-              <div className="w-12 h-12 rounded-xl bg-slate-800 border border-slate-700 overflow-hidden flex items-center justify-center shrink-0">
+              <div className="w-12 h-12 rounded-xl bg-white border border-slate-700 overflow-hidden flex items-center justify-center shrink-0 p-1.5 shadow-sm">
                 {exp.logo || exp.logo_url ? (
-                  <img src={exp.logo || exp.logo_url} alt={exp.organization} className="w-full h-full object-cover" />
+                  <img
+                    src={exp.logo || exp.logo_url}
+                    alt={exp.organization}
+                    className="w-full h-full object-contain"
+                    onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                  />
                 ) : (
                   <FaBriefcase className="text-slate-500 w-5 h-5" />
                 )}

@@ -6,20 +6,79 @@ import Card from "../ui/Card";
 import Badge from "../ui/Badge";
 import CertificateModal from "../ui/CertificateModal";
 import { usePortfolio } from "../../context/PortfolioContext";
+import { experienceData } from "../../data/experienceData";
+
+function ExperienceLogoBadge({ exp }) {
+  const [hasError, setHasError] = useState(false);
+
+  const local = experienceData.find((e) => e.id === exp.id) ||
+                experienceData.find((e) => e.role === exp.role && e.organization === exp.organization) ||
+                experienceData.find((e) => e.organization === exp.organization);
+
+  const isDevPath = (url) => typeof url === 'string' && (url.startsWith('/src/') || url.includes('localhost'));
+
+  const candidateLogo = !hasError && (
+    (exp.logo && !isDevPath(exp.logo)) ? exp.logo :
+    (exp.logo_url && !isDevPath(exp.logo_url)) ? exp.logo_url :
+    (local?.logo || null)
+  );
+
+  const fallbackInitials = (exp.organization || 'EXP')
+    .split(' ')
+    .filter((w) => !['and', '&', 'of', 'the', 'for'].includes(w.toLowerCase()))
+    .map((w) => w[0])
+    .filter(Boolean)
+    .slice(0, 3)
+    .join('')
+    .toUpperCase() || exp.organization?.substring(0, 3).toUpperCase() || 'EXP';
+
+  return (
+    <div className="relative z-10 shrink-0">
+      <div className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-full border-2 border-blue-500/80 bg-white shadow-[0_0_25px_rgba(59,130,246,0.45)] transition-all duration-300 hover:scale-105 hover:border-blue-400 hover:shadow-[0_0_30px_rgba(59,130,246,0.65)] p-2 md:h-16 md:w-16">
+        {candidateLogo ? (
+          <img
+            src={candidateLogo}
+            alt={exp.organization}
+            loading="lazy"
+            onError={() => setHasError(true)}
+            className="h-full w-full object-contain select-none transition-transform duration-300"
+          />
+        ) : (
+          <span className="text-xs font-black tracking-wider text-slate-800 select-none">
+            {fallbackInitials}
+          </span>
+        )}
+      </div>
+    </div>
+  );
+}
 
 function ExperienceSection() {
   const { experience } = usePortfolio();
   const [activeCert, setActiveCert] = useState(null);
 
-  const handleOpenCert = useCallback((certificate) => {
-    setActiveCert(certificate);
+  const handleOpenCert = useCallback((certificate, exp) => {
+    const local = experienceData.find((e) => e.id === exp?.id) ||
+                  experienceData.find((e) => e.role === exp?.role && e.organization === exp?.organization) ||
+                  experienceData.find((e) => e.organization === exp?.organization);
+
+    const isDevPath = (url) => typeof url === 'string' && (url.startsWith('/src/') || url.includes('localhost'));
+    const certImg = (certificate?.image && !isDevPath(certificate.image))
+      ? certificate.image
+      : (local?.certificate?.image || certificate?.image || null);
+
+    setActiveCert({
+      ...certificate,
+      image: certImg,
+      imageUrl: certImg
+    });
   }, []);
 
   const handleCloseCert = useCallback(() => {
     setActiveCert(null);
   }, []);
 
-  const experiences = Array.isArray(experience) ? experience : [];
+  const experiences = Array.isArray(experience) && experience.length > 0 ? experience : experienceData;
 
   return (
     <section id="experience" className="scroll-mt-28 bg-gradient-to-b from-black via-slate-950 to-black px-6 py-28 text-white">
@@ -47,22 +106,7 @@ function ExperienceSection() {
                 className="relative flex gap-6 md:gap-8 items-start"
               >
                 {/* Timeline Dot / Logo */}
-                <div className="relative z-10 shrink-0">
-                  <div className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-full border-2 border-blue-500 bg-white shadow-[0_0_25px_rgba(59,130,246,0.55)] md:h-16 md:w-16">
-                    {exp.logo || exp.logo_url ? (
-                      <img
-                        src={exp.logo || exp.logo_url}
-                        alt={exp.organization}
-                        loading="lazy"
-                        className="h-full w-full object-cover scale-110"
-                      />
-                    ) : (
-                      <span className="text-xs font-bold text-slate-800">
-                        {exp.organization?.substring(0, 3)}
-                      </span>
-                    )}
-                  </div>
-                </div>
+                <ExperienceLogoBadge exp={exp} />
 
                 {/* Experience Card */}
                 <Card className="flex-1">
@@ -116,7 +160,7 @@ function ExperienceSection() {
                     <div className="mt-4 pt-3 border-t border-white/10">
                       <button
                         type="button"
-                        onClick={() => handleOpenCert(exp.certificate)}
+                        onClick={() => handleOpenCert(exp.certificate, exp)}
                         className="inline-flex items-center gap-2 text-xs font-semibold text-blue-400 hover:text-blue-300 transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-400 rounded"
                         aria-label={`View certificate for ${exp.role}`}
                       >

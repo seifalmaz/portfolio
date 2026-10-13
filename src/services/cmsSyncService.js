@@ -131,24 +131,34 @@ export const cmsSyncService = {
     // 3. Experiences
     if (Array.isArray(currentState.experiences) && currentState.experiences.length > 0) {
       try {
-        const expPayload = currentState.experiences.map((exp, idx) => ({
-          id: exp.id || `exp-${idx}-${Date.now()}`,
-          role: exp.role,
-          organization: exp.organization,
-          type: exp.type || 'Professional Program',
-          period: exp.period,
-          location: exp.location || '',
-          description: exp.description || '',
-          highlights: Array.isArray(exp.highlights) ? exp.highlights : [],
-          technologies: Array.isArray(exp.technologies) ? exp.technologies : [],
-          logo_url: exp.logo_url || (typeof exp.logo === 'string' ? exp.logo : null),
-          certificate_title: exp.certificate?.title || exp.certificate_title || null,
-          certificate_issuer: exp.certificate?.issuer || exp.certificate_issuer || null,
-          certificate_image: exp.certificate?.image || exp.certificate_image || null,
-          is_current: Boolean(exp.is_current),
-          sort_order: exp.sort_order ?? idx,
-          updated_at: new Date().toISOString()
-        }));
+        const isDevPath = (url) => typeof url === 'string' && (url.startsWith('/src/') || url.includes('localhost'));
+        const expPayload = currentState.experiences.map((exp, idx) => {
+          const cleanLogo = isDevPath(exp.logo_url)
+            ? null
+            : (exp.logo_url || (typeof exp.logo === 'string' && !isDevPath(exp.logo) ? exp.logo : null));
+          const cleanCert = isDevPath(exp.certificate?.image || exp.certificate_image)
+            ? null
+            : (exp.certificate?.image || exp.certificate_image || null);
+
+          return {
+            id: exp.id || `exp-${idx}-${Date.now()}`,
+            role: exp.role,
+            organization: exp.organization,
+            type: exp.type || 'Professional Program',
+            period: exp.period,
+            location: exp.location || '',
+            description: exp.description || '',
+            highlights: Array.isArray(exp.highlights) ? exp.highlights : [],
+            technologies: Array.isArray(exp.technologies) ? exp.technologies : [],
+            logo_url: cleanLogo,
+            certificate_title: exp.certificate?.title || exp.certificate_title || null,
+            certificate_issuer: exp.certificate?.issuer || exp.certificate_issuer || null,
+            certificate_image: cleanCert,
+            is_current: Boolean(exp.is_current),
+            sort_order: exp.sort_order ?? idx,
+            updated_at: new Date().toISOString()
+          };
+        });
         const { data, error } = await supabase
           .from('experiences')
           .upsert(expPayload, { onConflict: 'id' })
@@ -418,24 +428,34 @@ export const cmsSyncService = {
     try {
       const { count: expCount } = await supabase.from('experiences').select('*', { count: 'exact', head: true });
       if (!expCount || expCount === 0) {
-        const expPayload = experienceData.map((exp, idx) => ({
-          id: exp.id || `exp-${idx}-${Date.now()}`,
-          role: exp.role,
-          organization: exp.organization,
-          type: exp.type || 'Professional Program',
-          period: exp.period,
-          location: exp.location || '',
-          description: exp.description || '',
-          highlights: Array.isArray(exp.highlights) ? exp.highlights : [],
-          technologies: Array.isArray(exp.technologies) ? exp.technologies : [],
-          logo_url: exp.logo_url || (typeof exp.logo === 'string' ? exp.logo : null),
-          certificate_title: exp.certificate?.title || exp.certificate_title || null,
-          certificate_issuer: exp.certificate?.issuer || exp.certificate_issuer || null,
-          certificate_image: exp.certificate?.image || exp.certificate_image || null,
-          is_current: Boolean(exp.is_current),
-          sort_order: exp.sort_order ?? idx,
-          updated_at: new Date().toISOString()
-        }));
+        const isDevPath = (url) => typeof url === 'string' && (url.startsWith('/src/') || url.includes('localhost'));
+        const expPayload = experienceData.map((exp, idx) => {
+          const cleanLogo = isDevPath(exp.logo_url)
+            ? null
+            : (exp.logo_url || (typeof exp.logo === 'string' && !isDevPath(exp.logo) ? exp.logo : null));
+          const cleanCert = isDevPath(exp.certificate?.image || exp.certificate_image)
+            ? null
+            : (exp.certificate?.image || exp.certificate_image || null);
+
+          return {
+            id: exp.id || `exp-${idx}-${Date.now()}`,
+            role: exp.role,
+            organization: exp.organization,
+            type: exp.type || 'Professional Program',
+            period: exp.period,
+            location: exp.location || '',
+            description: exp.description || '',
+            highlights: Array.isArray(exp.highlights) ? exp.highlights : [],
+            technologies: Array.isArray(exp.technologies) ? exp.technologies : [],
+            logo_url: cleanLogo,
+            certificate_title: exp.certificate?.title || exp.certificate_title || null,
+            certificate_issuer: exp.certificate?.issuer || exp.certificate_issuer || null,
+            certificate_image: cleanCert,
+            is_current: Boolean(exp.is_current),
+            sort_order: exp.sort_order ?? idx,
+            updated_at: new Date().toISOString()
+          };
+        });
         await supabase.from('experiences').upsert(expPayload, { onConflict: 'id' });
         results.experiences = expPayload.length;
       }
