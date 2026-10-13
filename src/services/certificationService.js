@@ -167,30 +167,27 @@ export const certificationService = {
       .select()
       .single();
 
-    // If 'thumbnail_url' or 'category' column is not in schema cache, retry gracefully
-    if (error && error.message) {
-      const fallbackRow = { ...row };
-      let shouldRetry = false;
-      if (error.message.includes('thumbnail_url')) {
-        delete fallbackRow.thumbnail_url;
-        shouldRetry = true;
-      }
-      if (error.message.includes('category')) {
-        delete fallbackRow.category;
-        shouldRetry = true;
-      }
-      if (shouldRetry) {
-        const retry = await supabase
-          .from('certifications')
-          .upsert([fallbackRow], { onConflict: 'id' })
-          .select()
-          .single();
-        if (retry.error) throw retry.error;
-        data = retry.data;
-      } else {
-        throw error;
-      }
+    let retryCount = 0;
+    while (error && error.message && error.message.includes('in the schema cache') && retryCount < 5) {
+      retryCount++;
+      const match = error.message.match(/Could not find the '([^']+)' column/);
+      const missingCol = match ? match[1] : null;
+      if (!missingCol) break;
+
+      console.warn(`Column '${missingCol}' missing in certifications table. Retrying...`);
+      delete row[missingCol];
+
+      const retry = await supabase
+        .from('certifications')
+        .upsert([row], { onConflict: 'id' })
+        .select()
+        .single();
+
+      error = retry.error;
+      data = retry.data;
     }
+
+    if (error) throw error;
 
     if (typeof window !== 'undefined') {
       localStorage.setItem(CERTS_INIT_KEY, 'true');
@@ -213,29 +210,27 @@ export const certificationService = {
       .select()
       .single();
 
-    if (error && error.message) {
-      const fallbackRow = { ...row };
-      let shouldRetry = false;
-      if (error.message.includes('thumbnail_url')) {
-        delete fallbackRow.thumbnail_url;
-        shouldRetry = true;
-      }
-      if (error.message.includes('category')) {
-        delete fallbackRow.category;
-        shouldRetry = true;
-      }
-      if (shouldRetry) {
-        const retry = await supabase
-          .from('certifications')
-          .upsert(fallbackRow, { onConflict: 'id' })
-          .select()
-          .single();
-        if (retry.error) throw retry.error;
-        data = retry.data;
-      } else {
-        throw error;
-      }
+    let retryCount = 0;
+    while (error && error.message && error.message.includes('in the schema cache') && retryCount < 5) {
+      retryCount++;
+      const match = error.message.match(/Could not find the '([^']+)' column/);
+      const missingCol = match ? match[1] : null;
+      if (!missingCol) break;
+
+      console.warn(`Column '${missingCol}' missing in certifications table. Retrying...`);
+      delete row[missingCol];
+
+      const retry = await supabase
+        .from('certifications')
+        .upsert(row, { onConflict: 'id' })
+        .select()
+        .single();
+
+      error = retry.error;
+      data = retry.data;
     }
+
+    if (error) throw error;
 
     return fromDBRow(data);
   },

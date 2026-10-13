@@ -196,30 +196,42 @@ export const cmsSyncService = {
             updated_at: new Date().toISOString()
           }));
 
+          let currentCertPayload = certPayload;
           let { data, error } = await supabase
             .from('certifications')
-            .upsert(certPayload, { onConflict: 'id' })
+            .upsert(currentCertPayload, { onConflict: 'id' })
             .select();
 
-          // If 'category' or 'thumbnail_url' column is not in schema cache, retry gracefully
-          if (error && error.message && (error.message.includes('category') || error.message.includes('thumbnail_url'))) {
-            const fallbackCertPayload = certPayload.map(row => {
+          // Resilient retry loop: if any column is missing from remote schema cache (e.g. thumbnail_url, category),
+          // dynamically strip it and retry so synchronization never crashes.
+          let retryCount = 0;
+          while (error && error.message && error.message.includes('in the schema cache') && retryCount < 5) {
+            retryCount++;
+            const match = error.message.match(/Could not find the '([^']+)' column/);
+            const missingCol = match ? match[1] : null;
+            if (!missingCol) break;
+
+            console.warn(`Column '${missingCol}' not found in remote certifications schema. Retrying sync without it...`);
+            currentCertPayload = currentCertPayload.map(row => {
               const copy = { ...row };
-              if (error.message.includes('category')) delete copy.category;
-              if (error.message.includes('thumbnail_url')) delete copy.thumbnail_url;
+              delete copy[missingCol];
               return copy;
             });
+
             const retry = await supabase
               .from('certifications')
-              .upsert(fallbackCertPayload, { onConflict: 'id' })
+              .upsert(currentCertPayload, { onConflict: 'id' })
               .select();
-            if (retry.error) throw retry.error;
+
+            error = retry.error;
             data = retry.data;
-          } else if (error) {
+          }
+
+          if (error) {
             throw error;
           }
 
-          results.certifications = data?.length || certPayload.length;
+          results.certifications = data?.length || currentCertPayload.length;
         } else {
           results.certifications = 0;
         }
@@ -458,15 +470,25 @@ export const cmsSyncService = {
             updated_at: new Date().toISOString()
           }));
 
-        let { error: certErr } = await supabase.from('certifications').upsert(certPayload, { onConflict: 'id' });
-        if (certErr && certErr.message && (certErr.message.includes('category') || certErr.message.includes('thumbnail_url'))) {
-          const fallbackCertPayload = certPayload.map(r => {
+        let currentCertPayload = certPayload;
+        let { error: certErr } = await supabase.from('certifications').upsert(currentCertPayload, { onConflict: 'id' });
+
+        let retryCount = 0;
+        while (certErr && certErr.message && certErr.message.includes('in the schema cache') && retryCount < 5) {
+          retryCount++;
+          const match = certErr.message.match(/Could not find the '([^']+)' column/);
+          const missingCol = match ? match[1] : null;
+          if (!missingCol) break;
+
+          console.warn(`Column '${missingCol}' missing in remote schema cache during seed. Retrying without it...`);
+          currentCertPayload = currentCertPayload.map(r => {
             const copy = { ...r };
-            if (certErr.message.includes('category')) delete copy.category;
-            if (certErr.message.includes('thumbnail_url')) delete copy.thumbnail_url;
+            delete copy[missingCol];
             return copy;
           });
-          await supabase.from('certifications').upsert(fallbackCertPayload, { onConflict: 'id' });
+
+          const retry = await supabase.from('certifications').upsert(currentCertPayload, { onConflict: 'id' });
+          certErr = retry.error;
         }
 
         if (typeof window !== 'undefined') {
