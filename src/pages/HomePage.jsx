@@ -6,6 +6,7 @@ import ExperienceSection from "../components/sections/ExperienceSection";
 import CertificationsSection from "../components/sections/CertificationsSection";
 import ContactSection from "../components/sections/ContactSection";
 import PageTransition from "../components/layout/PageTransition";
+import SEO from "../components/common/SEO";
 import { usePortfolio } from "../context/PortfolioContext";
 
 function HomePage() {
@@ -14,6 +15,7 @@ function HomePage() {
 
   return (
     <PageTransition>
+      <SEO pathname="/" />
       {vis.hero !== false && <HeroSection />}
       {vis.about !== false && <AboutSection />}
       {vis.skills !== false && <SkillsSection />}

@@ -177,7 +177,7 @@ console.log('\n--- Group 7: SEO & Hosting Readiness ---');
 
 test('index.html contains valid title, description, open graph, and JSON-LD schema', () => {
   const html = fs.readFileSync(path.join(rootDir, 'index.html'), 'utf-8');
-  assert.ok(html.includes('<title>Seif Ahmed Almaz'), 'Title must be present');
+  assert.ok(html.includes('<title>Seif Almaz') || html.includes('<title>Seif Ahmed Almaz'), 'Title must be present');
   assert.ok(html.includes('name="description"'), 'Meta description must be present');
   assert.ok(html.includes('property="og:image"'), 'og:image must be present');
   assert.ok(html.includes('application/ld+json'), 'JSON-LD schema must be present');

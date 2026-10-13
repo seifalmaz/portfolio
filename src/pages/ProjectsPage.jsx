@@ -4,6 +4,7 @@ import PageTransition from "../components/layout/PageTransition";
 import ProjectFilterBar from "../components/projects/ProjectFilterBar";
 import ProjectGrid from "../components/projects/ProjectGrid";
 import { useProjects } from "../hooks/useProjects";
+import SEO from "../components/common/SEO";
 
 function ProjectsPage() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -51,6 +52,11 @@ function ProjectsPage() {
 
   return (
     <PageTransition>
+      <SEO
+        title="Projects & Case Studies"
+        description="Explore technical breakdowns, predictive models, Power BI executive dashboards, and computer vision systems built by Seif Almaz."
+        pathname="/projects"
+      />
       <div className="min-h-screen bg-black pt-32 pb-24 text-white">
         <div className="mx-auto max-w-7xl px-6">
           {/* Header */}

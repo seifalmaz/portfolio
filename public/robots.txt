@@ -1,8 +1,17 @@
-# Robots.txt for Seif Ahmed Almaz Portfolio
+# Robots.txt for Seif Almaz Portfolio (https://seifalmaz.site)
 User-agent: *
 Allow: /
 Disallow: /admin
 Disallow: /login
 
-# Custom domain sitemap
-Sitemap: /sitemap.xml
+# Explicit directive for Google Search Console & Googlebot
+User-agent: Googlebot
+Allow: /
+Disallow: /admin
+Disallow: /login
+
+User-agent: Googlebot-Image
+Allow: /
+
+# Canonical XML Sitemap
+Sitemap: https://seifalmaz.site/sitemap.xml

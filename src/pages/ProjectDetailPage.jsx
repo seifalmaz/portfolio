@@ -19,6 +19,7 @@ import {
   FaRocket,
   FaComments
 } from "react-icons/fa6";
+import SEO from "../components/common/SEO";
 
 function ProjectDetailPage() {
   const { slug } = useParams();
@@ -84,6 +85,13 @@ function ProjectDetailPage() {
 
   return (
     <PageTransition>
+      <SEO
+        title={project.title}
+        description={project.summary || project.tagline || `${project.title} case study by Seif Almaz.`}
+        pathname={`/projects/${project.slug}`}
+        image={project.heroImage || project.thumbnail || "/about-profile.webp"}
+        type="article"
+      />
       {/* Reading scroll progress indicator */}
       <motion.div
         style={{ scaleX }}

@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://seifalmaz.com/</loc>
+    <loc>https://seifalmaz.site/</loc>
     <lastmod>2026-10-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://seifalmaz.com/projects</loc>
+    <loc>https://seifalmaz.site/projects</loc>
     <lastmod>2026-10-13</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://seifalmaz.com/projects/railway-dashboard</loc>
+    <loc>https://seifalmaz.site/projects/railway-dashboard</loc>
     <lastmod>2026-10-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seifalmaz.com/projects/spotify-dashboard</loc>
+    <loc>https://seifalmaz.site/projects/spotify-dashboard</loc>
     <lastmod>2026-10-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seifalmaz.com/projects/waste-classifier</loc>
+    <loc>https://seifalmaz.site/projects/waste-classifier</loc>
     <lastmod>2026-10-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://seifalmaz.com/projects/gesture-recognition</loc>
+    <loc>https://seifalmaz.site/projects/gesture-recognition</loc>
     <lastmod>2026-10-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
