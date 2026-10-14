@@ -15,8 +15,8 @@ export function fromDBRow(row) {
     return { ...local };
   }
 
-  // Prevent stale external Unsplash placeholder images or unresolvable dev /src/ paths from overriding local verified assets
-  const isInvalidAsset = (url) => typeof url === 'string' && (url.includes('unsplash.com') || url.startsWith('/src/'));
+  // Prevent stale external Unsplash placeholder images, dev /src/ paths, or outdated /assets/ bundle hashes from overriding local verified assets
+  const isInvalidAsset = (url) => typeof url === 'string' && (url.includes('unsplash.com') || url.startsWith('/src/') || url.startsWith('/assets/'));
   const validThumbnail = (row.thumbnail && !isInvalidAsset(row.thumbnail)) ? row.thumbnail : (local?.thumbnail || '');
   const validGallery = (row.gallery && row.gallery.length > 0 && !row.gallery.some(g => isInvalidAsset(typeof g === 'string' ? g : g?.url)))
     ? row.gallery

@@ -11,9 +11,11 @@ function RelatedProjects({ projects = [] }) {
         title="Related Case Studies"
         subtitle="Explore similar engineering projects in the same domain or technology stack."
       />
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 items-stretch mt-8">
         {projects.map((project) => (
-          <ProjectCard key={project.id || project.slug} project={project} />
+          <div key={project.id || project.slug} className="flex h-full flex-col">
+            <ProjectCard project={project} />
+          </div>
         ))}
       </div>
     </div>

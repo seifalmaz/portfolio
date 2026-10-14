@@ -31,7 +31,7 @@ function ProjectGrid({ projects = [], loading = false, onResetFilters, onTagClic
   return (
     <motion.div
       layout
-      className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+      className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 items-stretch"
     >
       <AnimatePresence>
         {projects.map((project) => (
@@ -42,6 +42,7 @@ function ProjectGrid({ projects = [], loading = false, onResetFilters, onTagClic
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9 }}
             transition={{ duration: 0.3 }}
+            className="flex h-full flex-col"
           >
             <ProjectCard project={project} onTagClick={onTagClick} />
           </motion.div>

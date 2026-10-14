@@ -29,10 +29,14 @@ function FeaturedProjectsSection() {
           whileInView="visible"
           viewport={{ once: true, margin: "-60px" }}
           variants={staggerContainer(0.12, 0.05)}
-          className="grid gap-8 md:grid-cols-2 lg:grid-cols-3"
+          className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8 items-stretch"
         >
           {featuredProjects.map((project, idx) => (
-            <motion.div key={project.id || project.slug} variants={fadeInUp(idx * 0.05, 20)}>
+            <motion.div
+              key={project.id || project.slug}
+              variants={fadeInUp(idx * 0.05, 20)}
+              className="flex h-full flex-col"
+            >
               <ProjectCard project={project} />
             </motion.div>
           ))}
