@@ -195,6 +195,25 @@ test('Resume PDF is accessible in public/ directory', () => {
   assert.ok(fs.existsSync(path.join(rootDir, 'public/resume.pdf')), 'public/resume.pdf must exist');
 });
 
+test('Favicon suite and social sharing card exist with required Google multiples', () => {
+  const requiredAssets = [
+    'favicon.ico',
+    'favicon.svg',
+    'favicon-16x16.png',
+    'favicon-32x32.png',
+    'favicon-48x48.png',
+    'favicon-96x96.png',
+    'apple-touch-icon.png',
+    'android-chrome-192x192.png',
+    'android-chrome-512x512.png',
+    'brand-logo.png',
+    'og-card.png'
+  ];
+  for (const asset of requiredAssets) {
+    assert.ok(fs.existsSync(path.join(rootDir, 'public', asset)), `Asset ${asset} must exist in public/`);
+  }
+});
+
 // -----------------------------------------------------------------------------
 // Summary
 // -----------------------------------------------------------------------------
