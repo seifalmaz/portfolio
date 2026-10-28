@@ -19,7 +19,7 @@ function ProjectFilterBar({
   const isFiltered = search || category !== "All" || technology !== "All" || sortBy !== "featured";
 
   return (
-    <div className="flex flex-col gap-5 p-5 rounded-2xl border border-white/10 bg-slate-950/60 backdrop-blur-lg mb-8">
+    <div className="flex flex-col gap-5 p-5 rounded-2xl border border-[#FAF6EE]/10 bg-[#211f1e]/80 backdrop-blur-lg mb-8">
       {/* Upper Bar: Search & Sort Controls */}
       <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
         <SearchInput value={search} onChange={onSearchChange} />
@@ -30,7 +30,7 @@ function ProjectFilterBar({
             <select
               value={technology}
               onChange={(e) => onTechnologyChange(e.target.value)}
-              className="w-full appearance-none pl-3 pr-8 py-2.5 bg-slate-900/80 border border-white/10 rounded-xl text-xs text-gray-300 focus:outline-none focus:border-blue-500/60 transition cursor-pointer"
+              className="w-full appearance-none pl-3 pr-8 py-2.5 bg-[#292725] border border-[#FAF6EE]/15 rounded-xl text-xs text-[#F2E8D5] focus:outline-none focus:border-burgundy transition cursor-pointer"
             >
               <option value="All">All Tech Stack</option>
               {technologies.map((tech) => (
@@ -39,7 +39,7 @@ function ProjectFilterBar({
                 </option>
               ))}
             </select>
-            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400">
+            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3 text-sage">
               <FaFilter className="w-3 h-3" />
             </div>
           </div>
@@ -49,13 +49,13 @@ function ProjectFilterBar({
             <select
               value={sortBy}
               onChange={(e) => onSortByChange(e.target.value)}
-              className="w-full appearance-none pl-3 pr-8 py-2.5 bg-slate-900/80 border border-white/10 rounded-xl text-xs text-gray-300 focus:outline-none focus:border-blue-500/60 transition cursor-pointer"
+              className="w-full appearance-none pl-3 pr-8 py-2.5 bg-[#292725] border border-[#FAF6EE]/15 rounded-xl text-xs text-[#F2E8D5] focus:outline-none focus:border-burgundy transition cursor-pointer"
             >
               <option value="featured">Featured First</option>
               <option value="alphabetical">Alphabetical</option>
               <option value="newest">Newest</option>
             </select>
-            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3 text-gray-400">
+            <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3 text-sage">
               <FaSort className="w-3 h-3" />
             </div>
           </div>

@@ -25,6 +25,7 @@ import spotifyAdvanced from "../assets/projects/spotify-dashboard/advanced_compa
 import spotifyRelationship from "../assets/projects/spotify-dashboard/relationship.webp";
 import spotifyDistribution from "../assets/projects/spotify-dashboard/distribution.png";
 import spotifyTrends from "../assets/projects/spotify-dashboard/trends.png";
+import spotifyArchitecture from "../assets/projects/spotify-dashboard/architecture.svg";
 
 // Local Visual Assets - Waste Classifier
 import wasteModelsComparison from "../assets/projects/waste-classifier/models_comparison.png";
@@ -32,10 +33,12 @@ import wasteVitAttention from "../assets/projects/waste-classifier/vit_attention
 import wasteConfusionMatrices from "../assets/projects/waste-classifier/confusion_matrices.png";
 import wasteTrainingCurves from "../assets/projects/waste-classifier/training_curves.webp";
 import wasteF1Heatmap from "../assets/projects/waste-classifier/f1_heatmap.png";
+import wasteArchitecture from "../assets/projects/waste-classifier/architecture.svg";
 
 // Local Visual Assets - Hand Gesture Recognition
 import gestureDemo1 from "../assets/projects/gesture-recognition/gesture-recognition-demo-1.webp";
 import gestureDemo2 from "../assets/projects/gesture-recognition/gesture-recognition-demo-2.webp";
+import gestureArchitecture from "../assets/projects/gesture-recognition/architecture.svg";
 
 export const projectsData = [
   // =======================================================================================
@@ -102,6 +105,7 @@ export const projectsData = [
       "Git and GitHub"
     ],
     architecture: "The analytical data platform follows a 3-tier Medallion architecture implemented in Oracle Database under schema SEIF. Raw ticket logs are audited and cleansed in Python (Pandas) before bulk staging into the Bronze layer (BRONZE_RAILWAY). The Silver layer (SILVER_RAILWAY) standardizes timestamps, casts SQL datatypes, validates station names against ODbL geospatial coordinates, and preserves categorical unknowns. The Gold layer transforms cleaned records into an analytical Star Schema centered around FACT_RAILWAY (31,653 rows) and 6 dimension tables (DIM_DATE, DIM_TIME, DIM_STATION, DIM_JOURNEY, DIM_PAYMENT, DIM_TICKET). A denormalized analytical view (VW_RAILWAY_ANALYSIS) feeds an interactive Power BI semantic model featuring role-playing dimensions and custom DAX measures.",
+    architectureImage: railwayArchitecture,
     pipeline: [
       {
         title: "1. CSV Ingestion & Inspection",
@@ -422,6 +426,7 @@ RETURN
     /* --- 4. Architecture & Pipeline --- */
     techStack: ["Python", "Plotly Dash", "Pandas", "NumPy", "Plotly", "Jupyter", "CSS3"],
     architecture: "Pandas Preprocessing & Deduplication -> Release-Date Recovery via track_id Left Merge -> Analytical Data Staging -> Plotly Dash Reactive Callback Engine -> Custom Dark-Themed Glassmorphism UI.",
+    architectureImage: spotifyArchitecture,
     pipeline: [
       {
         title: "Data Cleaning & Sanitization",
@@ -669,6 +674,7 @@ app.clientside_callback(
       "Matplotlib"
     ],
     architecture: "Multi-stage deep learning pipeline implemented in PyTorch. Raw images are collected, hash-deduplicated, normalized to ImageNet statistics (224x224), and split into 70/15/15 train/val/test partitions. Models range from lightweight CNNs to fine-tuned deep residual networks (ResNet50), compound-scaled networks (EfficientNetB3), and self-attention Vision Transformers. An ensemble combining ResNet50 and EfficientNetB3 delivers the highest overall test accuracy.",
+    architectureImage: wasteArchitecture,
     pipeline: [
       {
         title: "1. Data Collection & Deduplication",
@@ -913,6 +919,7 @@ app.clientside_callback(
       "NumPy"
     ],
     architecture: "The end-to-end inference pipeline processes webcam video frames synchronously at 30+ FPS. Live BGR frames are converted to RGB and ingested by Google MediaPipe HandLandmarker to track 21 3D hand coordinates. If no hand is detected, the system transitions into an idle standby state ('NO HAND DETECTED'), suppressing false positives on furniture or walls. When a hand is localized, a bounding box is extracted with 30% safety margin expansion and clamped to frame boundaries. The region of interest is cropped with aspect-ratio preserved letterboxing to 224×224 pixels and normalized using ImageNet channel statistics. The tensor passes to the fine-tuned MobileNetV3-Large classifier, outputting softmax probabilities across the 4 verified gesture classes (Fist, OK, Palm, Thumb). Raw predictions are fed into a 7-frame rolling temporal majority voting buffer to eliminate frame-to-frame flicker, while an explainability hook computes vectorized Grad-CAM activation heatmaps from the final convolutional layer for real-time visual inspection.",
+    architectureImage: gestureArchitecture,
     pipeline: [
       {
         title: "1. Webcam Frame Acquisition",

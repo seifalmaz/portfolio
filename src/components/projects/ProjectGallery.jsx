@@ -17,10 +17,10 @@ function ProjectGallery({ gallery = [], images = [], screenshots = [] }) {
   if (items.length === 0) return null;
 
   return (
-    <section className="rounded-2xl border border-white/10 bg-slate-950/50 p-8 backdrop-blur-md">
-      <div className="flex items-center gap-3 mb-6 text-blue-400">
+    <section className="rounded-2xl border border-[#FAF6EE]/15 bg-[#211f1e] p-8 backdrop-blur-md">
+      <div className="flex items-center gap-3 mb-6 text-burgundy">
         <FaImages className="w-5 h-5" />
-        <h2 className="text-xl font-bold text-white tracking-tight">
+        <h2 className="text-xl font-bold text-[#FAF6EE] tracking-tight">
           Visual Artifacts &amp; Interface Previews
         </h2>
       </div>
@@ -36,7 +36,7 @@ function ProjectGallery({ gallery = [], images = [], screenshots = [] }) {
           return (
             <div
               key={idx}
-              className="group relative overflow-hidden rounded-xl border border-white/10 bg-slate-900 cursor-pointer"
+              className="group relative overflow-hidden rounded-xl border border-[#FAF6EE]/10 bg-[#292725] cursor-pointer"
               onClick={() => setSelectedImage({ url: imgUrl, caption, description })}
             >
               <div className="aspect-video w-full overflow-hidden">
@@ -48,16 +48,16 @@ function ProjectGallery({ gallery = [], images = [], screenshots = [] }) {
                 />
               </div>
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-between p-4">
-                <span className="text-xs text-white font-medium line-clamp-1">
+                <span className="text-xs text-[#FAF6EE] font-medium line-clamp-1">
                   {caption || "Click to zoom"}
                 </span>
-                <span className="p-2 rounded-full bg-blue-600/80 text-white shrink-0 ml-2">
+                <span className="p-2 rounded-full bg-burgundy text-[#FAF6EE] shrink-0 ml-2 shadow-lg shadow-burgundy/40">
                   <FaMagnifyingGlassPlus className="w-3.5 h-3.5" />
                 </span>
               </div>
               {caption && (
                 <div className="p-3 bg-white/[0.02] border-t border-white/5">
-                  <p className="text-xs text-gray-400 font-medium">
+                  <p className="text-xs text-[#9AA69A] font-medium">
                     {caption}
                   </p>
                 </div>
@@ -82,11 +82,11 @@ function ProjectGallery({ gallery = [], images = [], screenshots = [] }) {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative max-w-5xl w-full max-h-[90vh] flex flex-col rounded-2xl border border-white/10 bg-slate-950 overflow-hidden shadow-2xl"
+              className="relative max-w-5xl w-full max-h-[90vh] flex flex-col rounded-2xl border border-[#FAF6EE]/20 bg-[#1a1817] overflow-hidden shadow-2xl"
             >
               {/* Top Bar */}
-              <div className="flex items-center justify-between px-6 py-4 border-b border-white/10">
-                <h3 className="text-sm font-semibold text-white truncate">
+              <div className="flex items-center justify-between px-6 py-4 border-b border-[#FAF6EE]/10">
+                <h3 className="text-sm font-semibold text-[#FAF6EE] truncate">
                   {selectedImage.caption || "Image Preview"}
                 </h3>
                 <button

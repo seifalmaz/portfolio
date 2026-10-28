@@ -1,7 +1,29 @@
 @import "tailwindcss";
 
+@theme {
+  --color-sage: #9AA69A;
+  --color-sage-dark: #687568;
+  --color-cream: #F2E8D5;
+  --color-cream-soft: #FAF6EE;
+  --color-burgundy: #6E2638;
+  --color-burgundy-dark: #451824;
+  --color-charcoal: #292725;
+  --color-charcoal-dark: #1C1A19;
+  --color-muted-border: #D2C7B6;
+}
+
 :root {
-  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --sage: #9AA69A;
+  --sage-dark: #687568;
+  --cream: #F2E8D5;
+  --cream-soft: #FAF6EE;
+  --burgundy: #6E2638;
+  --burgundy-dark: #451824;
+  --charcoal: #292725;
+  --charcoal-dark: #1C1A19;
+  --muted-border: #D2C7B6;
+
+  font-family: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 @media (pointer: fine) {
@@ -32,40 +54,48 @@
 
 html {
   scroll-behavior: smooth;
+  background-color: #292725;
+  color: #FAF6EE;
 }
 
-/* Custom Blue Theme Scrollbar (Navigation Slider on the Right) */
+/* Editorial selection style */
+::selection {
+  background-color: rgba(110, 38, 56, 0.35);
+  color: #FAF6EE;
+}
+
+/* Custom Burgundy & Charcoal Theme Scrollbar */
 ::-webkit-scrollbar {
-  width: 10px;
-  height: 10px;
+  width: 9px;
+  height: 9px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #030712;
+  background: #1C1A19;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #1d4ed8 0%, #3b82f6 50%, #2563eb 100%);
+  background: linear-gradient(180deg, #6E2638 0%, #451824 100%);
   border-radius: 9999px;
-  border: 2px solid #030712;
+  border: 2px solid #1C1A19;
   transition: all 0.2s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #2563eb 0%, #60a5fa 50%, #3b82f6 100%);
-  box-shadow: 0 0 12px rgba(59, 130, 246, 0.6);
+  background: linear-gradient(180deg, #8E324A 0%, #6E2638 100%);
+  box-shadow: 0 0 10px rgba(110, 38, 56, 0.5);
 }
 
 ::-webkit-scrollbar-thumb:active {
-  background: #60a5fa;
+  background: #8E324A;
 }
 
 ::-webkit-scrollbar-corner {
-  background: #030712;
+  background: #1C1A19;
 }
 
 /* Firefox scrollbar support */
 * {
   scrollbar-width: thin;
-  scrollbar-color: #3b82f6 #030712;
+  scrollbar-color: #6E2638 #1C1A19;
 }

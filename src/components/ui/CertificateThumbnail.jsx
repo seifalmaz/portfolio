@@ -7,11 +7,7 @@ import { certificationsData } from "../../data/certificationsData";
 /**
  * CertificateThumbnail
  *
- * Renders an authentic visual preview for any certificate:
- * - Image-based certificates render their crisp image
- * - PDF-based certificates dynamically render page 1 via PDF.js into a high-fidelity thumbnail
- * - Fallback to verified track header if no document or if rendering fails
- * - Includes interactive hover overlays and format badges
+ * Renders an authentic visual preview for any certificate styled with Sage/Cream/Burgundy tokens.
  */
 export default function CertificateThumbnail({ cert, onClick }) {
   let docUrl = cert.image || cert.imageUrl || null;
@@ -43,12 +39,10 @@ export default function CertificateThumbnail({ cert, onClick }) {
   useEffect(() => {
     let isMounted = true;
 
-    // If an explicit image thumbnail is already provided, no dynamic PDF generation needed
     if (explicitThumb) {
       return;
     }
 
-    // If it's a PDF document without a pre-generated thumbnail, render page 1 dynamically
     if (isPdf && docUrl) {
       setLoading(true);
       getPdfThumbnail(docUrl, { targetWidth: 600, quality: 0.85 })
@@ -76,11 +70,11 @@ export default function CertificateThumbnail({ cert, onClick }) {
     };
   }, [docUrl, isPdf, explicitThumb, cert.title]);
 
-  // Case 1: Valid thumbnail image available (either native image or rendered PDF page 1)
+  // Case 1: Valid thumbnail image available
   if (thumbnailSrc && !renderFailed) {
     return (
       <div
-        className="relative mb-4 h-44 w-full overflow-hidden rounded-xl border border-white/10 bg-slate-900 cursor-pointer group/thumb shadow-inner"
+        className="relative mb-4 h-44 w-full overflow-hidden rounded-xl border border-[#D2C7B6]/20 bg-[#1C1A19] cursor-pointer group/thumb shadow-inner"
         onClick={onClick}
         role="button"
         tabIndex={0}
@@ -98,29 +92,29 @@ export default function CertificateThumbnail({ cert, onClick }) {
           decoding="async"
           width="400"
           height="176"
-          className="h-full w-full object-cover object-top transition-transform duration-500 group-hover/thumb:scale-105 bg-slate-950"
+          className="h-full w-full object-cover object-top transition-transform duration-500 group-hover/thumb:scale-105 bg-[#1C1A19]"
         />
 
         {/* Format Badge in top-left */}
         <div className="absolute top-2.5 left-2.5 z-10 pointer-events-none">
           {isPdf ? (
-            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-slate-950/85 backdrop-blur-md border border-rose-500/30 text-rose-300 text-[10px] font-bold uppercase tracking-wider shadow-md">
-              <FaFilePdf className="w-3 h-3 text-rose-400" />
+            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#1C1A19]/90 backdrop-blur-md border border-[#6E2638]/40 text-[#FAF6EE] text-[10px] font-bold uppercase tracking-wider shadow-md">
+              <FaFilePdf className="w-3 h-3 text-[#6E2638]" />
               <span>PDF Document</span>
             </span>
           ) : (
-            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-slate-950/85 backdrop-blur-md border border-blue-500/30 text-blue-300 text-[10px] font-bold uppercase tracking-wider shadow-md">
-              <FaCheck className="w-2.5 h-2.5 text-blue-400" />
+            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#1C1A19]/90 backdrop-blur-md border border-[#D2C7B6]/30 text-[#FAF6EE] text-[10px] font-bold uppercase tracking-wider shadow-md">
+              <FaCheck className="w-2.5 h-2.5 text-[#6E2638]" />
               <span>Verified Certificate</span>
             </span>
           )}
         </div>
 
         {/* Hover overlay with action button */}
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent opacity-0 transition-opacity duration-300 group-hover/thumb:opacity-100 flex items-center justify-center gap-2">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-blue-600/95 px-3.5 py-1.5 text-xs font-semibold text-white shadow-xl backdrop-blur-sm transform translate-y-1 group-hover/thumb:translate-y-0 transition-transform duration-300">
-            {isPdf ? <FaFilePdf className="h-3.5 w-3.5 text-rose-200" /> : <FaEye className="h-3.5 w-3.5 text-blue-200" />}
-            <span>{isPdf ? "Preview PDF Certificate" : "View Certificate"}</span>
+        <div className="absolute inset-0 bg-gradient-to-t from-[#1C1A19]/95 via-[#1C1A19]/40 to-transparent opacity-0 transition-opacity duration-300 group-hover/thumb:opacity-100 flex items-center justify-center gap-2">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-[#6E2638] px-4 py-1.5 text-xs font-semibold text-[#FAF6EE] shadow-xl backdrop-blur-sm transform translate-y-1 group-hover/thumb:translate-y-0 transition-transform duration-300">
+            {isPdf ? <FaFilePdf className="h-3.5 w-3.5" /> : <FaEye className="h-3.5 w-3.5" />}
+            <span>{isPdf ? "Preview PDF Certificate" : "Inspect Document"}</span>
           </span>
         </div>
       </div>
@@ -130,30 +124,30 @@ export default function CertificateThumbnail({ cert, onClick }) {
   // Case 2: Rendering in progress for a PDF
   if (loading) {
     return (
-      <div className="relative mb-4 h-44 w-full overflow-hidden rounded-xl border border-white/10 bg-slate-900/80 p-4 flex flex-col justify-between animate-pulse">
+      <div className="relative mb-4 h-44 w-full overflow-hidden rounded-xl border border-[#D2C7B6]/20 bg-[#292725] p-4 flex flex-col justify-between animate-pulse">
         <div className="flex items-center justify-between">
-          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-rose-500/10 border border-rose-500/20 text-rose-400 text-[10px] font-bold uppercase tracking-wider">
-            <FaFilePdf className="w-3.5 h-3.5 animate-spin text-rose-400" />
-            <span>Rendering PDF Preview...</span>
+          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#6E2638]/10 border border-[#6E2638]/20 text-[#6E2638] text-[10px] font-bold uppercase tracking-wider">
+            <FaFilePdf className="w-3.5 h-3.5 animate-spin" />
+            <span>Rendering Preview...</span>
           </span>
-          <span className="text-[10px] text-gray-500 font-mono">Loading</span>
+          <span className="text-[10px] text-[#9AA69A] font-mono">Loading</span>
         </div>
         <div className="my-auto py-2 text-center">
-          <p className="text-xs font-bold text-gray-300 truncate">{cert.title}</p>
-          <p className="text-[11px] text-gray-500 truncate">{cert.issuer}</p>
+          <p className="text-xs font-bold text-[#FAF6EE] truncate">{cert.title}</p>
+          <p className="text-[11px] text-[#9AA69A] truncate">{cert.issuer}</p>
         </div>
-        <div className="h-2 w-full bg-white/5 rounded-full overflow-hidden">
-          <div className="h-full bg-blue-500/40 w-1/2 animate-[shimmer_1.5s_infinite]" />
+        <div className="h-1.5 w-full bg-[#1C1A19] rounded-full overflow-hidden">
+          <div className="h-full bg-[#6E2638] w-1/2" />
         </div>
       </div>
     );
   }
 
-  // Case 3: PDF where thumbnail generation failed, or PDF with direct view card
+  // Case 3: PDF fallback
   if (isPdf && docUrl) {
     return (
       <div
-        className="relative mb-4 h-44 w-full overflow-hidden rounded-xl border border-white/10 bg-gradient-to-br from-slate-900 via-slate-950 to-rose-950/30 p-4 flex flex-col justify-between cursor-pointer group/thumb"
+        className="relative mb-4 h-44 w-full overflow-hidden rounded-xl border border-[#D2C7B6]/20 bg-[#292725] p-4 flex flex-col justify-between cursor-pointer group/thumb"
         onClick={onClick}
         role="button"
         tabIndex={0}
@@ -166,19 +160,19 @@ export default function CertificateThumbnail({ cert, onClick }) {
         aria-label={`Preview ${cert.title} PDF certificate`}
       >
         <div className="flex items-center justify-between">
-          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-rose-500/15 border border-rose-500/30 text-rose-300 text-[10px] font-bold uppercase tracking-wider">
-            <FaFilePdf className="w-3.5 h-3.5 text-rose-400" />
+          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#6E2638]/15 border border-[#6E2638]/30 text-[#FAF6EE] text-[10px] font-bold uppercase tracking-wider">
+            <FaFilePdf className="w-3.5 h-3.5 text-[#6E2638]" />
             <span>Official PDF Document</span>
           </span>
-          <span className="text-[10px] text-gray-500 font-mono">Verified File</span>
+          <span className="text-[10px] text-[#9AA69A] font-mono">Verified File</span>
         </div>
         <div className="my-auto py-1">
-          <p className="text-xs font-bold text-white line-clamp-1">{cert.title}</p>
-          <p className="text-[11px] text-blue-400 line-clamp-1">{cert.issuer}</p>
+          <p className="text-xs font-bold text-[#FAF6EE] line-clamp-1">{cert.title}</p>
+          <p className="text-[11px] text-[#6E2638] line-clamp-1">{cert.issuer}</p>
         </div>
-        <div className="text-[10px] text-gray-400 flex items-center justify-between pt-1 border-t border-white/5">
+        <div className="text-[10px] text-[#9AA69A] flex items-center justify-between pt-1 border-t border-[#D2C7B6]/10">
           <span>Click to open PDF reader</span>
-          <span className="text-blue-400 font-semibold group-hover/thumb:translate-x-0.5 transition-transform">
+          <span className="text-[#6E2638] font-semibold group-hover/thumb:translate-x-0.5 transition-transform">
             Interactive Viewer →
           </span>
         </div>
@@ -188,21 +182,21 @@ export default function CertificateThumbnail({ cert, onClick }) {
 
   // Case 4: Institutional or coursework credential without an attached file
   return (
-    <div className="relative mb-4 h-44 w-full overflow-hidden rounded-xl border border-white/10 bg-gradient-to-br from-slate-900 via-slate-950 to-blue-950/20 p-4 flex flex-col justify-between">
+    <div className="relative mb-4 h-44 w-full overflow-hidden rounded-xl border border-[#D2C7B6]/15 bg-[#292725] p-4 flex flex-col justify-between">
       <div className="flex items-center justify-between">
-        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-blue-500/10 border border-blue-500/20 text-blue-400 text-[10px] font-bold uppercase tracking-wider">
+        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#6E2638]/10 border border-[#6E2638]/20 text-[#6E2638] text-[10px] font-bold uppercase tracking-wider">
           <FaAward className="w-3.5 h-3.5" />
           <span>Verified Track</span>
         </span>
-        <span className="text-[10px] text-gray-500 font-mono">Academic / Pro</span>
+        <span className="text-[10px] text-[#9AA69A] font-mono">Academic / Pro</span>
       </div>
       <div className="my-auto py-1">
-        <p className="text-xs font-bold text-white line-clamp-1">{cert.title}</p>
-        <p className="text-[11px] text-blue-400 line-clamp-1">{cert.issuer}</p>
+        <p className="text-xs font-bold text-[#FAF6EE] line-clamp-1">{cert.title}</p>
+        <p className="text-[11px] text-[#9AA69A] line-clamp-1">{cert.issuer}</p>
       </div>
-      <div className="text-[10px] text-gray-400 flex items-center justify-between pt-1 border-t border-white/5">
+      <div className="text-[10px] text-[#687568] flex items-center justify-between pt-1 border-t border-[#D2C7B6]/10">
         <span>Institutional Record</span>
-        <span className="text-blue-400 font-semibold">Credential Verified ✓</span>
+        <span className="text-[#6E2638] font-semibold">Credential Verified ✓</span>
       </div>
     </div>
   );

@@ -1,0 +1,500 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="100%" height="100%" style="background:#080a0f; font-family:'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="bgGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0e131f" />
+      <stop offset="50%" stop-color="#080a0f" />
+      <stop offset="100%" stop-color="#05070a" />
+    </linearGradient>
+
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141824" />
+      <stop offset="100%" stop-color="#0f121c" />
+    </linearGradient>
+
+    <linearGradient id="cardHeaderGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1b2133" />
+      <stop offset="100%" stop-color="#141824" />
+    </linearGradient>
+
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1db954" />
+      <stop offset="100%" stop-color="#17ead9" />
+    </linearGradient>
+
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#17ead9" />
+      <stop offset="100%" stop-color="#6078ea" />
+    </linearGradient>
+
+    <linearGradient id="burgundyGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#6E2638" />
+      <stop offset="100%" stop-color="#8a3047" />
+    </linearGradient>
+
+    <linearGradient id="wireGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1db954" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#17ead9" stop-opacity="0.8" />
+    </linearGradient>
+
+    <linearGradient id="feedbackGrad" x1="100%" y1="0%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#6078ea" stop-opacity="0.7" />
+      <stop offset="100%" stop-color="#1db954" stop-opacity="0.7" />
+    </linearGradient>
+
+    <!-- Filters & Shadows -->
+    <filter id="dropShadow" x="-10%" y="-10%" width="125%" height="125%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.65" />
+    </filter>
+
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <!-- Arrow Markers -->
+    <marker id="arrowGreen" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 1 L 7 4 L 0 7 z" fill="#1db954" />
+    </marker>
+    <marker id="arrowCyan" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 1 L 7 4 L 0 7 z" fill="#17ead9" />
+    </marker>
+    <marker id="arrowBlue" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 1 L 7 4 L 0 7 z" fill="#6078ea" />
+    </marker>
+    <marker id="arrowBurgundy" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 1 L 7 4 L 0 7 z" fill="#8a3047" />
+    </marker>
+
+    <!-- Pattern Background -->
+    <pattern id="gridPattern" width="40" height="40" patternUnits="userSpaceOnUse">
+      <circle cx="20" cy="20" r="1" fill="rgba(255,255,255,0.04)" />
+    </pattern>
+  </defs>
+
+  <!-- Background Layer -->
+  <rect width="1600" height="1000" fill="url(#bgGlow)" />
+  <rect width="1600" height="1000" fill="url(#gridPattern)" />
+
+  <!-- Ambient Light Accents -->
+  <circle cx="200" cy="150" r="220" fill="#1db954" opacity="0.04" filter="blur(60px)" />
+  <circle cx="1400" cy="750" r="280" fill="#6078ea" opacity="0.05" filter="blur(70px)" />
+  <circle cx="850" cy="450" r="240" fill="#17ead9" opacity="0.03" filter="blur(60px)" />
+
+  <!-- ========================================================================= -->
+  <!-- TOP BANNER: TITLE, METADATA & REPO CITATION                               -->
+  <!-- ========================================================================= -->
+  <g transform="translate(60, 36)">
+    <!-- Main Badge -->
+    <rect x="0" y="0" width="1480" height="84" rx="16" fill="#111522" stroke="rgba(255,255,255,0.08)" stroke-width="1.2" filter="url(#dropShadow)" />
+    
+    <!-- Spotify Logo Icon -->
+    <g transform="translate(24, 20)">
+      <circle cx="22" cy="22" r="22" fill="#1db954" />
+      <path d="M 12 16 C 20 13 28 14 33 17" stroke="#080a0f" stroke-width="3.2" stroke-linecap="round" fill="none" />
+      <path d="M 14 22 C 21 19 27 20 31 23" stroke="#080a0f" stroke-width="2.6" stroke-linecap="round" fill="none" />
+      <path d="M 15 28 C 21 25 26 26 29 28" stroke="#080a0f" stroke-width="2.1" stroke-linecap="round" fill="none" />
+    </g>
+
+    <!-- Title & Subtitle -->
+    <text x="82" y="34" font-size="20" font-weight="800" fill="#FAF6EE" letter-spacing="0.5">
+      SPOTIFY ANALYTICS DASHBOARD <tspan fill="#1db954" font-size="15" font-weight="700">— SYSTEM ARCHITECTURE &amp; DATA PIPELINE</tspan>
+    </text>
+    <text x="82" y="58" font-size="12" font-weight="500" fill="#9AA69A">
+      Verified implementation from GitHub repository: <tspan fill="#17ead9" font-family="'DM Mono', monospace">seifalmaz/spotify-analytics-dashboard</tspan> • 54,465 Enriched Tracks (2000–2023)
+    </text>
+
+    <!-- Right Tech Tags -->
+    <g transform="translate(940, 24)">
+      <rect x="0" y="0" width="105" height="34" rx="17" fill="rgba(29,185,84,0.12)" stroke="#1db954" stroke-width="1" />
+      <text x="52" y="22" font-size="11" font-weight="700" fill="#1db954" text-anchor="middle">Plotly Dash</text>
+
+      <rect x="115" y="0" width="95" height="34" rx="17" fill="rgba(23,234,217,0.1)" stroke="#17ead9" stroke-width="1" />
+      <text x="162" y="22" font-size="11" font-weight="700" fill="#17ead9" text-anchor="middle">Pandas ETL</text>
+
+      <rect x="220" y="0" width="125" height="34" rx="17" fill="rgba(96,120,234,0.12)" stroke="#6078ea" stroke-width="1" />
+      <text x="282" y="22" font-size="11" font-weight="700" fill="#6078ea" text-anchor="middle">5-Tab Analytics</text>
+
+      <rect x="355" y="0" width="165" height="34" rx="17" fill="rgba(110,38,56,0.3)" stroke="#8a3047" stroke-width="1" />
+      <text x="437" y="22" font-size="11" font-weight="700" fill="#FAF6EE" text-anchor="middle">Zero Synthetic Mockups</text>
+    </g>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- TIER 1: INGESTION & DATA SOURCES (x=60, y=150, w=330)                      -->
+  <!-- ========================================================================= -->
+  <g transform="translate(60, 150)">
+    <!-- Column Header -->
+    <rect x="0" y="0" width="330" height="42" rx="8" fill="url(#cardHeaderGrad)" stroke="#1db954" stroke-width="1" />
+    <circle cx="20" cy="21" r="6" fill="#1db954" />
+    <text x="36" y="26" font-size="13" font-weight="800" fill="#FAF6EE" letter-spacing="1">1. INGESTION &amp; RAW SOURCES</text>
+    <rect x="245" y="10" width="75" height="22" rx="11" fill="rgba(29,185,84,0.15)" />
+    <text x="282" y="25" font-size="10" font-weight="700" fill="#1db954" text-anchor="middle">TIER 01</text>
+
+    <!-- Card 1: Raw Spotify Dataset -->
+    <g transform="translate(0, 56)">
+      <rect x="0" y="0" width="330" height="290" rx="14" fill="url(#cardGrad)" stroke="rgba(255,255,255,0.08)" stroke-width="1.2" filter="url(#dropShadow)" />
+      
+      <!-- Sub-header -->
+      <path d="M 0 14 Q 0 0 14 0 L 316 0 Q 330 0 330 14 L 330 40 L 0 40 Z" fill="#171d2b" />
+      <text x="16" y="25" font-size="12" font-weight="700" fill="#1db954">data/raw/dataset.csv</text>
+      <text x="314" y="25" font-size="11" font-weight="600" fill="#9AA69A" text-anchor="end">114,000+ Rows</text>
+
+      <text x="16" y="62" font-size="12" font-weight="700" fill="#FAF6EE">Original Spotify Audio Corpus</text>
+      <text x="16" y="80" font-size="11" font-weight="400" fill="#9AA69A">High-dimensional track-level audio descriptors:</text>
+
+      <!-- Features Box -->
+      <rect x="14" y="92" width="302" height="96" rx="8" fill="#0d1017" stroke="rgba(255,255,255,0.05)" />
+      <g transform="translate(24, 110)">
+        <text x="0" y="0" font-size="10" font-weight="600" fill="#17ead9">• danceability</text>
+        <text x="95" y="0" font-size="10" font-weight="600" fill="#17ead9">• energy</text>
+        <text x="180" y="0" font-size="10" font-weight="600" fill="#17ead9">• valence</text>
+
+        <text x="0" y="22" font-size="10" font-weight="600" fill="#17ead9">• tempo (BPM)</text>
+        <text x="95" y="22" font-size="10" font-weight="600" fill="#17ead9">• loudness (dB)</text>
+        <text x="180" y="22" font-size="10" font-weight="600" fill="#17ead9">• acousticness</text>
+
+        <text x="0" y="44" font-size="10" font-weight="600" fill="#17ead9">• speechiness</text>
+        <text x="95" y="44" font-size="10" font-weight="600" fill="#17ead9">• liveness</text>
+        <text x="180" y="44" font-size="10" font-weight="600" fill="#17ead9">• duration_ms</text>
+
+        <text x="0" y="66" font-size="10" font-weight="600" fill="#F2E8D5">• popularity [0-100]</text>
+        <text x="130" y="66" font-size="10" font-weight="600" fill="#F2E8D5">• explicit [bool]</text>
+      </g>
+
+      <!-- Bottleneck Alert -->
+      <rect x="14" y="200" width="302" height="74" rx="8" fill="rgba(110,38,56,0.18)" stroke="rgba(110,38,56,0.4)" />
+      <circle cx="30" cy="225" r="8" fill="#6E2638" />
+      <text x="30" y="229" font-size="11" font-weight="800" fill="#FAF6EE" text-anchor="middle">!</text>
+      <text x="46" y="222" font-size="11" font-weight="700" fill="#FAF6EE">Identified Metadata Gap</text>
+      <text x="46" y="238" font-size="10" font-weight="400" fill="#F2E8D5">Original dataset lacked release-date columns,</text>
+      <text x="46" y="252" font-size="10" font-weight="400" fill="#F2E8D5">preventing longitudinal and decade analysis.</text>
+    </g>
+
+    <!-- Card 2: External Recovery Dataset -->
+    <g transform="translate(0, 366)">
+      <rect x="0" y="0" width="330" height="200" rx="14" fill="url(#cardGrad)" stroke="rgba(255,255,255,0.08)" stroke-width="1.2" filter="url(#dropShadow)" />
+      
+      <!-- Sub-header -->
+      <path d="M 0 14 Q 0 0 14 0 L 316 0 Q 330 0 330 14 L 330 40 L 0 40 Z" fill="#171d2b" />
+      <text x="16" y="25" font-size="12" font-weight="700" fill="#17ead9">data/recovery/release_dates.csv</text>
+      <text x="314" y="25" font-size="11" font-weight="600" fill="#17ead9" text-anchor="end">Recovery Corpus</text>
+
+      <text x="16" y="62" font-size="12" font-weight="700" fill="#FAF6EE">Offline Release-Date Catalog</text>
+      <text x="16" y="80" font-size="11" font-weight="400" fill="#9AA69A">Replaced rate-limited Web API (~500 limit ceiling):</text>
+
+      <rect x="14" y="94" width="302" height="92" rx="8" fill="#0d1017" stroke="rgba(255,255,255,0.05)" />
+      <text x="24" y="116" font-size="11" font-weight="600" fill="#FAF6EE">• Primary Key: <tspan fill="#17ead9" font-family="'DM Mono'">track_id</tspan> (1:1 join key)</text>
+      <text x="24" y="136" font-size="11" font-weight="600" fill="#FAF6EE">• Recovered Field: <tspan fill="#1db954" font-family="'DM Mono'">release_date</tspan> (ISO format)</text>
+      <text x="24" y="156" font-size="11" font-weight="600" fill="#FAF6EE">• Derived Feature: <tspan fill="#1db954" font-family="'DM Mono'">album_release_year</tspan></text>
+      <text x="24" y="174" font-size="10" font-weight="500" fill="#9AA69A">Full offline recovery bypasses API quota blocks</text>
+    </g>
+
+    <!-- Ingestion Footer Stats -->
+    <g transform="translate(0, 580)">
+      <rect x="0" y="0" width="330" height="90" rx="12" fill="#101420" stroke="rgba(255,255,255,0.06)" />
+      <text x="16" y="24" font-size="10" font-weight="700" fill="#9AA69A" letter-spacing="0.5">SOURCE ATTRIBUTES &amp; COVERAGE</text>
+      <text x="16" y="48" font-size="18" font-weight="800" fill="#FAF6EE">114 Subgenres</text>
+      <text x="16" y="68" font-size="11" font-weight="500" fill="#17ead9">Cleaned across 21 track audio dimensions</text>
+    </g>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- TIER 2: DATA PREPARATION & ENGINEERING (x=430, y=150, w=350)              -->
+  <!-- ========================================================================= -->
+  <g transform="translate(430, 150)">
+    <!-- Column Header -->
+    <rect x="0" y="0" width="350" height="42" rx="8" fill="url(#cardHeaderGrad)" stroke="#17ead9" stroke-width="1" />
+    <circle cx="20" cy="21" r="6" fill="#17ead9" />
+    <text x="36" y="26" font-size="13" font-weight="800" fill="#FAF6EE" letter-spacing="1">2. PREPROCESSING &amp; ETL PIPELINE</text>
+    <rect x="265" y="10" width="75" height="22" rx="11" fill="rgba(23,234,217,0.15)" />
+    <text x="302" y="25" font-size="10" font-weight="700" fill="#17ead9" text-anchor="middle">TIER 02</text>
+
+    <!-- Main Container: notebooks/spotify_data_preparation.ipynb -->
+    <g transform="translate(0, 56)">
+      <rect x="0" y="0" width="350" height="614" rx="14" fill="url(#cardGrad)" stroke="rgba(255,255,255,0.08)" stroke-width="1.2" filter="url(#dropShadow)" />
+      
+      <!-- Sub-header -->
+      <path d="M 0 14 Q 0 0 14 0 L 336 0 Q 350 0 350 14 L 350 40 L 0 40 Z" fill="#171d2b" />
+      <text x="16" y="25" font-size="12" font-weight="700" fill="#17ead9">notebooks/spotify_data_preparation.ipynb</text>
+      <text x="334" y="25" font-size="11" font-weight="600" fill="#9AA69A" text-anchor="end">Pandas / NumPy</text>
+
+      <!-- Step 2.1: Sanitization & Deduplication -->
+      <g transform="translate(14, 52)">
+        <rect x="0" y="0" width="322" height="120" rx="10" fill="#0d1017" stroke="rgba(255,255,255,0.06)" />
+        <rect x="10" y="10" width="22" height="22" rx="6" fill="rgba(23,234,217,0.2)" />
+        <text x="21" y="25" font-size="11" font-weight="800" fill="#17ead9" text-anchor="middle">A</text>
+        <text x="40" y="25" font-size="12" font-weight="700" fill="#FAF6EE">Data Sanitization &amp; Deduplication</text>
+
+        <text x="12" y="50" font-size="11" font-weight="400" fill="#9AA69A">• Pruned 3 missing metadata records (<tspan fill="#FAF6EE">&lt;0.001%</tspan>)</text>
+        <text x="12" y="68" font-size="11" font-weight="400" fill="#9AA69A">• Dropped redundant index column: <tspan fill="#FAF6EE" font-family="'DM Mono'">Unnamed: 0</tspan></text>
+        <text x="12" y="86" font-size="11" font-weight="400" fill="#9AA69A">• Deduplicated <tspan fill="#17ead9" font-weight="700">24,259 multi-genre duplicate IDs</tspan></text>
+        <text x="12" y="104" font-size="10" font-weight="500" fill="#1db954">✓ Retained 1 record per unique track to protect ranking metrics</text>
+      </g>
+
+      <!-- Step 2.2: Offline Merge on track_id -->
+      <g transform="translate(14, 184)">
+        <rect x="0" y="0" width="322" height="106" rx="10" fill="#0d1017" stroke="rgba(255,255,255,0.06)" />
+        <rect x="10" y="10" width="22" height="22" rx="6" fill="rgba(29,185,84,0.2)" />
+        <text x="21" y="25" font-size="11" font-weight="800" fill="#1db954" text-anchor="middle">B</text>
+        <text x="40" y="25" font-size="12" font-weight="700" fill="#FAF6EE">Metadata Left Merge on track_id</text>
+
+        <!-- Code Snippet Box -->
+        <rect x="10" y="38" width="302" height="34" rx="6" fill="#07090e" stroke="rgba(29,185,84,0.3)" />
+        <text x="18" y="59" font-size="10.5" font-family="'DM Mono', monospace" fill="#1db954">
+          pd.merge(raw, recovery, on="track_id", how="left")
+        </text>
+
+        <text x="12" y="92" font-size="10.5" font-weight="500" fill="#9AA69A">
+          Successfully backfilled release dates &amp; year across 54K+ tracks
+        </text>
+      </g>
+
+      <!-- Step 2.3: Feature Engineering -->
+      <g transform="translate(14, 302)">
+        <rect x="0" y="0" width="322" height="162" rx="10" fill="#0d1017" stroke="rgba(255,255,255,0.06)" />
+        <rect x="10" y="10" width="22" height="22" rx="6" fill="rgba(96,120,234,0.2)" />
+        <text x="21" y="25" font-size="11" font-weight="800" fill="#6078ea" text-anchor="middle">C</text>
+        <text x="40" y="25" font-size="12" font-weight="700" fill="#FAF6EE">Feature Engineering &amp; Binning</text>
+
+        <text x="12" y="48" font-size="11" font-weight="500" fill="#FAF6EE">1. Decade Cohort Extraction:</text>
+        <text x="24" y="64" font-size="10" font-family="'DM Mono'" fill="#17ead9">decade = (year // 10) * 10 (Int64)</text>
+
+        <text x="12" y="84" font-size="11" font-weight="500" fill="#FAF6EE">2. Primary Artist Extraction:</text>
+        <text x="24" y="100" font-size="10" font-family="'DM Mono'" fill="#17ead9">artist_name = artists.str.split(';').str[0]</text>
+
+        <text x="12" y="120" font-size="11" font-weight="500" fill="#FAF6EE">3. Popularity Tier Binning:</text>
+        <text x="24" y="136" font-size="10" font-weight="400" fill="#9AA69A">Low [0–40] • Medium [40–70] • High [70–100]</text>
+
+        <text x="12" y="152" font-size="10.5" font-weight="600" fill="#1db954">4. Genre Normalization: <tspan font-weight="400" fill="#9AA69A">114 subgenres -> main_genre</tspan></text>
+      </g>
+
+      <!-- Step 2.4: Clean Data Output -->
+      <g transform="translate(14, 476)">
+        <rect x="0" y="0" width="322" height="124" rx="10" fill="rgba(29,185,84,0.08)" stroke="#1db954" stroke-width="1.2" />
+        <text x="14" y="24" font-size="11" font-weight="800" fill="#1db954" letter-spacing="0.5">FINAL CLEAN ARTIFACT EXPORT</text>
+        <text x="14" y="44" font-size="11.5" font-family="'DM Mono'" font-weight="700" fill="#FAF6EE">data/clean/spotify_dashboard_final.csv</text>
+        
+        <rect x="14" y="56" width="294" height="54" rx="6" fill="#080a0f" />
+        <text x="24" y="76" font-size="15" font-weight="800" fill="#1db954">54,465 Enriched Tracks</text>
+        <text x="24" y="96" font-size="10.5" font-weight="500" fill="#9AA69A">Filtered cohort: 2000–2023 • Staged for fast Dash in-memory read</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- TIER 3: ANALYTICAL ENGINE & DASH CORE (x=820, y=150, w=350)               -->
+  <!-- ========================================================================= -->
+  <g transform="translate(820, 150)">
+    <!-- Column Header -->
+    <rect x="0" y="0" width="350" height="42" rx="8" fill="url(#cardHeaderGrad)" stroke="#6078ea" stroke-width="1" />
+    <circle cx="20" cy="21" r="6" fill="#6078ea" />
+    <text x="36" y="26" font-size="13" font-weight="800" fill="#FAF6EE" letter-spacing="1">3. DASH REVENUE &amp; CALC CORE</text>
+    <rect x="265" y="10" width="75" height="22" rx="11" fill="rgba(96,120,234,0.15)" />
+    <text x="302" y="25" font-size="10" font-weight="700" fill="#6078ea" text-anchor="middle">TIER 03</text>
+
+    <!-- Main Container: dash_app.py -->
+    <g transform="translate(0, 56)">
+      <rect x="0" y="0" width="350" height="614" rx="14" fill="url(#cardGrad)" stroke="rgba(255,255,255,0.08)" stroke-width="1.2" filter="url(#dropShadow)" />
+      
+      <!-- Sub-header -->
+      <path d="M 0 14 Q 0 0 14 0 L 336 0 Q 350 0 350 14 L 350 40 L 0 40 Z" fill="#171d2b" />
+      <text x="16" y="25" font-size="12" font-weight="700" fill="#6078ea">dash_app.py</text>
+      <text x="334" y="25" font-size="11" font-weight="600" fill="#9AA69A" text-anchor="end">Plotly Dash / Flask Server</text>
+
+      <!-- In-Memory Data Load -->
+      <g transform="translate(14, 52)">
+        <rect x="0" y="0" width="322" height="96" rx="10" fill="#0d1017" stroke="rgba(255,255,255,0.06)" />
+        <text x="12" y="24" font-size="12" font-weight="700" fill="#FAF6EE">In-Memory Analytical DataFrame</text>
+        <text x="12" y="44" font-size="10.5" font-family="'DM Mono'" fill="#17ead9">df = pd.read_csv(".../spotify_dashboard_final.csv")</text>
+        <text x="12" y="64" font-size="10" font-weight="400" fill="#9AA69A">• Strict numeric coercion on year, popularity, decade</text>
+        <text x="12" y="80" font-size="10" font-weight="400" fill="#9AA69A">• Dynamic constants: YEAR_MIN, YEAR_MAX, ALL_GENRES</text>
+      </g>
+
+      <!-- Slicing & Filter Helpers -->
+      <g transform="translate(14, 160)">
+        <rect x="0" y="0" width="322" height="116" rx="10" fill="#0d1017" stroke="rgba(255,255,255,0.06)" />
+        <text x="12" y="24" font-size="12" font-weight="700" fill="#FAF6EE">Reactive Slicing Helpers</text>
+        <text x="12" y="46" font-size="10.5" font-family="'DM Mono'" fill="#1db954">filter_df(genres, years)</text>
+        <text x="24" y="62" font-size="10" font-weight="400" fill="#9AA69A">Multi-genre mask + range boundaries slicing</text>
+
+        <text x="12" y="82" font-size="10.5" font-family="'DM Mono'" fill="#1db954">_apply_explicit(df, explicit_val)</text>
+        <text x="24" y="98" font-size="10" font-weight="400" fill="#9AA69A">Filters explicit=True, clean=False, or all</text>
+      </g>
+
+      <!-- Statistical & Analytical Logic -->
+      <g transform="translate(14, 288)">
+        <rect x="0" y="0" width="322" height="152" rx="10" fill="#0d1017" stroke="rgba(255,255,255,0.06)" />
+        <text x="12" y="24" font-size="12" font-weight="700" fill="#FAF6EE">Statistical Algorithms &amp; Ranking</text>
+        
+        <text x="12" y="46" font-size="11" font-weight="600" fill="#F2E8D5">1. Bayesian-Adjusted Genre Popularity:</text>
+        <text x="20" y="64" font-size="10" font-family="'DM Mono'" fill="#17ead9">adj_pop = (cnt/(cnt+m))*avg + (m/(cnt+m))*gm</text>
+        <text x="20" y="78" font-size="9.5" font-weight="400" fill="#9AA69A">Prevents low-volume outlier genres from skewing charts</text>
+
+        <text x="12" y="100" font-size="11" font-weight="600" fill="#F2E8D5">2. Top-N Ranking Safeguards:</text>
+        <text x="20" y="116" font-size="10" font-family="'DM Mono'" fill="#17ead9">top_genres(d, n=8)</text>
+        
+        <text x="12" y="136" font-size="11" font-weight="600" fill="#F2E8D5">3. Pearson Audio Feature Correlations</text>
+      </g>
+
+      <!-- Real-Time KPI Strip Calculation -->
+      <g transform="translate(14, 452)">
+        <rect x="0" y="0" width="322" height="148" rx="10" fill="#101420" stroke="rgba(96,120,234,0.3)" />
+        <text x="12" y="24" font-size="11" font-weight="800" fill="#6078ea" letter-spacing="0.5">DYNAMIC KPI RE-AGGREGATION</text>
+        
+        <g transform="translate(12, 38)">
+          <rect x="0" y="0" width="90" height="42" rx="6" fill="#0d1017" />
+          <text x="45" y="16" font-size="9" fill="#9AA69A" text-anchor="middle">TOTAL TRACKS</text>
+          <text x="45" y="34" font-size="12" font-weight="700" fill="#FAF6EE" text-anchor="middle">54,465</text>
+
+          <rect x="100" y="0" width="90" height="42" rx="6" fill="#0d1017" />
+          <text x="145" y="16" font-size="9" fill="#9AA69A" text-anchor="middle">AVG POPULARITY</text>
+          <text x="145" y="34" font-size="12" font-weight="700" fill="#1db954" text-anchor="middle">35.9</text>
+
+          <rect x="200" y="0" width="95" height="42" rx="6" fill="#0d1017" />
+          <text x="247" y="16" font-size="9" fill="#9AA69A" text-anchor="middle">AVG DURATION</text>
+          <text x="247" y="34" font-size="12" font-weight="700" fill="#17ead9" text-anchor="middle">3:50</text>
+        </g>
+
+        <g transform="translate(12, 90)">
+          <rect x="0" y="0" width="145" height="42" rx="6" fill="#0d1017" />
+          <text x="72" y="16" font-size="9" fill="#9AA69A" text-anchor="middle">EXPLICIT RATE</text>
+          <text x="72" y="34" font-size="13" font-weight="700" fill="#FAF6EE" text-anchor="middle">9.1% (4,956)</text>
+
+          <rect x="155" y="0" width="140" height="42" rx="6" fill="#0d1017" />
+          <text x="225" y="16" font-size="9" fill="#9AA69A" text-anchor="middle">PEAK DECADE</text>
+          <text x="225" y="34" font-size="13" font-weight="700" fill="#6078ea" text-anchor="middle">2010s Cohort</text>
+        </g>
+      </g>
+    </g>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- TIER 4: PRESENTATION & INTERACTIVE UI (x=1210, y=150, w=330)              -->
+  <!-- ========================================================================= -->
+  <g transform="translate(1210, 150)">
+    <!-- Column Header -->
+    <rect x="0" y="0" width="330" height="42" rx="8" fill="url(#cardHeaderGrad)" stroke="#1db954" stroke-width="1" />
+    <circle cx="20" cy="21" r="6" fill="#1db954" />
+    <text x="36" y="26" font-size="13" font-weight="800" fill="#FAF6EE" letter-spacing="1">4. PRESENTATION &amp; TABS</text>
+    <rect x="245" y="10" width="75" height="22" rx="11" fill="rgba(29,185,84,0.15)" />
+    <text x="282" y="25" font-size="10" font-weight="700" fill="#1db954" text-anchor="middle">TIER 04</text>
+
+    <!-- Main Container: UI Layer -->
+    <g transform="translate(0, 56)">
+      <rect x="0" y="0" width="330" height="614" rx="14" fill="url(#cardGrad)" stroke="rgba(255,255,255,0.08)" stroke-width="1.2" filter="url(#dropShadow)" />
+      
+      <!-- Sub-header -->
+      <path d="M 0 14 Q 0 0 14 0 L 316 0 Q 330 0 330 14 L 330 40 L 0 40 Z" fill="#171d2b" />
+      <text x="16" y="25" font-size="12" font-weight="700" fill="#1db954">User Controls &amp; Visualizations</text>
+      <text x="314" y="25" font-size="11" font-weight="600" fill="#9AA69A" text-anchor="end">Plotly Dash UI</text>
+
+      <!-- Sidebar Controls -->
+      <g transform="translate(14, 52)">
+        <rect x="0" y="0" width="302" height="136" rx="10" fill="#0d1017" stroke="rgba(255,255,255,0.06)" />
+        <text x="12" y="22" font-size="11" font-weight="700" fill="#FAF6EE">Sidebar Filter Components:</text>
+
+        <rect x="12" y="32" width="278" height="26" rx="4" fill="#151a26" stroke="#1db954" stroke-width="0.8" />
+        <text x="20" y="49" font-size="10" fill="#FAF6EE">dcc.Dropdown: <tspan fill="#1db954">Multi-Genre Selector</tspan></text>
+
+        <rect x="12" y="64" width="278" height="26" rx="4" fill="#151a26" stroke="#17ead9" stroke-width="0.8" />
+        <text x="20" y="81" font-size="10" fill="#FAF6EE">dcc.RangeSlider: <tspan fill="#17ead9">Years [2000 – 2023]</tspan></text>
+
+        <rect x="12" y="96" width="278" height="26" rx="4" fill="#151a26" stroke="#6078ea" stroke-width="0.8" />
+        <text x="20" y="113" font-size="10" fill="#FAF6EE">dcc.RadioItems: <tspan fill="#6078ea">All / Explicit / Clean</tspan></text>
+      </g>
+
+      <!-- Client-Side Tab Router -->
+      <g transform="translate(14, 200)">
+        <rect x="0" y="0" width="302" height="48" rx="8" fill="rgba(23,234,217,0.08)" stroke="#17ead9" stroke-width="0.8" />
+        <text x="12" y="20" font-size="10" font-weight="700" fill="#17ead9">CLIENT-SIDE TAB ROUTING</text>
+        <text x="12" y="36" font-size="9.5" font-family="'DM Mono'" fill="#9AA69A">app.clientside_callback -> Zero-Lag Tab Swaps</text>
+      </g>
+
+      <!-- 5 Verified Dashboard Views -->
+      <g transform="translate(14, 260)">
+        <rect x="0" y="0" width="302" height="340" rx="10" fill="#0d1017" stroke="rgba(255,255,255,0.06)" />
+        <text x="12" y="22" font-size="11" font-weight="800" fill="#FAF6EE" letter-spacing="0.5">5 VERIFIED ANALYTICAL TABS:</text>
+
+        <!-- Tab 1 -->
+        <g transform="translate(12, 34)">
+          <rect x="0" y="0" width="278" height="52" rx="6" fill="#131722" stroke="rgba(255,255,255,0.05)" />
+          <text x="10" y="18" font-size="10.5" font-weight="700" fill="#1db954">Tab 1: Comparison Analysis</text>
+          <text x="10" y="34" font-size="9.5" fill="#9AA69A">Genre Track Volumes • Avg Popularity • Top Artists</text>
+        </g>
+
+        <!-- Tab 2 -->
+        <g transform="translate(12, 94)">
+          <rect x="0" y="0" width="278" height="52" rx="6" fill="#131722" stroke="rgba(255,255,255,0.05)" />
+          <text x="10" y="18" font-size="10.5" font-weight="700" fill="#17ead9">Tab 2: Advanced Comparison</text>
+          <text x="10" y="34" font-size="9.5" fill="#9AA69A">Decade Stacked Columns • Clustered Audio Attributes</text>
+        </g>
+
+        <!-- Tab 3 -->
+        <g transform="translate(12, 154)">
+          <rect x="0" y="0" width="278" height="52" rx="6" fill="#131722" stroke="rgba(255,255,255,0.05)" />
+          <text x="10" y="18" font-size="10.5" font-weight="700" fill="#6078ea">Tab 3: Relationship Analysis</text>
+          <text x="10" y="34" font-size="9.5" fill="#9AA69A">Energy vs Valence (Mood Quadrant) • Tempo Bubbles</text>
+        </g>
+
+        <!-- Tab 4 -->
+        <g transform="translate(12, 214)">
+          <rect x="0" y="0" width="278" height="52" rx="6" fill="#131722" stroke="rgba(255,255,255,0.05)" />
+          <text x="10" y="18" font-size="10.5" font-weight="700" fill="#F2E8D5">Tab 4: Distribution Analysis</text>
+          <text x="10" y="34" font-size="9.5" fill="#9AA69A">Popularity Box Plots • Danceability Violins • Histograms</text>
+        </g>
+
+        <!-- Tab 5 -->
+        <g transform="translate(12, 274)">
+          <rect x="0" y="0" width="278" height="52" rx="6" fill="#131722" stroke="rgba(255,255,255,0.05)" />
+          <text x="10" y="18" font-size="10.5" font-weight="700" fill="#8a3047">Tab 5: Temporal Trends</text>
+          <text x="10" y="34" font-size="9.5" fill="#9AA69A">2000–2023 Track Count Lines • Popularity Trajectory</text>
+        </g>
+      </g>
+    </g>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- DIRECTIONAL CONNECTING BUSES & DATA FLOW ARROWS                           -->
+  <!-- ========================================================================= -->
+  <!-- Flow 1: Raw dataset & recovery -> ETL -->
+  <path d="M 390 350 L 430 350" stroke="url(#wireGrad)" stroke-width="2.5" fill="none" marker-end="url(#arrowGreen)" />
+  <path d="M 390 460 L 430 460" stroke="url(#wireGrad)" stroke-width="2.5" fill="none" marker-end="url(#arrowCyan)" />
+
+  <!-- Flow 2: Clean Dataset -> Dash Engine -->
+  <path d="M 780 690 L 800 690 L 800 350 L 820 350" stroke="url(#wireGrad)" stroke-width="2.5" fill="none" marker-end="url(#arrowGreen)" />
+  <circle cx="800" cy="520" r="4" fill="#1db954" filter="url(#softGlow)" />
+
+  <!-- Flow 3: Dash Calculations -> UI Tabs -->
+  <path d="M 1170 380 L 1210 380" stroke="url(#wireGrad)" stroke-width="2.5" fill="none" marker-end="url(#arrowBlue)" />
+  <path d="M 1170 540 L 1210 540" stroke="url(#wireGrad)" stroke-width="2.5" fill="none" marker-end="url(#arrowGreen)" />
+
+  <!-- Flow 4: Interactive Reactive Feedback Loop (UI filters -> Engine Slicing) -->
+  <path d="M 1210 270 L 1190 270 L 1190 320 L 1170 320" stroke="url(#feedbackGrad)" stroke-width="2" stroke-dasharray="4,4" fill="none" marker-end="url(#arrowCyan)" />
+  <text x="1190" y="300" font-size="9" font-weight="700" fill="#17ead9" text-anchor="middle">REACTIVE CALLBACKS</text>
+
+  <!-- ========================================================================= -->
+  <!-- BOTTOM SYSTEM INTEGRITY FOOTER                                            -->
+  <!-- ========================================================================= -->
+  <g transform="translate(60, 896)">
+    <rect x="0" y="0" width="1480" height="68" rx="14" fill="#101420" stroke="rgba(255,255,255,0.06)" />
+    
+    <g transform="translate(24, 22)">
+      <circle cx="12" cy="12" r="12" fill="rgba(29,185,84,0.15)" />
+      <path d="M 7 12 L 11 16 L 17 9" stroke="#1db954" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+      <text x="32" y="16" font-size="12" font-weight="700" fill="#FAF6EE">VERIFIED ARCHITECTURAL INTEGRITY:</text>
+      <text x="250" y="16" font-size="11.5" font-weight="400" fill="#9AA69A">
+        Accurate representation of <tspan fill="#FAF6EE">dash_app.py</tspan>, <tspan fill="#FAF6EE">spotify_data_preparation.ipynb</tspan>, and real GitHub repository structure.
+      </text>
+    </g>
+
+    <g transform="translate(1080, 22)">
+      <text x="375" y="16" font-size="11" font-weight="600" fill="#17ead9" text-anchor="end">
+        Architecture View for Seif Almaz Portfolio
+      </text>
+      <text x="375" y="32" font-size="10" font-weight="400" fill="#9AA69A" text-anchor="end">
+        Engineered with Sage, Cream, Spotify Green &amp; Burgundy palette
+      </text>
+    </g>
+  </g>
+</svg>

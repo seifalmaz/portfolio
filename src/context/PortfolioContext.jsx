@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect, useCallback } from 'react';
+import { createContext, useContext, useState, useEffect, useCallback, useMemo } from 'react';
 import { personalData } from '../data/personalData';
 import { skillsData } from '../data/skillsData';
 import { experienceData } from '../data/experienceData';
@@ -70,20 +70,20 @@ export function PortfolioProvider({ children }) {
     loadData();
   }, [loadData]);
 
+  const contextValue = useMemo(() => ({
+    profile,
+    skills,
+    experience,
+    certifications,
+    education,
+    projects,
+    settings,
+    loading,
+    refreshPortfolioData: loadData
+  }), [profile, skills, experience, certifications, education, projects, settings, loading, loadData]);
+
   return (
-    <PortfolioContext.Provider
-      value={{
-        profile,
-        skills,
-        experience,
-        certifications,
-        education,
-        projects,
-        settings,
-        loading,
-        refreshPortfolioData: loadData
-      }}
-    >
+    <PortfolioContext.Provider value={contextValue}>
       {children}
     </PortfolioContext.Provider>
   );

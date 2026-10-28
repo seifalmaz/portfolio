@@ -1,0 +1,511 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="100%" height="100%" style="background:#080a0f; font-family:'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+  <defs>
+    <!-- Background & Card Gradients -->
+    <linearGradient id="bgGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0c1214" />
+      <stop offset="50%" stop-color="#080a0f" />
+      <stop offset="100%" stop-color="#05070a" />
+    </linearGradient>
+
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#121820" />
+      <stop offset="100%" stop-color="#0c1017" />
+    </linearGradient>
+
+    <linearGradient id="cardHeaderGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#18222c" />
+      <stop offset="100%" stop-color="#101820" />
+    </linearGradient>
+
+    <!-- Brand Gradients -->
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981" />
+      <stop offset="100%" stop-color="#059669" />
+    </linearGradient>
+
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06b6d4" />
+      <stop offset="100%" stop-color="#3b82f6" />
+    </linearGradient>
+
+    <linearGradient id="burgundyGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#6E2638" />
+      <stop offset="100%" stop-color="#8a3047" />
+    </linearGradient>
+
+    <linearGradient id="amberGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#d97706" />
+    </linearGradient>
+
+    <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8b5cf6" />
+      <stop offset="100%" stop-color="#6366f1" />
+    </linearGradient>
+
+    <!-- Shadows -->
+    <filter id="dropShadow" x="-10%" y="-10%" width="125%" height="125%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.65" />
+    </filter>
+
+    <!-- Arrow Markers -->
+    <marker id="arrowGreen" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 1 L 7 4 L 0 7 z" fill="#10b981" />
+    </marker>
+    <marker id="arrowCyan" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 1 L 7 4 L 0 7 z" fill="#06b6d4" />
+    </marker>
+    <marker id="arrowAmber" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 1 L 7 4 L 0 7 z" fill="#f59e0b" />
+    </marker>
+    <marker id="arrowBurgundy" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 1 L 7 4 L 0 7 z" fill="#8a3047" />
+    </marker>
+
+    <!-- Dot Grid Pattern -->
+    <pattern id="gridPattern" width="40" height="40" patternUnits="userSpaceOnUse">
+      <circle cx="20" cy="20" r="1" fill="rgba(255,255,255,0.04)" />
+    </pattern>
+  </defs>
+
+  <!-- Background Layer -->
+  <rect width="1600" height="1000" fill="url(#bgGlow)" />
+  <rect width="1600" height="1000" fill="url(#gridPattern)" />
+
+  <!-- Ambient Light Accents -->
+  <circle cx="220" cy="180" r="240" fill="#10b981" opacity="0.04" filter="blur(60px)" />
+  <circle cx="1380" cy="780" r="280" fill="#06b6d4" opacity="0.04" filter="blur(70px)" />
+  <circle cx="800" cy="480" r="260" fill="#6E2638" opacity="0.03" filter="blur(65px)" />
+
+  <!-- ========================================================================= -->
+  <!-- TOP BANNER: TITLE, METADATA & REPO CITATION                               -->
+  <!-- ========================================================================= -->
+  <g transform="translate(50, 30)">
+    <rect x="0" y="0" width="1500" height="84" rx="16" fill="#0f151c" stroke="rgba(255,255,255,0.08)" stroke-width="1.2" filter="url(#dropShadow)" />
+
+    <!-- Eco Recycling Icon Badge -->
+    <g transform="translate(24, 18)">
+      <circle cx="24" cy="24" r="24" fill="#10b981" opacity="0.15" stroke="#10b981" stroke-width="1.5" />
+      <!-- Recycle loop path -->
+      <path d="M 24 13 L 28 19 L 20 19 Z M 32 23 L 37 28 L 31 33 Z M 16 23 L 17 33 L 11 28 Z" fill="#10b981" />
+      <circle cx="24" cy="25" r="4" fill="#10b981" />
+    </g>
+
+    <!-- Title & Subtitle -->
+    <text x="86" y="34" font-size="20" font-weight="800" fill="#FAF6EE" letter-spacing="0.5">
+      WASTE CLASSIFIER — INTELLIGENT RECYCLING SYSTEM
+    </text>
+    <text x="86" y="58" font-size="12.5" font-weight="500" fill="#9AA69A">
+      Dual-Track Architecture: Experimental ViT &amp; CNN Benchmarks (<tspan fill="#FAF6EE">notebooks/</tspan>) + Production Real-Time YOLOv8 &amp; EfficientNet-B3 Engine (<tspan fill="#FAF6EE">app/</tspan>)
+    </text>
+
+    <!-- Right Side Badges -->
+    <g transform="translate(940, 20)">
+      <!-- GitHub Repo Badge -->
+      <rect x="0" y="2" width="230" height="40" rx="8" fill="#151d27" stroke="rgba(255,255,255,0.07)" stroke-width="1" />
+      <circle cx="20" cy="22" r="7" fill="#FAF6EE" opacity="0.15" />
+      <text x="36" y="26" font-size="11.5" font-weight="600" fill="#FAF6EE">seifalmaz/waste-classifier</text>
+
+      <!-- Key Quantitative Metrics Strip -->
+      <rect x="240" y="2" width="90" height="40" rx="8" fill="#10b981" fill-opacity="0.12" stroke="#10b981" stroke-opacity="0.3" stroke-width="1" />
+      <text x="285" y="20" font-size="13" font-weight="800" fill="#10b981" text-anchor="middle">6,166</text>
+      <text x="285" y="34" font-size="9" font-weight="600" fill="#9AA69A" text-anchor="middle">CLEAN IMAGES</text>
+
+      <rect x="338" y="2" width="92" height="40" rx="8" fill="#06b6d4" fill-opacity="0.12" stroke="#06b6d4" stroke-opacity="0.3" stroke-width="1" />
+      <text x="384" y="20" font-size="13" font-weight="800" fill="#06b6d4" text-anchor="middle">97.20%</text>
+      <text x="384" y="34" font-size="9" font-weight="600" fill="#9AA69A" text-anchor="middle">ENSEMBLE ACC</text>
+
+      <rect x="438" y="2" width="102" height="40" rx="8" fill="#6E2638" fill-opacity="0.25" stroke="#8a3047" stroke-opacity="0.4" stroke-width="1" />
+      <text x="489" y="20" font-size="13" font-weight="800" fill="#FAF6EE" text-anchor="middle">5 CLASSES</text>
+      <text x="489" y="34" font-size="9" font-weight="600" fill="#D2C7B6" text-anchor="middle">SORTING MATRIX</text>
+    </g>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- STAGE 1: DATA INGESTION & PREPROCESSING (Left Column)                     -->
+  <!-- ========================================================================= -->
+  <g transform="translate(50, 134)">
+    <rect width="345" height="826" rx="16" fill="url(#cardGrad)" stroke="rgba(255,255,255,0.08)" stroke-width="1.2" filter="url(#dropShadow)" />
+    
+    <!-- Stage Header -->
+    <path d="M 0 16 C 0 7.16 7.16 0 16 0 L 329 0 C 337.84 0 345 7.16 345 16 L 345 52 L 0 52 Z" fill="url(#cardHeaderGrad)" />
+    <rect x="16" y="14" width="24" height="24" rx="6" fill="#10b981" fill-opacity="0.2" />
+    <text x="28" y="30" font-size="12" font-weight="800" fill="#10b981" text-anchor="middle">1</text>
+    <text x="48" y="28" font-size="13.5" font-weight="700" fill="#FAF6EE">DATASET CURATION &amp; ETL</text>
+    <text x="48" y="44" font-size="10.5" font-weight="500" fill="#9AA69A">Ingestion, Deduplication &amp; Splits</text>
+
+    <!-- Block 1.1: Web Scraping & Kaggle Ingestion -->
+    <g transform="translate(16, 68)">
+      <rect width="313" height="136" rx="10" fill="#111722" stroke="rgba(255,255,255,0.06)" stroke-width="1" />
+      <text x="14" y="24" font-size="12" font-weight="700" fill="#FAF6EE">Multi-Source Image Sourcing</text>
+      <text x="14" y="42" font-size="10.5" font-weight="400" fill="#9AA69A">• Bing Image Scraper (01_data_collection.ipynb)</text>
+      <text x="14" y="58" font-size="10.5" font-weight="400" fill="#9AA69A">• DuckDuckGo Search API (01b_data_collection_ddg.ipynb)</text>
+      <text x="14" y="74" font-size="10.5" font-weight="400" fill="#9AA69A">• Merged Kaggle Municipal Solid Waste Datasets</text>
+      <text x="14" y="90" font-size="10.5" font-weight="400" fill="#9AA69A">• Perceptual Hash Deduplication: <tspan fill="#10b981">imagehash</tspan></text>
+      
+      <!-- Pill Tag -->
+      <rect x="14" y="104" width="285" height="22" rx="5" fill="#16222f" />
+      <text x="24" y="119" font-size="10" font-weight="600" fill="#10b981">OUTPUT: 6,166 Verified Unique Waste Images</text>
+    </g>
+
+    <!-- Block 1.2: 5-Class Categorical Breakdown -->
+    <g transform="translate(16, 218)">
+      <rect width="313" height="198" rx="10" fill="#111722" stroke="rgba(255,255,255,0.06)" stroke-width="1" />
+      <text x="14" y="24" font-size="12" font-weight="700" fill="#FAF6EE">5 Recyclable Waste Classes (data/raw/)</text>
+      
+      <!-- Class 1: Glass -->
+      <rect x="14" y="38" width="285" height="26" rx="6" fill="#16202c" stroke="rgba(255,255,255,0.04)" />
+      <circle cx="28" cy="51" r="5" fill="#06b6d4" />
+      <text x="42" y="55" font-size="11" font-weight="600" fill="#FAF6EE">Glass Bottles &amp; Jars</text>
+      <text x="285" y="55" font-size="11" font-weight="700" fill="#06b6d4" text-anchor="end">1,440 (23.4%)</text>
+
+      <!-- Class 2: Organic -->
+      <rect x="14" y="68" width="285" height="26" rx="6" fill="#16202c" stroke="rgba(255,255,255,0.04)" />
+      <circle cx="28" cy="81" r="5" fill="#10b981" />
+      <text x="42" y="85" font-size="11" font-weight="600" fill="#FAF6EE">Organic &amp; Food Residue</text>
+      <text x="285" y="85" font-size="11" font-weight="700" fill="#10b981" text-anchor="end">1,306 (21.2%)</text>
+
+      <!-- Class 3: Paper -->
+      <rect x="14" y="98" width="285" height="26" rx="6" fill="#16202c" stroke="rgba(255,255,255,0.04)" />
+      <circle cx="28" cy="111" r="5" fill="#eab308" />
+      <text x="42" y="115" font-size="11" font-weight="600" fill="#FAF6EE">Paper &amp; Cardboard</text>
+      <text x="285" y="115" font-size="11" font-weight="700" fill="#eab308" text-anchor="end">1,285 (20.8%)</text>
+
+      <!-- Class 4: Metal -->
+      <rect x="14" y="128" width="285" height="26" rx="6" fill="#16202c" stroke="rgba(255,255,255,0.04)" />
+      <circle cx="28" cy="141" r="5" fill="#94a3b8" />
+      <text x="42" y="145" font-size="11" font-weight="600" fill="#FAF6EE">Metal Cans &amp; Foils</text>
+      <text x="285" y="145" font-size="11" font-weight="700" fill="#94a3b8" text-anchor="end">1,102 (17.9%)</text>
+
+      <!-- Class 5: Plastic -->
+      <rect x="14" y="158" width="285" height="26" rx="6" fill="#16202c" stroke="rgba(255,255,255,0.04)" />
+      <circle cx="28" cy="171" r="5" fill="#3b82f6" />
+      <text x="42" y="175" font-size="11" font-weight="600" fill="#FAF6EE">Plastic Containers &amp; Wraps</text>
+      <text x="285" y="175" font-size="11" font-weight="700" fill="#3b82f6" text-anchor="end">1,033 (16.7%)</text>
+    </g>
+
+    <!-- Block 1.3: Train / Val / Test Stratified Split -->
+    <g transform="translate(16, 430)">
+      <rect width="313" height="150" rx="10" fill="#111722" stroke="rgba(255,255,255,0.06)" stroke-width="1" />
+      <text x="14" y="24" font-size="12" font-weight="700" fill="#FAF6EE">Stratified Partitioning (Seed=42)</text>
+      <text x="14" y="42" font-size="10.5" font-weight="400" fill="#9AA69A">Fixed random seed maintains leak-free sets:</text>
+      
+      <!-- Split bars -->
+      <g transform="translate(14, 52)">
+        <rect x="0" y="0" width="199" height="18" rx="4" fill="#10b981" />
+        <rect x="202" y="0" width="41" height="18" rx="4" fill="#06b6d4" />
+        <rect x="245" y="0" width="41" height="18" rx="4" fill="#6E2638" />
+      </g>
+      <text x="14" y="86" font-size="10.5" font-weight="600" fill="#10b981">• Train (70%): <tspan fill="#FAF6EE">4,316 images</tspan></text>
+      <text x="14" y="104" font-size="10.5" font-weight="600" fill="#06b6d4">• Val (15%): <tspan fill="#FAF6EE">925 images (checkpoint gating)</tspan></text>
+      <text x="14" y="122" font-size="10.5" font-weight="600" fill="#d97706">• Test (15%): <tspan fill="#FAF6EE">925 images (unseen evaluation)</tspan></text>
+      <text x="14" y="140" font-size="9.5" font-weight="500" fill="#9AA69A">Exported to: <tspan fill="#FAF6EE">data/processed/{train,val,test}</tspan></text>
+    </g>
+
+    <!-- Block 1.4: Preprocessing & Augmentation Tensor Prep -->
+    <g transform="translate(16, 594)">
+      <rect width="313" height="216" rx="10" fill="#111722" stroke="rgba(255,255,255,0.06)" stroke-width="1" />
+      <text x="14" y="24" font-size="12" font-weight="700" fill="#FAF6EE">PyTorch Torchvision Transforms</text>
+      
+      <rect x="14" y="36" width="285" height="42" rx="6" fill="#16222f" />
+      <text x="24" y="52" font-size="10" font-weight="700" fill="#06b6d4">SPATIAL STANDARDIZATION</text>
+      <text x="24" y="68" font-size="10" font-weight="500" fill="#FAF6EE">224×224 RGB • ImageNet Mean &amp; Std Normalize</text>
+
+      <text x="14" y="96" font-size="11" font-weight="600" fill="#FAF6EE">Training Augmentations:</text>
+      <text x="14" y="114" font-size="10" font-weight="400" fill="#9AA69A">• RandomRotation(degrees=±15°)</text>
+      <text x="14" y="130" font-size="10" font-weight="400" fill="#9AA69A">• RandomHorizontalFlip(p=0.5)</text>
+      <text x="14" y="146" font-size="10" font-weight="400" fill="#9AA69A">• ColorJitter(brightness=0.2, contrast=0.2)</text>
+      <text x="14" y="162" font-size="10" font-weight="400" fill="#9AA69A">• Batch Size: 32 • Adam Optimizer (lr=1e-3, 1e-4)</text>
+
+      <!-- Connection Pill -->
+      <rect x="14" y="176" width="285" height="26" rx="6" fill="#10b981" fill-opacity="0.15" stroke="#10b981" stroke-opacity="0.3" />
+      <text x="156" y="193" font-size="10.5" font-weight="700" fill="#10b981" text-anchor="middle">Feeds Dataloaders → Stages 2 &amp; 3</text>
+    </g>
+  </g>
+
+  <!-- Flow Connector 1 -> 2 -->
+  <path d="M 395 500 L 433 500" stroke="#10b981" stroke-width="2.5" stroke-dasharray="4,3" fill="none" marker-end="url(#arrowGreen)" />
+
+  <!-- ========================================================================= -->
+  <!-- STAGE 2: MODEL RESEARCH & BENCHMARKS (Column 2)                           -->
+  <!-- ========================================================================= -->
+  <g transform="translate(435, 134)">
+    <rect width="355" height="826" rx="16" fill="url(#cardGrad)" stroke="rgba(255,255,255,0.08)" stroke-width="1.2" filter="url(#dropShadow)" />
+    
+    <!-- Stage Header -->
+    <path d="M 0 16 C 0 7.16 7.16 0 16 0 L 339 0 C 347.84 0 355 7.16 355 16 L 355 52 L 0 52 Z" fill="url(#cardHeaderGrad)" />
+    <rect x="16" y="14" width="24" height="24" rx="6" fill="#06b6d4" fill-opacity="0.2" />
+    <text x="28" y="30" font-size="12" font-weight="800" fill="#06b6d4" text-anchor="middle">2</text>
+    <text x="48" y="28" font-size="13.5" font-weight="700" fill="#FAF6EE">MODEL BENCHMARKS &amp; ViT</text>
+    <text x="48" y="44" font-size="10.5" font-weight="500" fill="#9AA69A">Experimental Evaluation (notebooks/)</text>
+
+    <!-- Block 2.1: CNN Exploration (Baseline & Improved) -->
+    <g transform="translate(16, 68)">
+      <rect width="323" height="152" rx="10" fill="#111722" stroke="rgba(255,255,255,0.06)" stroke-width="1" />
+      <text x="14" y="24" font-size="12" font-weight="700" fill="#FAF6EE">Convolutional Baselines (Scratch)</text>
+
+      <rect x="14" y="36" width="295" height="46" rx="6" fill="#161e2a" />
+      <text x="24" y="52" font-size="11" font-weight="700" fill="#FAF6EE">Baseline CNN (4 Conv Layers)</text>
+      <text x="24" y="68" font-size="10" font-weight="400" fill="#9AA69A">Standard 3x3 convs, ReLU, MaxPool2d</text>
+      <text x="295" y="62" font-size="13" font-weight="800" fill="#f87171" text-anchor="end">61.94% Acc</text>
+
+      <rect x="14" y="90" width="295" height="52" rx="6" fill="#162232" stroke="rgba(6,182,212,0.2)" />
+      <text x="24" y="107" font-size="11" font-weight="700" fill="#06b6d4">Improved CNN (+BN &amp; Dropout)</text>
+      <text x="24" y="123" font-size="10" font-weight="400" fill="#9AA69A">Batch Normalization + Dropout(0.5) + Aug</text>
+      <text x="24" y="135" font-size="9" font-weight="500" fill="#06b6d4">+8.49% generalization lift over baseline</text>
+      <text x="295" y="120" font-size="13" font-weight="800" fill="#06b6d4" text-anchor="end">70.43% Acc</text>
+    </g>
+
+    <!-- Block 2.2: Vision Transformer (ViT) Architecture -->
+    <g transform="translate(16, 234)">
+      <rect width="323" height="186" rx="10" fill="#111722" stroke="rgba(255,255,255,0.06)" stroke-width="1" />
+      <text x="14" y="24" font-size="12" font-weight="700" fill="#FAF6EE">Vision Transformer from Scratch (06_vit)</text>
+      
+      <!-- ViT Steps Box -->
+      <rect x="14" y="36" width="295" height="74" rx="6" fill="#1c1a2e" stroke="rgba(139,92,246,0.2)" />
+      <text x="24" y="53" font-size="10.5" font-weight="700" fill="#a78bfa">ViT Architecture Mechanics:</text>
+      <text x="24" y="69" font-size="9.5" font-weight="400" fill="#c4b5fd">• 16×16 Linear Patch Projection (196 tokens)</text>
+      <text x="24" y="84" font-size="9.5" font-weight="400" fill="#c4b5fd">• Prepend [CLS] Token + 1D Positional Encodings</text>
+      <text x="24" y="99" font-size="9.5" font-weight="400" fill="#c4b5fd">• Multi-Head Self-Attention (MHSA) + MLP Encoder</text>
+
+      <text x="14" y="126" font-size="10.5" font-weight="600" fill="#FAF6EE">ViT Evaluation: <tspan fill="#a78bfa" font-weight="800">71.61% Test Acc</tspan> (models/vit_best.pth)</text>
+      <text x="14" y="142" font-size="9.5" font-weight="400" fill="#9AA69A">• Self-Attention Rollout maps reveal global texture focus</text>
+      <text x="14" y="156" font-size="9.5" font-weight="400" fill="#9AA69A">• Lacks inductive bias; requires large data vs CNNs</text>
+
+      <rect x="14" y="164" width="295" height="16" rx="4" fill="#241a3a" />
+      <text x="161" y="176" font-size="9" font-weight="600" fill="#c4b5fd" text-anchor="middle">Rollout Map Saved: results/vit_attention_rollout.png</text>
+    </g>
+
+    <!-- Block 2.3: Deep Transfer Learning & Ensemble -->
+    <g transform="translate(16, 434)">
+      <rect width="323" height="236" rx="10" fill="#111722" stroke="rgba(255,255,255,0.06)" stroke-width="1" />
+      <text x="14" y="24" font-size="12" font-weight="700" fill="#FAF6EE">Transfer Learning &amp; Ensemble Benchmark</text>
+
+      <!-- ResNet50 -->
+      <rect x="14" y="36" width="295" height="52" rx="6" fill="#161f2e" />
+      <text x="24" y="52" font-size="11" font-weight="700" fill="#FAF6EE">ResNet-50 (Two-Stage Fine-Tuning)</text>
+      <text x="24" y="67" font-size="9.5" font-weight="400" fill="#9AA69A">Stage 1: Frozen backbone (lr=1e-3) → Stage 2: Unfreeze top</text>
+      <text x="24" y="80" font-size="9.5" font-weight="600" fill="#06b6d4">Macro F1: 95.66% • Precision: 95.68%</text>
+      <text x="295" y="65" font-size="13" font-weight="800" fill="#06b6d4" text-anchor="end">95.81% Acc</text>
+
+      <!-- EfficientNet-B3 (TOP SINGLE) -->
+      <rect x="14" y="96" width="295" height="58" rx="6" fill="#0f2620" stroke="#10b981" stroke-width="1.2" />
+      <text x="24" y="113" font-size="11" font-weight="700" fill="#10b981">EfficientNet-B3 ★ TOP INDIVIDUAL MODEL</text>
+      <text x="24" y="128" font-size="9.5" font-weight="400" fill="#a7f3d0">Compound coefficient depth/width scaling (12.2M params)</text>
+      <text x="24" y="142" font-size="9.5" font-weight="700" fill="#10b981">Macro F1: 95.94% • Selected for App Deployment</text>
+      <text x="295" y="128" font-size="13" font-weight="800" fill="#10b981" text-anchor="end">96.02% Acc</text>
+
+      <!-- Soft-Voting Ensemble -->
+      <rect x="14" y="162" width="295" height="60" rx="6" fill="#2d131a" stroke="#8a3047" stroke-width="1.2" />
+      <text x="24" y="179" font-size="11" font-weight="700" fill="#FAF6EE">Soft-Voting Ensemble (ResNet50 + EffNetB3)</text>
+      <text x="24" y="194" font-size="9.5" font-weight="400" fill="#fecdd3">Averages softmax probability vectors across both backbones</text>
+      <text x="24" y="208" font-size="9.5" font-weight="700" fill="#FAF6EE">Macro F1: 97.08% • Recall: 97.19% on 925 test images</text>
+      <text x="295" y="196" font-size="14" font-weight="900" fill="#FAF6EE" text-anchor="end">97.20% Acc</text>
+    </g>
+
+    <!-- Block 2.4: Model Deployment Bridge -->
+    <g transform="translate(16, 684)">
+      <rect width="323" height="126" rx="10" fill="#15241f" stroke="#10b981" stroke-opacity="0.3" stroke-width="1" />
+      <text x="14" y="24" font-size="11.5" font-weight="700" fill="#10b981">Model Serialization &amp; Selection</text>
+      <text x="14" y="42" font-size="10" font-weight="500" fill="#FAF6EE">• Production Checkpoint: <tspan fill="#10b981">efficientnet_b3_finetuned_best.pth</tspan></text>
+      <text x="14" y="58" font-size="9.5" font-weight="400" fill="#9AA69A">• Best individual speed-to-accuracy trade-off for live webcam</text>
+      <text x="14" y="74" font-size="9.5" font-weight="400" fill="#9AA69A">• Sub-30ms CPU/GPU inference latency per single cropped ROI</text>
+      
+      <!-- Arrow Banner pointing right -->
+      <rect x="14" y="88" width="295" height="26" rx="6" fill="#10b981" />
+      <text x="161" y="105" font-size="10.5" font-weight="800" fill="#080a0f" text-anchor="middle">EXPORT TO APP CLASSIFIER ➔</text>
+    </g>
+  </g>
+
+  <!-- Flow Connector 2 -> 3 -->
+  <path d="M 790 500 L 833 500" stroke="#06b6d4" stroke-width="2.5" stroke-dasharray="4,3" fill="none" marker-end="url(#arrowCyan)" />
+
+  <!-- ========================================================================= -->
+  <!-- STAGE 3: REAL-TIME DETECTION & INFERENCE ENGINE (Column 3)                -->
+  <!-- ========================================================================= -->
+  <g transform="translate(835, 134)">
+    <rect width="355" height="826" rx="16" fill="url(#cardGrad)" stroke="rgba(255,255,255,0.08)" stroke-width="1.2" filter="url(#dropShadow)" />
+    
+    <!-- Stage Header -->
+    <path d="M 0 16 C 0 7.16 7.16 0 16 0 L 339 0 C 347.84 0 355 7.16 355 16 L 355 52 L 0 52 Z" fill="url(#cardHeaderGrad)" />
+    <rect x="16" y="14" width="24" height="24" rx="6" fill="#f59e0b" fill-opacity="0.2" />
+    <text x="28" y="30" font-size="12" font-weight="800" fill="#f59e0b" text-anchor="middle">3</text>
+    <text x="48" y="28" font-size="13.5" font-weight="700" fill="#FAF6EE">REAL-TIME INFERENCE (app/)</text>
+    <text x="48" y="44" font-size="10.5" font-weight="500" fill="#9AA69A">YOLOv8 Detection &amp; EffNet Classifier</text>
+
+    <!-- Block 3.1: Object Detection Frontends -->
+    <g transform="translate(16, 68)">
+      <rect width="323" height="152" rx="10" fill="#111722" stroke="rgba(255,255,255,0.06)" stroke-width="1" />
+      <text x="14" y="24" font-size="12" font-weight="700" fill="#FAF6EE">Candidate Region Detection (app/detection/)</text>
+
+      <rect x="14" y="36" width="295" height="52" rx="6" fill="#1e182a" stroke="rgba(245,158,11,0.2)" />
+      <text x="24" y="52" font-size="11" font-weight="700" fill="#f59e0b">YOLOv8 Nano Detector (yolo_detector.py)</text>
+      <text x="24" y="67" font-size="9.5" font-weight="400" fill="#9AA69A">Weights: yolov8n.pt • Confidence Threshold: 0.35</text>
+      <text x="24" y="80" font-size="9.5" font-weight="600" fill="#f59e0b">Generates proposal bounding boxes [x, y, w, h]</text>
+
+      <rect x="14" y="96" width="295" height="44" rx="6" fill="#161e2a" />
+      <text x="24" y="112" font-size="10.5" font-weight="700" fill="#FAF6EE">Contour Edge Fallback (contour_detector.py)</text>
+      <text x="24" y="127" font-size="9.5" font-weight="400" fill="#9AA69A">Otsu thresholding + morphology for conveyor-belt scenes</text>
+    </g>
+
+    <!-- Block 3.2: Optimization & Saliency Gating -->
+    <g transform="translate(16, 234)">
+      <rect width="323" height="142" rx="10" fill="#111722" stroke="rgba(255,255,255,0.06)" stroke-width="1" />
+      <text x="14" y="24" font-size="12" font-weight="700" fill="#FAF6EE">Performance Gating (web_server.py)</text>
+      
+      <rect x="14" y="36" width="295" height="34" rx="6" fill="#18202d" />
+      <text x="24" y="51" font-size="10" font-weight="700" fill="#06b6d4">YOLO_SKIP_FRAMES = 2</text>
+      <text x="24" y="63" font-size="9.5" font-weight="400" fill="#9AA69A">Runs detector on every 2nd video frame</text>
+
+      <rect x="14" y="76" width="295" height="46" rx="6" fill="#18202d" />
+      <text x="24" y="92" font-size="10" font-weight="700" fill="#10b981">Pixel Diff Gating: absdiff(prev_roi, curr_roi) &gt; 25</text>
+      <text x="24" y="106" font-size="9.5" font-weight="400" fill="#9AA69A">Bypasses re-inference when objects remain static</text>
+      <text x="24" y="117" font-size="9" font-weight="500" fill="#f59e0b">CLASSIFY_EVERY = 6 (Periodic refresh guarantee)</text>
+    </g>
+
+    <!-- Block 3.3: Production Deep Classifier -->
+    <g transform="translate(16, 390)">
+      <rect width="323" height="198" rx="10" fill="#111722" stroke="rgba(255,255,255,0.06)" stroke-width="1" />
+      <text x="14" y="24" font-size="12" font-weight="700" fill="#FAF6EE">Deep Classifier (app/inference/classifier.py)</text>
+
+      <rect x="14" y="36" width="295" height="52" rx="6" fill="#12251c" stroke="#10b981" stroke-opacity="0.3" stroke-width="1" />
+      <text x="24" y="52" font-size="10.5" font-weight="700" fill="#10b981">PyTorch EfficientNet-B3 Backbone</text>
+      <text x="24" y="66" font-size="9.5" font-weight="400" fill="#a7f3d0">Loads: models/efficientnet_b3_finetuned_best.pth</text>
+      <text x="24" y="79" font-size="9.5" font-weight="600" fill="#10b981">Dual execution modes: mode="realtime" | "upload"</text>
+
+      <!-- Processing flow steps -->
+      <g transform="translate(14, 96)">
+        <rect x="0" y="0" width="295" height="22" rx="4" fill="#171e28" />
+        <text x="10" y="15" font-size="9.5" font-weight="600" fill="#FAF6EE">1. Crop Bounding Box ROI → 224×224 Resize</text>
+
+        <rect x="0" y="26" width="295" height="22" rx="4" fill="#171e28" />
+        <text x="10" y="41" font-size="9.5" font-weight="600" fill="#FAF6EE">2. ToTensor() + ImageNet Normalize (GPU/CPU)</text>
+
+        <rect x="0" y="52" width="295" height="22" rx="4" fill="#171e28" />
+        <text x="10" y="67" font-size="9.5" font-weight="600" fill="#FAF6EE">3. Softmax Cross-Entropy → 5 Class Probabilities</text>
+
+        <rect x="0" y="78" width="295" height="22" rx="4" fill="#171e28" />
+        <text x="10" y="93" font-size="9.5" font-weight="600" fill="#10b981">4. Max Probability → Predicted Material + Conf</text>
+      </g>
+    </g>
+
+    <!-- Block 3.4: Prediction Smoother & Quality Checks -->
+    <g transform="translate(16, 602)">
+      <rect width="323" height="208" rx="10" fill="#111722" stroke="rgba(255,255,255,0.06)" stroke-width="1" />
+      <text x="14" y="24" font-size="12" font-weight="700" fill="#FAF6EE">Smoothing &amp; Confidence Gating</text>
+
+      <rect x="14" y="36" width="295" height="56" rx="6" fill="#161f2e" />
+      <text x="24" y="52" font-size="10.5" font-weight="700" fill="#06b6d4">PredictionSmoother(history_size=10)</text>
+      <text x="24" y="67" font-size="9.5" font-weight="400" fill="#9AA69A">Maintains rolling deque to eliminate flicker between</text>
+      <text x="24" y="80" font-size="9.5" font-weight="400" fill="#9AA69A">transparent glass and reflective clear plastics</text>
+
+      <rect x="14" y="100" width="295" height="46" rx="6" fill="#2d131a" stroke="#8a3047" stroke-width="1" />
+      <text x="24" y="117" font-size="10.5" font-weight="700" fill="#fca5a5">Ambiguity Filter: conf &lt; 0.60 → "Unknown"</text>
+      <text x="24" y="132" font-size="9" font-weight="400" fill="#fecdd3">Suppresses uncertain predictions to protect recycling batches</text>
+
+      <rect x="14" y="154" width="295" height="42" rx="6" fill="#172228" />
+      <text x="24" y="170" font-size="10" font-weight="700" fill="#FAF6EE">Quality Checks (app/inference/quality.py)</text>
+      <text x="24" y="184" font-size="9" font-weight="400" fill="#9AA69A">Filters extreme blur or empty ROIs before classification</text>
+    </g>
+  </g>
+
+  <!-- Flow Connector 3 -> 4 -->
+  <path d="M 1190 500 L 1233 500" stroke="#f59e0b" stroke-width="2.5" stroke-dasharray="4,3" fill="none" marker-end="url(#arrowAmber)" />
+
+  <!-- ========================================================================= -->
+  <!-- STAGE 4: WEB DASHBOARD & RECYCLING DISPOSITION (Column 4)                 -->
+  <!-- ========================================================================= -->
+  <g transform="translate(1235, 134)">
+    <rect width="315" height="826" rx="16" fill="url(#cardGrad)" stroke="rgba(255,255,255,0.08)" stroke-width="1.2" filter="url(#dropShadow)" />
+    
+    <!-- Stage Header -->
+    <path d="M 0 16 C 0 7.16 7.16 0 16 0 L 299 0 C 307.84 0 315 7.16 315 16 L 315 52 L 0 52 Z" fill="url(#cardHeaderGrad)" />
+    <rect x="16" y="14" width="24" height="24" rx="6" fill="#8a3047" fill-opacity="0.3" />
+    <text x="28" y="30" font-size="12" font-weight="800" fill="#FAF6EE" text-anchor="middle">4</text>
+    <text x="48" y="28" font-size="13.5" font-weight="700" fill="#FAF6EE">APP &amp; RECYCLING OUTPUT</text>
+    <text x="48" y="44" font-size="10.5" font-weight="500" fill="#9AA69A">FastAPI, Telemetry &amp; Material Sorter</text>
+
+    <!-- Block 4.1: FastAPI Web Application Architecture -->
+    <g transform="translate(16, 68)">
+      <rect width="283" height="152" rx="10" fill="#111722" stroke="rgba(255,255,255,0.06)" stroke-width="1" />
+      <text x="14" y="24" font-size="12" font-weight="700" fill="#FAF6EE">FastAPI Server (web_server.py)</text>
+
+      <rect x="14" y="36" width="255" height="30" rx="5" fill="#171f2b" />
+      <text x="22" y="55" font-size="10" font-weight="700" fill="#06b6d4">GET /video_feed</text>
+      <text x="140" y="55" font-size="9" font-weight="500" fill="#9AA69A">Multipart MJPEG Stream</text>
+
+      <rect x="14" y="72" width="255" height="30" rx="5" fill="#171f2b" />
+      <text x="22" y="91" font-size="10" font-weight="700" fill="#10b981">POST /upload</text>
+      <text x="140" y="91" font-size="9" font-weight="500" fill="#9AA69A">Static File Analysis</text>
+
+      <rect x="14" y="108" width="255" height="30" rx="5" fill="#171f2b" />
+      <text x="22" y="127" font-size="10" font-weight="700" fill="#f59e0b">GET /results</text>
+      <text x="140" y="127" font-size="9" font-weight="500" fill="#9AA69A">FPS &amp; Material Stats JSON</text>
+    </g>
+
+    <!-- Block 4.2: Client-Side Dashboard UI -->
+    <g transform="translate(16, 234)">
+      <rect width="283" height="156" rx="10" fill="#111722" stroke="rgba(255,255,255,0.06)" stroke-width="1" />
+      <text x="14" y="24" font-size="12" font-weight="700" fill="#FAF6EE">EcoMind AI Dashboard (static/)</text>
+
+      <!-- Mini UI Wireframe -->
+      <g transform="translate(14, 36)">
+        <rect width="255" height="106" rx="6" fill="#0d1117" stroke="rgba(255,255,255,0.08)" />
+        <rect x="6" y="6" width="160" height="94" rx="4" fill="#161b22" />
+        <!-- Camera target overlay -->
+        <rect x="36" y="24" width="100" height="60" rx="3" fill="none" stroke="#10b981" stroke-width="1.5" stroke-dasharray="3,2" />
+        <text x="86" y="58" font-size="8" font-weight="700" fill="#10b981" text-anchor="middle">LIVE ROI 96%</text>
+
+        <!-- Right telemetry panel -->
+        <rect x="172" y="6" width="77" height="94" rx="4" fill="#121820" />
+        <text x="178" y="20" font-size="7.5" font-weight="800" fill="#06b6d4">STATS</text>
+        <text x="178" y="34" font-size="7" font-weight="500" fill="#FAF6EE">FPS: ~28</text>
+        <text x="178" y="47" font-size="7" font-weight="500" fill="#10b981">Plastic: 14</text>
+        <text x="178" y="60" font-size="7" font-weight="500" fill="#06b6d4">Glass: 22</text>
+        <text x="178" y="73" font-size="7" font-weight="500" fill="#eab308">Paper: 31</text>
+        <text x="178" y="86" font-size="7" font-weight="500" fill="#94a3b8">Metal: 9</text>
+      </g>
+    </g>
+
+    <!-- Block 4.3: Recycling Decision Matrix -->
+    <g transform="translate(16, 404)">
+      <rect width="283" height="226" rx="10" fill="#111722" stroke="rgba(255,255,255,0.06)" stroke-width="1" />
+      <text x="14" y="24" font-size="12" font-weight="700" fill="#FAF6EE">Sorting Action Routing</text>
+
+      <g transform="translate(14, 36)">
+        <rect x="0" y="0" width="255" height="32" rx="5" fill="#152438" />
+        <text x="10" y="20" font-size="10" font-weight="700" fill="#3b82f6">PLASTIC</text>
+        <text x="80" y="20" font-size="9" font-weight="400" fill="#93c5fd">→ Blue Bin (Polymer Sort)</text>
+
+        <rect x="0" y="36" width="255" height="32" rx="5" fill="#102d24" />
+        <text x="10" y="56" font-size="10" font-weight="700" fill="#10b981">ORGANIC</text>
+        <text x="80" y="56" font-size="9" font-weight="400" fill="#a7f3d0">→ Green Bin (Compost)</text>
+
+        <rect x="0" y="72" width="255" height="32" rx="5" fill="#2d2812" />
+        <text x="10" y="92" font-size="10" font-weight="700" fill="#eab308">PAPER</text>
+        <text x="80" y="92" font-size="9" font-weight="400" fill="#fde047">→ Yellow Bin (Pulping)</text>
+
+        <rect x="0" y="108" width="255" height="32" rx="5" fill="#222732" />
+        <text x="10" y="128" font-size="10" font-weight="700" fill="#94a3b8">METAL</text>
+        <text x="80" y="128" font-size="9" font-weight="400" fill="#cbd5e1">→ Grey Bin (Smelting)</text>
+
+        <rect x="0" y="144" width="255" height="32" rx="5" fill="#102834" />
+        <text x="10" y="164" font-size="10" font-weight="700" fill="#06b6d4">GLASS</text>
+        <text x="80" y="164" font-size="9" font-weight="400" fill="#67e8f9">→ Cyan Bin (Cullet Crush)</text>
+      </g>
+    </g>
+
+    <!-- Block 4.4: Explainable AI Verification -->
+    <g transform="translate(16, 644)">
+      <rect width="283" height="166" rx="10" fill="#1a121e" stroke="rgba(139,92,246,0.2)" stroke-width="1" />
+      <text x="14" y="24" font-size="11.5" font-weight="700" fill="#c4b5fd">Explainable AI (XAI) Audit</text>
+      <text x="14" y="42" font-size="10" font-weight="500" fill="#FAF6EE">• Grad-CAM Activation Heatmaps</text>
+      <text x="14" y="58" font-size="9.5" font-weight="400" fill="#9AA69A">Validates neural focus on bottle rims &amp; material textures rather than background noise.</text>
+      <text x="14" y="86" font-size="10" font-weight="500" fill="#FAF6EE">• ViT Attention Rollout Maps</text>
+      <text x="14" y="102" font-size="9.5" font-weight="400" fill="#9AA69A">Multi-head self-attention token tracking verifying global shape perception.</text>
+
+      <rect x="14" y="126" width="255" height="26" rx="5" fill="#291a3c" />
+      <text x="141" y="143" font-size="9" font-weight="700" fill="#c4b5fd" text-anchor="middle">XAI Verified: Zero Background Artifact Bias</text>
+    </g>
+  </g>
+</svg>

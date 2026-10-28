@@ -1,6 +1,6 @@
 import { useState, useCallback } from "react";
 import { motion } from "framer-motion";
-import { FaAward } from "react-icons/fa6";
+import { FaAward, FaCalendarDays, FaLocationDot, FaCheck } from "react-icons/fa6";
 import SectionHeader from "../ui/SectionHeader";
 import Card from "../ui/Card";
 import Badge from "../ui/Badge";
@@ -11,11 +11,12 @@ import { experienceData } from "../../data/experienceData";
 function ExperienceLogoBadge({ exp }) {
   const [hasError, setHasError] = useState(false);
 
-  const local = experienceData.find((e) => e.id === exp.id) ||
-                experienceData.find((e) => e.role === exp.role && e.organization === exp.organization) ||
-                experienceData.find((e) => e.organization === exp.organization);
+  const local =
+    experienceData.find((e) => e.id === exp.id) ||
+    experienceData.find((e) => e.role === exp.role && e.organization === exp.organization) ||
+    experienceData.find((e) => e.organization === exp.organization);
 
-  const isDevPath = (url) => typeof url === 'string' && (url.startsWith('/src/') || url.includes('localhost'));
+  const isDevPath = (url) => typeof url === "string" && (url.startsWith("/src/") || url.includes("localhost"));
 
   const candidateLogo = !hasError && (
     (exp.logo && !isDevPath(exp.logo)) ? exp.logo :
@@ -23,28 +24,31 @@ function ExperienceLogoBadge({ exp }) {
     (local?.logo || null)
   );
 
-  const fallbackInitials = (exp.organization || 'EXP')
-    .split(' ')
-    .filter((w) => !['and', '&', 'of', 'the', 'for'].includes(w.toLowerCase()))
+  const fallbackInitials = (exp.organization || "EXP")
+    .split(" ")
+    .filter((w) => !["and", "&", "of", "the", "for"].includes(w.toLowerCase()))
     .map((w) => w[0])
     .filter(Boolean)
     .slice(0, 3)
-    .join('')
-    .toUpperCase() || exp.organization?.substring(0, 3).toUpperCase() || 'EXP';
+    .join("")
+    .toUpperCase() || exp.organization?.substring(0, 3).toUpperCase() || "EXP";
 
   return (
     <div className="relative z-10 shrink-0">
-      <div className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-full border-2 border-blue-500/80 bg-white shadow-[0_0_25px_rgba(59,130,246,0.45)] transition-all duration-300 hover:scale-105 hover:border-blue-400 hover:shadow-[0_0_30px_rgba(59,130,246,0.65)] p-2 md:h-16 md:w-16">
+      <div className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-2xl border border-[#D2C7B6]/30 bg-[#FAF6EE] shadow-lg p-2 transition-all duration-300 hover:scale-105 hover:border-[#6E2638] md:h-16 md:w-16">
         {candidateLogo ? (
           <img
             src={candidateLogo}
             alt={exp.organization}
             loading="lazy"
+            decoding="async"
+            width="56"
+            height="56"
             onError={() => setHasError(true)}
-            className="h-full w-full object-contain select-none transition-transform duration-300"
+            className="h-full w-full object-contain select-none"
           />
         ) : (
-          <span className="text-xs font-black tracking-wider text-slate-800 select-none">
+          <span className="text-xs font-black tracking-wider text-[#292725] select-none">
             {fallbackInitials}
           </span>
         )}
@@ -58,14 +62,16 @@ function ExperienceSection() {
   const [activeCert, setActiveCert] = useState(null);
 
   const handleOpenCert = useCallback((certificate, exp) => {
-    const local = experienceData.find((e) => e.id === exp?.id) ||
-                  experienceData.find((e) => e.role === exp?.role && e.organization === exp?.organization) ||
-                  experienceData.find((e) => e.organization === exp?.organization);
+    const local =
+      experienceData.find((e) => e.id === exp?.id) ||
+      experienceData.find((e) => e.role === exp?.role && e.organization === exp?.organization) ||
+      experienceData.find((e) => e.organization === exp?.organization);
 
-    const isDevPath = (url) => typeof url === 'string' && (url.startsWith('/src/') || url.includes('localhost'));
-    const certImg = (certificate?.image && !isDevPath(certificate.image))
-      ? certificate.image
-      : (local?.certificate?.image || certificate?.image || null);
+    const isDevPath = (url) => typeof url === "string" && (url.startsWith("/src/") || url.includes("localhost"));
+    const certImg =
+      certificate?.image && !isDevPath(certificate.image)
+        ? certificate.image
+        : local?.certificate?.image || certificate?.image || null;
 
     setActiveCert({
       ...certificate,
@@ -81,104 +87,120 @@ function ExperienceSection() {
   const experiences = Array.isArray(experience) && experience.length > 0 ? experience : experienceData;
 
   return (
-    <section id="experience" className="scroll-mt-28 bg-gradient-to-b from-black via-slate-950 to-black px-6 py-28 text-white">
+    <section
+      id="experience"
+      className="relative scroll-mt-24 bg-[#1C1A19] px-6 py-28 text-[#FAF6EE] border-t border-[#D2C7B6]/15"
+    >
       <div className="mx-auto max-w-7xl">
         <SectionHeader
-          subtitle="CAREER TIMELINE"
+          subtitle="CAREER MILESTONES"
           title="Professional Experience &"
           titleHighlight="Traineeships"
-          description="A chronological history of my engineering internships, Microsoft & Google professional tracks, and ICPC community mentorship."
+          description="A chronological record of verified technical internships, Microsoft & Google professional tracks, and competitive programming mentorship."
         />
 
         {/* Timeline Container */}
         <div className="relative mx-auto max-w-4xl">
-          {/* Vertical Timeline Line */}
-          <div className="absolute left-7 top-0 bottom-0 w-[2px] bg-gradient-to-b from-blue-500/70 via-white/10 to-transparent md:left-8" />
+          {/* Vertical Timeline Guide */}
+          <div className="absolute left-7 top-0 bottom-0 w-[2px] bg-gradient-to-b from-[#6E2638] via-[#D2C7B6]/20 to-transparent md:left-8" />
 
           <div className="space-y-12">
-            {experiences.map((exp, idx) => (
+            {experiences.map((exp) => (
               <motion.div
-                key={exp.id}
-                initial={{ opacity: 0, x: -16 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                key={exp.id || `${exp.organization}-${exp.role}`}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.5, delay: idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
-                className="relative flex gap-6 md:gap-8 items-start"
+                transition={{ duration: 0.35, ease: "easeOut" }}
+                className="relative flex items-start gap-5 md:gap-8"
               >
-                {/* Timeline Dot / Logo */}
+                {/* Organization Logo Badge */}
                 <ExperienceLogoBadge exp={exp} />
 
-                {/* Experience Card */}
-                <Card className="flex-1">
-                  <div className="flex flex-col gap-2 md:flex-row md:items-start md:justify-between mb-4">
+                {/* Experience Details Card */}
+                <div className="flex-1 rounded-3xl border border-[#D2C7B6]/15 bg-[#292725]/80 p-6 md:p-8 backdrop-blur-md shadow-xl transition-all duration-300 hover:border-[#6E2638]/60">
+                  {/* Top Bar: Role & Timing */}
+                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 border-b border-[#D2C7B6]/10 pb-4 mb-4">
                     <div>
-                      <div className="flex flex-wrap items-center gap-3">
-                        <h3 className="text-xl font-bold text-white md:text-2xl">{exp.role}</h3>
-                        <Badge variant={exp.type === "Internship" ? "green" : exp.type === "Mentorship" ? "yellow" : "blue"}>
-                          {exp.type}
-                        </Badge>
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-[#6E2638] bg-[#6E2638]/15 px-2.5 py-0.5 rounded-full border border-[#6E2638]/30">
+                          {exp.type || "Professional Experience"}
+                        </span>
                       </div>
-                      <p className="mt-1 text-sm font-semibold text-blue-400">{exp.organization}</p>
+                      <h3 className="text-xl font-bold text-[#FAF6EE] tracking-tight">
+                        {exp.role}
+                      </h3>
+                      <p className="text-sm font-semibold text-[#9AA69A]">
+                        {exp.organization}
+                      </p>
                     </div>
 
-                    <span className="text-xs text-gray-400 font-medium whitespace-nowrap bg-white/5 px-3 py-1 rounded-full border border-white/10">
-                      {exp.period}
-                    </span>
+                    <div className="flex flex-col sm:items-end text-xs text-[#9AA69A] space-y-1 shrink-0">
+                      <span className="inline-flex items-center gap-1.5 font-medium text-[#FAF6EE]">
+                        <FaCalendarDays className="h-3 w-3 text-[#6E2638]" />
+                        {exp.period}
+                      </span>
+                      {exp.location && (
+                        <span className="inline-flex items-center gap-1 text-[#687568]">
+                          <FaLocationDot className="h-2.5 w-2.5" />
+                          {exp.location}
+                        </span>
+                      )}
+                    </div>
                   </div>
 
-                  {/* Summary */}
-                  <p className="text-sm leading-relaxed text-gray-300 mb-4">{exp.description}</p>
+                  {/* Narrative Description */}
+                  <p className="text-sm leading-relaxed text-[#FAF6EE]/85 font-light mb-4">
+                    {exp.description}
+                  </p>
 
-                  {/* Achievements List */}
+                  {/* Highlights Bullet List */}
                   {exp.highlights && exp.highlights.length > 0 && (
-                    <ul className="mb-6 space-y-1.5 text-xs text-gray-300">
-                      {exp.highlights.map((highlight, i) => (
+                    <ul className="mb-6 space-y-2 text-xs text-[#FAF6EE]/90">
+                      {exp.highlights.map((h, i) => (
                         <li key={i} className="flex items-start gap-2">
-                          <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400" />
-                          <span>{highlight}</span>
+                          <FaCheck className="h-3 w-3 text-[#6E2638] mt-0.5 shrink-0" />
+                          <span className="leading-relaxed font-light">{h}</span>
                         </li>
                       ))}
                     </ul>
                   )}
 
-                  {/* Tech Stack Pills */}
-                  {exp.technologies && exp.technologies.length > 0 && (
-                    <div className="flex flex-wrap gap-1.5 pt-2 border-t border-white/10">
-                      {exp.technologies.map((tech) => (
+                  {/* Technology Tags & Certificate Preview Button */}
+                  <div className="flex flex-wrap items-center justify-between gap-4 border-t border-[#D2C7B6]/10 pt-4">
+                    {/* Tech Badges */}
+                    <div className="flex flex-wrap gap-1.5">
+                      {(exp.technologies || []).map((tech) => (
                         <span
                           key={tech}
-                          className="rounded-full border border-blue-500/20 bg-blue-500/10 px-3 py-0.5 text-xs text-blue-300"
+                          className="rounded-md border border-[#D2C7B6]/15 bg-[#1C1A19] px-2.5 py-1 text-[11px] font-medium text-[#9AA69A]"
                         >
                           {tech}
                         </span>
                       ))}
                     </div>
-                  )}
 
-                  {/* Certificate Action — only rendered when certificate data exists */}
-                  {exp.certificate && (
-                    <div className="mt-4 pt-3 border-t border-white/10">
+                    {/* Certificate Action */}
+                    {exp.certificate && (
                       <button
-                        type="button"
                         onClick={() => handleOpenCert(exp.certificate, exp)}
-                        className="inline-flex items-center gap-2 text-xs font-semibold text-blue-400 hover:text-blue-300 transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-400 rounded"
-                        aria-label={`View certificate for ${exp.role}`}
+                        className="inline-flex items-center gap-2 rounded-full border border-[#6E2638] bg-[#6E2638]/15 px-4 py-1.5 text-xs font-semibold text-[#FAF6EE] transition hover:bg-[#6E2638] shadow-sm"
                       >
-                        <FaAward className="w-3.5 h-3.5" />
-                        View Certificate
+                        <FaAward className="h-3.5 w-3.5 text-[#6E2638]" />
+                        <span>Inspect Certificate</span>
                       </button>
-                    </div>
-                  )}
-                </Card>
+                    )}
+                  </div>
+                </div>
               </motion.div>
             ))}
           </div>
         </div>
       </div>
 
-      {/* Certificate Modal — rendered once outside the loop */}
+      {/* Certificate Lightbox Modal */}
       <CertificateModal
-        isOpen={activeCert !== null}
+        isOpen={Boolean(activeCert)}
         onClose={handleCloseCert}
         certificate={activeCert}
       />

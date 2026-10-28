@@ -1,0 +1,547 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="100%" height="100%" style="background:#080a0f; font-family:'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+  <defs>
+    <!-- Background & Card Gradients -->
+    <linearGradient id="bgGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0c0e18" />
+      <stop offset="50%" stop-color="#080a0f" />
+      <stop offset="100%" stop-color="#05070a" />
+    </linearGradient>
+
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141724" />
+      <stop offset="100%" stop-color="#0d0f19" />
+    </linearGradient>
+
+    <linearGradient id="cardHeaderGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1c2136" />
+      <stop offset="100%" stop-color="#121624" />
+    </linearGradient>
+
+    <!-- Brand Gradients -->
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3b82f6" />
+      <stop offset="100%" stop-color="#1d4ed8" />
+    </linearGradient>
+
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06b6d4" />
+      <stop offset="100%" stop-color="#3b82f6" />
+    </linearGradient>
+
+    <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#8b5cf6" />
+      <stop offset="100%" stop-color="#6366f1" />
+    </linearGradient>
+
+    <linearGradient id="emeraldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981" />
+      <stop offset="100%" stop-color="#059669" />
+    </linearGradient>
+
+    <linearGradient id="burgundyGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#6E2638" />
+      <stop offset="100%" stop-color="#8a3047" />
+    </linearGradient>
+
+    <!-- Shadows -->
+    <filter id="dropShadow" x="-10%" y="-10%" width="125%" height="125%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.65" />
+    </filter>
+
+    <!-- Arrow Markers -->
+    <marker id="arrowCyan" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 1 L 7 4 L 0 7 z" fill="#06b6d4" />
+    </marker>
+    <marker id="arrowBlue" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 1 L 7 4 L 0 7 z" fill="#3b82f6" />
+    </marker>
+    <marker id="arrowPurple" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 1 L 7 4 L 0 7 z" fill="#8b5cf6" />
+    </marker>
+    <marker id="arrowEmerald" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 1 L 7 4 L 0 7 z" fill="#10b981" />
+    </marker>
+
+    <!-- Dot Grid Pattern -->
+    <pattern id="gridPattern" width="40" height="40" patternUnits="userSpaceOnUse">
+      <circle cx="20" cy="20" r="1" fill="rgba(255,255,255,0.04)" />
+    </pattern>
+  </defs>
+
+  <!-- Background Layer -->
+  <rect width="1600" height="1000" fill="url(#bgGlow)" />
+  <rect width="1600" height="1000" fill="url(#gridPattern)" />
+
+  <!-- Ambient Light Accents -->
+  <circle cx="220" cy="180" r="240" fill="#3b82f6" opacity="0.04" filter="blur(60px)" />
+  <circle cx="1380" cy="780" r="280" fill="#8b5cf6" opacity="0.05" filter="blur(70px)" />
+  <circle cx="800" cy="480" r="260" fill="#06b6d4" opacity="0.03" filter="blur(65px)" />
+
+  <!-- ========================================================================= -->
+  <!-- TOP BANNER: TITLE, METADATA & REPO CITATION                               -->
+  <!-- ========================================================================= -->
+  <g transform="translate(50, 30)">
+    <rect x="0" y="0" width="1500" height="84" rx="16" fill="#101322" stroke="rgba(255,255,255,0.08)" stroke-width="1.2" filter="url(#dropShadow)" />
+
+    <!-- Hand Skeleton Icon Badge -->
+    <g transform="translate(24, 18)">
+      <circle cx="24" cy="24" r="24" fill="#3b82f6" opacity="0.15" stroke="#3b82f6" stroke-width="1.5" />
+      <!-- Stylized Hand Joints -->
+      <circle cx="24" cy="34" r="2.5" fill="#06b6d4" />
+      <circle cx="17" cy="24" r="2" fill="#3b82f6" />
+      <circle cx="21" cy="20" r="2" fill="#3b82f6" />
+      <circle cx="26" cy="19" r="2" fill="#3b82f6" />
+      <circle cx="31" cy="22" r="2" fill="#3b82f6" />
+      <path d="M 24 34 L 17 24 L 14 17 M 24 34 L 21 20 L 20 13 M 24 34 L 26 19 L 26 12 M 24 34 L 31 22 L 33 16" stroke="#06b6d4" stroke-width="1.5" fill="none" stroke-linecap="round" />
+    </g>
+
+    <!-- Title & Subtitle -->
+    <text x="86" y="34" font-size="20" font-weight="800" fill="#FAF6EE" letter-spacing="0.5">
+      HAND GESTURE RECOGNITION — REAL-TIME COMPUTER VISION
+    </text>
+    <text x="86" y="58" font-size="12.5" font-weight="500" fill="#9AA69A">
+      Production MobileNetV3-Large + MediaPipe 3D Landmark Tracking + Vectorized Grad-CAM Explainability HUD (<tspan fill="#FAF6EE">gui/app.py</tspan>)
+    </text>
+
+    <!-- Right Side Badges -->
+    <g transform="translate(930, 20)">
+      <!-- GitHub Repo Badge -->
+      <rect x="0" y="2" width="240" height="40" rx="8" fill="#151b2d" stroke="rgba(255,255,255,0.07)" stroke-width="1" />
+      <circle cx="20" cy="22" r="7" fill="#FAF6EE" opacity="0.15" />
+      <text x="36" y="26" font-size="11.5" font-weight="600" fill="#FAF6EE">seifalmaz/gesture-recognition</text>
+
+      <!-- Key Quantitative Metrics Strip -->
+      <rect x="250" y="2" width="90" height="40" rx="8" fill="#10b981" fill-opacity="0.12" stroke="#10b981" stroke-opacity="0.3" stroke-width="1" />
+      <text x="295" y="20" font-size="13" font-weight="800" fill="#10b981" text-anchor="middle">99.25%</text>
+      <text x="295" y="34" font-size="9" font-weight="600" fill="#9AA69A" text-anchor="middle">TEST ACCURACY</text>
+
+      <rect x="348" y="2" width="92" height="40" rx="8" fill="#06b6d4" fill-opacity="0.12" stroke="#06b6d4" stroke-opacity="0.3" stroke-width="1" />
+      <text x="394" y="20" font-size="13" font-weight="800" fill="#06b6d4" text-anchor="middle">10.3 ms</text>
+      <text x="394" y="34" font-size="9" font-weight="600" fill="#9AA69A" text-anchor="middle">97.0 FPS (GPU)</text>
+
+      <rect x="448" y="2" width="102" height="40" rx="8" fill="#6E2638" fill-opacity="0.25" stroke="#8a3047" stroke-opacity="0.4" stroke-width="1" />
+      <text x="499" y="20" font-size="13" font-weight="800" fill="#FAF6EE" text-anchor="middle">16.2 MB</text>
+      <text x="499" y="34" font-size="9" font-weight="600" fill="#D2C7B6" text-anchor="middle">LIGHTWEIGHT</text>
+    </g>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- STAGE 1: DATASET & ZERO-LEAKAGE SUBJECT SPLIT (Column 1)                  -->
+  <!-- ========================================================================= -->
+  <g transform="translate(50, 134)">
+    <rect width="345" height="826" rx="16" fill="url(#cardGrad)" stroke="rgba(255,255,255,0.08)" stroke-width="1.2" filter="url(#dropShadow)" />
+    
+    <!-- Stage Header -->
+    <path d="M 0 16 C 0 7.16 7.16 0 16 0 L 329 0 C 337.84 0 345 7.16 345 16 L 345 52 L 0 52 Z" fill="url(#cardHeaderGrad)" />
+    <rect x="16" y="14" width="24" height="24" rx="6" fill="#3b82f6" fill-opacity="0.2" />
+    <text x="28" y="30" font-size="12" font-weight="800" fill="#3b82f6" text-anchor="middle">1</text>
+    <text x="48" y="28" font-size="13.5" font-weight="700" fill="#FAF6EE">DATASET &amp; SUBJECT SPLIT</text>
+    <text x="48" y="44" font-size="10.5" font-weight="500" fill="#9AA69A">Zero-Leakage Group Partitioning</text>
+
+    <!-- Block 1.1: LeapGestRecog Sensor Dataset -->
+    <g transform="translate(16, 68)">
+      <rect width="313" height="142" rx="10" fill="#111422" stroke="rgba(255,255,255,0.06)" stroke-width="1" />
+      <text x="14" y="24" font-size="12" font-weight="700" fill="#FAF6EE">LeapGestRecog Infrared Dataset</text>
+      <text x="14" y="42" font-size="10.5" font-weight="400" fill="#9AA69A">• 10 Human Subjects (00 to 09)</text>
+      <text x="14" y="58" font-size="10.5" font-weight="400" fill="#9AA69A">• Leap Motion Near-Infrared Sensor Capture</text>
+      <text x="14" y="74" font-size="10.5" font-weight="400" fill="#9AA69A">• High contrast hand contours on zero background</text>
+      <text x="14" y="90" font-size="10.5" font-weight="400" fill="#9AA69A">• Temporal consecutive video frames per subject</text>
+
+      <rect x="14" y="104" width="285" height="24" rx="5" fill="#181f33" />
+      <text x="24" y="120" font-size="10" font-weight="600" fill="#3b82f6">SOURCE: Grupo de Tratamiento de Imágenes (GTI)</text>
+    </g>
+
+    <!-- Block 1.2: Sequence Leakage Diagnosis & Fix -->
+    <g transform="translate(16, 224)">
+      <rect width="313" height="194" rx="10" fill="#111422" stroke="rgba(255,255,255,0.06)" stroke-width="1" />
+      <text x="14" y="24" font-size="12" font-weight="700" fill="#FAF6EE">Temporal Sequence Leakage Fix</text>
+      
+      <!-- Critical Callout -->
+      <rect x="14" y="36" width="285" height="54" rx="6" fill="#2d131a" stroke="#8a3047" stroke-width="1" />
+      <text x="24" y="52" font-size="10.5" font-weight="700" fill="#fca5a5">THE 100% ACCURACY ILLUSION</text>
+      <text x="24" y="67" font-size="9" font-weight="400" fill="#fecdd3">Naive random split placed adjacent video frames into</text>
+      <text x="24" y="80" font-size="9" font-weight="400" fill="#fecdd3">both train and test, concealing real-world failure.</text>
+
+      <!-- Group-Aware Fix -->
+      <rect x="14" y="98" width="285" height="80" rx="6" fill="#10251c" stroke="#10b981" stroke-opacity="0.3" stroke-width="1" />
+      <text x="24" y="115" font-size="10.5" font-weight="700" fill="#10b981">Group-Aware Subject Splitting (Manifest)</text>
+      <text x="24" y="132" font-size="10" font-weight="500" fill="#FAF6EE">• Train: <tspan fill="#3b82f6">Subjects 00–07</tspan> (Disjoint Identities)</text>
+      <text x="24" y="148" font-size="10" font-weight="500" fill="#FAF6EE">• Validation: <tspan fill="#06b6d4">Subject 08</tspan> (Model Selection)</text>
+      <text x="24" y="164" font-size="10" font-weight="700" fill="#10b981">• Test: <tspan fill="#FAF6EE">Subject 09</tspan> (800 Strictly Unseen Samples)</text>
+    </g>
+
+    <!-- Block 1.3: 4 Verified Core Gestures -->
+    <g transform="translate(16, 432)">
+      <rect width="313" height="196" rx="10" fill="#111422" stroke="rgba(255,255,255,0.06)" stroke-width="1" />
+      <text x="14" y="24" font-size="12" font-weight="700" fill="#FAF6EE">4 Supported Gesture Classes (800 Test)</text>
+
+      <!-- Gesture 1: Fist -->
+      <rect x="14" y="38" width="285" height="32" rx="6" fill="#181e30" stroke="rgba(255,255,255,0.04)" />
+      <text x="26" y="59" font-size="14">✊</text>
+      <text x="50" y="58" font-size="11.5" font-weight="700" fill="#FAF6EE">Fist</text>
+      <text x="110" y="58" font-size="10" font-weight="400" fill="#9AA69A">Closed clenched hand</text>
+      <text x="285" y="58" font-size="11.5" font-weight="800" fill="#10b981" text-anchor="end">200 / 200</text>
+
+      <!-- Gesture 2: OK -->
+      <rect x="14" y="76" width="285" height="32" rx="6" fill="#181e30" stroke="rgba(255,255,255,0.04)" />
+      <text x="26" y="97" font-size="14">👌</text>
+      <text x="50" y="96" font-size="11.5" font-weight="700" fill="#FAF6EE">OK</text>
+      <text x="110" y="96" font-size="10" font-weight="400" fill="#9AA69A">Thumb-index finger loop</text>
+      <text x="285" y="96" font-size="11.5" font-weight="800" fill="#10b981" text-anchor="end">200 / 200</text>
+
+      <!-- Gesture 3: Palm -->
+      <rect x="14" y="114" width="285" height="32" rx="6" fill="#181e30" stroke="rgba(255,255,255,0.04)" />
+      <text x="26" y="135" font-size="14">🖐️</text>
+      <text x="50" y="134" font-size="11.5" font-weight="700" fill="#FAF6EE">Palm</text>
+      <text x="110" y="134" font-size="10" font-weight="400" fill="#9AA69A">5 digits extended forward</text>
+      <text x="285" y="134" font-size="11.5" font-weight="800" fill="#10b981" text-anchor="end">194 / 200</text>
+
+      <!-- Gesture 4: Thumb -->
+      <rect x="14" y="152" width="285" height="32" rx="6" fill="#181e30" stroke="rgba(255,255,255,0.04)" />
+      <text x="26" y="173" font-size="14">👍</text>
+      <text x="50" y="172" font-size="11.5" font-weight="700" fill="#FAF6EE">Thumb</text>
+      <text x="110" y="172" font-size="10" font-weight="400" fill="#9AA69A">Thumb extended upward</text>
+      <text x="285" y="172" font-size="11.5" font-weight="800" fill="#10b981" text-anchor="end">200 / 200</text>
+    </g>
+
+    <!-- Block 1.4: Preprocessing Normalization -->
+    <g transform="translate(16, 642)">
+      <rect width="313" height="168" rx="10" fill="#111422" stroke="rgba(255,255,255,0.06)" stroke-width="1" />
+      <text x="14" y="24" font-size="12" font-weight="700" fill="#FAF6EE">Standardized ImageNet Normalization</text>
+
+      <rect x="14" y="36" width="285" height="48" rx="6" fill="#182033" />
+      <text x="24" y="52" font-size="10" font-weight="700" fill="#06b6d4">224×224 SQUARE TENSOR INPUT</text>
+      <text x="24" y="67" font-size="9" font-weight="500" fill="#FAF6EE">Mean: [0.485, 0.456, 0.406] • Std: [0.229, 0.224, 0.225]</text>
+      <text x="24" y="78" font-size="9" font-weight="400" fill="#9AA69A">Guarantees distribution alignment with ImageNet pretraining</text>
+
+      <!-- Connection Pill -->
+      <rect x="14" y="96" width="285" height="34" rx="6" fill="#3b82f6" fill-opacity="0.15" stroke="#3b82f6" stroke-opacity="0.3" />
+      <text x="156" y="117" font-size="10.5" font-weight="700" fill="#3b82f6" text-anchor="middle">data/dataset_splits.json ➔ Stage 2</text>
+    </g>
+  </g>
+
+  <!-- Flow Connector 1 -> 2 -->
+  <path d="M 395 500 L 433 500" stroke="#3b82f6" stroke-width="2.5" stroke-dasharray="4,3" fill="none" marker-end="url(#arrowBlue)" />
+
+  <!-- ========================================================================= -->
+  <!-- STAGE 2: DOMAIN ADAPTATION & BENCHMARK SUITE (Column 2)                   -->
+  <!-- ========================================================================= -->
+  <g transform="translate(435, 134)">
+    <rect width="355" height="826" rx="16" fill="url(#cardGrad)" stroke="rgba(255,255,255,0.08)" stroke-width="1.2" filter="url(#dropShadow)" />
+    
+    <!-- Stage Header -->
+    <path d="M 0 16 C 0 7.16 7.16 0 16 0 L 339 0 C 347.84 0 355 7.16 355 16 L 355 52 L 0 52 Z" fill="url(#cardHeaderGrad)" />
+    <rect x="16" y="14" width="24" height="24" rx="6" fill="#06b6d4" fill-opacity="0.2" />
+    <text x="28" y="30" font-size="12" font-weight="800" fill="#06b6d4" text-anchor="middle">2</text>
+    <text x="48" y="28" font-size="13.5" font-weight="700" fill="#FAF6EE">DOMAIN ADAPTATION &amp; BENCHMARK</text>
+    <text x="48" y="44" font-size="10.5" font-weight="500" fill="#9AA69A">Sensor-to-Webcam Transfer &amp; Model Selection</text>
+
+    <!-- Block 2.1: Domain Transfer Failure Diagnosis -->
+    <g transform="translate(16, 68)">
+      <rect width="323" height="152" rx="10" fill="#111422" stroke="rgba(255,255,255,0.06)" stroke-width="1" />
+      <text x="14" y="24" font-size="12" font-weight="700" fill="#FAF6EE">Diagnosed Optical Shift Failure Modes</text>
+
+      <rect x="14" y="36" width="295" height="48" rx="6" fill="#1b1c2e" />
+      <text x="24" y="52" font-size="10.5" font-weight="700" fill="#f87171">1. Zero-Background Contrast Bias</text>
+      <text x="24" y="66" font-size="9" font-weight="400" fill="#9AA69A">Leap sensor had pitch-black background; bright room pixels</text>
+      <text x="24" y="77" font-size="9" font-weight="500" fill="#fca5a5">around a closed hand caused Fist to misclassify as Thumb (97.9%)</text>
+
+      <rect x="14" y="90" width="295" height="48" rx="6" fill="#1b1c2e" />
+      <text x="24" y="106" font-size="10.5" font-weight="700" fill="#f87171">2. Horizontal Sensor Pose Bias</text>
+      <text x="24" y="120" font-size="9" font-weight="400" fill="#9AA69A">Sensor hands were strictly horizontal; upright webcam thumbs</text>
+      <text x="24" y="131" font-size="9" font-weight="500" fill="#fca5a5">matched the vertical finger loop of the OK gesture (91.9%)</text>
+    </g>
+
+    <!-- Block 2.2: Domain-Adaptive Augmentations -->
+    <g transform="translate(16, 234)">
+      <rect width="323" height="176" rx="10" fill="#111422" stroke="rgba(255,255,255,0.06)" stroke-width="1" />
+      <text x="14" y="24" font-size="12" font-weight="700" fill="#FAF6EE">Synthetic Domain Adaptations (src/augmentations.py)</text>
+
+      <rect x="14" y="36" width="295" height="48" rx="6" fill="#10251c" stroke="#10b981" stroke-opacity="0.3" stroke-width="1" />
+      <text x="24" y="52" font-size="10.5" font-weight="700" fill="#10b981">RandomBackgroundInjection (p=0.80)</text>
+      <text x="24" y="66" font-size="9" font-weight="400" fill="#a7f3d0">Composites synthetic room noise, wall textures &amp; gradients</text>
+      <text x="24" y="77" font-size="9" font-weight="500" fill="#10b981">Forces model to learn finger morphology, not background contrast</text>
+
+      <rect x="14" y="90" width="295" height="42" rx="6" fill="#182338" />
+      <text x="24" y="106" font-size="10.5" font-weight="700" fill="#06b6d4">±60° Rotation Invariance Augmentation</text>
+      <text x="24" y="120" font-size="9" font-weight="400" fill="#9AA69A">Allows arbitrary hand angles and upright vertical thumbs</text>
+
+      <text x="14" y="152" font-size="10" font-weight="500" fill="#FAF6EE">• Scale &amp; Translation Jitter (±15%) • Gaussian Sensor Noise</text>
+      <text x="14" y="166" font-size="10" font-weight="500" fill="#FAF6EE">• 30% Margin Expansion (protects extended fingertips)</text>
+    </g>
+
+    <!-- Block 2.3: Multi-Model Evaluation Benchmark -->
+    <g transform="translate(16, 424)">
+      <rect width="323" height="258" rx="10" fill="#111422" stroke="rgba(255,255,255,0.06)" stroke-width="1" />
+      <text x="14" y="24" font-size="12" font-weight="700" fill="#FAF6EE">Benchmark Suite: Unseen Subject 09 (800 Test)</text>
+
+      <!-- Table Header -->
+      <rect x="14" y="34" width="295" height="20" rx="4" fill="#1c2438" />
+      <text x="22" y="48" font-size="9" font-weight="700" fill="#9AA69A">MODEL ARCHITECTURE</text>
+      <text x="180" y="48" font-size="9" font-weight="700" fill="#9AA69A">ACC</text>
+      <text x="225" y="48" font-size="9" font-weight="700" fill="#9AA69A">LATENCY</text>
+      <text x="280" y="48" font-size="9" font-weight="700" fill="#9AA69A">SIZE</text>
+
+      <!-- Row 1: MobileNetV3-Large (SELECTED) -->
+      <rect x="14" y="58" width="295" height="42" rx="5" fill="#0f261e" stroke="#10b981" stroke-width="1.2" />
+      <text x="22" y="74" font-size="10.5" font-weight="800" fill="#10b981">MobileNetV3-Large ★</text>
+      <text x="22" y="88" font-size="8.5" font-weight="500" fill="#a7f3d0">Depthwise Separable (4.2M params)</text>
+      <text x="180" y="78" font-size="11.5" font-weight="900" fill="#10b981">99.25%</text>
+      <text x="225" y="78" font-size="10.5" font-weight="700" fill="#10b981">10.3 ms</text>
+      <text x="280" y="78" font-size="10.5" font-weight="700" fill="#10b981">16.2MB</text>
+
+      <!-- Row 2: VGG16 -->
+      <rect x="14" y="104" width="295" height="34" rx="4" fill="#161c2c" />
+      <text x="22" y="118" font-size="10" font-weight="600" fill="#FAF6EE">VGG16 (Original Baseline)</text>
+      <text x="22" y="130" font-size="8.5" font-weight="400" fill="#9AA69A">134.3M params • Heavy compute</text>
+      <text x="180" y="124" font-size="10.5" font-weight="700" fill="#06b6d4">75.88%</text>
+      <text x="225" y="124" font-size="10" font-weight="500" fill="#9AA69A">14.9 ms</text>
+      <text x="280" y="124" font-size="10" font-weight="500" fill="#9AA69A">512MB</text>
+
+      <!-- Row 3: CustomCompactCNN -->
+      <rect x="14" y="142" width="295" height="34" rx="4" fill="#161c2c" />
+      <text x="22" y="156" font-size="10" font-weight="600" fill="#FAF6EE">CustomCompactCNN (Scratch)</text>
+      <text x="22" y="168" font-size="8.5" font-weight="400" fill="#9AA69A">0.42M params • 0% recall on OK</text>
+      <text x="180" y="162" font-size="10.5" font-weight="700" fill="#f59e0b">67.88%</text>
+      <text x="225" y="162" font-size="10" font-weight="700" fill="#06b6d4">1.3 ms</text>
+      <text x="280" y="162" font-size="10" font-weight="700" fill="#06b6d4">1.6MB</text>
+
+      <!-- Row 4: ResNet50 -->
+      <rect x="14" y="180" width="295" height="34" rx="4" fill="#161c2c" />
+      <text x="22" y="194" font-size="10" font-weight="600" fill="#FAF6EE">ResNet50 (Unadapted)</text>
+      <text x="22" y="206" font-size="8.5" font-weight="400" fill="#f87171">Failed on domain shift</text>
+      <text x="180" y="200" font-size="10.5" font-weight="700" fill="#f87171">36.88%</text>
+      <text x="225" y="200" font-size="10" font-weight="500" fill="#9AA69A">7.6 ms</text>
+      <text x="280" y="200" font-size="10" font-weight="500" fill="#9AA69A">90MB</text>
+
+      <!-- Row 5: EfficientNet-B0 -->
+      <rect x="14" y="218" width="295" height="34" rx="4" fill="#161c2c" />
+      <text x="22" y="232" font-size="10" font-weight="600" fill="#FAF6EE">EfficientNet-B0 (Unadapted)</text>
+      <text x="22" y="244" font-size="8.5" font-weight="400" fill="#f87171">Orientation collapse</text>
+      <text x="180" y="238" font-size="10.5" font-weight="700" fill="#f87171">32.62%</text>
+      <text x="225" y="238" font-size="10" font-weight="500" fill="#9AA69A">11.7 ms</text>
+      <text x="280" y="238" font-size="10" font-weight="500" fill="#9AA69A">15.6MB</text>
+    </g>
+
+    <!-- Block 2.4: Production Selection Banner -->
+    <g transform="translate(16, 694)">
+      <rect width="323" height="116" rx="10" fill="#12251c" stroke="#10b981" stroke-opacity="0.3" stroke-width="1" />
+      <text x="14" y="24" font-size="11.5" font-weight="700" fill="#10b981">Selected for Real-Time Workstation</text>
+      <text x="14" y="42" font-size="10" font-weight="500" fill="#FAF6EE">• Checkpoint: <tspan fill="#10b981">models/gesture_model_config.json</tspan></text>
+      <text x="14" y="58" font-size="9.5" font-weight="400" fill="#9AA69A">• 1/30th footprint of VGG16 + 23.4% higher accuracy</text>
+      <text x="14" y="74" font-size="9.5" font-weight="400" fill="#9AA69A">• Enables real-time &gt;60 FPS edge execution on consumer GPU</text>
+
+      <!-- Action Banner -->
+      <rect x="14" y="84" width="295" height="22" rx="4" fill="#10b981" />
+      <text x="161" y="99" font-size="10" font-weight="800" fill="#080a0f" text-anchor="middle">DEPLOY TO REAL-TIME INFERENCE ➔</text>
+    </g>
+  </g>
+
+  <!-- Flow Connector 2 -> 3 -->
+  <path d="M 790 500 L 833 500" stroke="#06b6d4" stroke-width="2.5" stroke-dasharray="4,3" fill="none" marker-end="url(#arrowCyan)" />
+
+  <!-- ========================================================================= -->
+  <!-- STAGE 3: REAL-TIME HAND LOCALIZATION & GATING (Column 3)                  -->
+  <!-- ========================================================================= -->
+  <g transform="translate(835, 134)">
+    <rect width="355" height="826" rx="16" fill="url(#cardGrad)" stroke="rgba(255,255,255,0.08)" stroke-width="1.2" filter="url(#dropShadow)" />
+    
+    <!-- Stage Header -->
+    <path d="M 0 16 C 0 7.16 7.16 0 16 0 L 339 0 C 347.84 0 355 7.16 355 16 L 355 52 L 0 52 Z" fill="url(#cardHeaderGrad)" />
+    <rect x="16" y="14" width="24" height="24" rx="6" fill="#8b5cf6" fill-opacity="0.2" />
+    <text x="28" y="30" font-size="12" font-weight="800" fill="#8b5cf6" text-anchor="middle">3</text>
+    <text x="48" y="28" font-size="13.5" font-weight="700" fill="#FAF6EE">REAL-TIME HAND LOCALIZATION</text>
+    <text x="48" y="44" font-size="10.5" font-weight="500" fill="#9AA69A">MediaPipe 3D Tracking &amp; Gating</text>
+
+    <!-- Block 3.1: Live Webcam Acquisition -->
+    <g transform="translate(16, 68)">
+      <rect width="323" height="136" rx="10" fill="#111422" stroke="rgba(255,255,255,0.06)" stroke-width="1" />
+      <text x="14" y="24" font-size="12" font-weight="700" fill="#FAF6EE">Webcam Frame Acquisition (OpenCV)</text>
+
+      <rect x="14" y="36" width="295" height="42" rx="6" fill="#171d2d" />
+      <text x="24" y="52" font-size="10.5" font-weight="700" fill="#06b6d4">cv2.VideoCapture(0, cv2.CAP_DSHOW)</text>
+      <text x="24" y="67" font-size="9" font-weight="500" fill="#9AA69A">640×480 BGR Stream @ 30 FPS • Synchronous Processing</text>
+
+      <text x="14" y="96" font-size="10" font-weight="400" fill="#9AA69A">• Color Conversion: <tspan fill="#FAF6EE">cv2.cvtColor(frame, COLOR_BGR2RGB)</tspan></text>
+      <text x="14" y="112" font-size="10" font-weight="400" fill="#9AA69A">• Static Image Verification fallback for benchmark testing</text>
+    </g>
+
+    <!-- Block 3.2: MediaPipe 3D Landmarks -->
+    <g transform="translate(16, 218)">
+      <rect width="323" height="162" rx="10" fill="#111422" stroke="rgba(255,255,255,0.06)" stroke-width="1" />
+      <text x="14" y="24" font-size="12" font-weight="700" fill="#FAF6EE">MediaPipe HandLandmarker (gui/hand_detector.py)</text>
+
+      <rect x="14" y="36" width="295" height="52" rx="6" fill="#1b1730" stroke="rgba(139,92,246,0.2)" />
+      <text x="24" y="52" font-size="10.5" font-weight="700" fill="#a78bfa">21 3D Spatial Landmarks Tracking</text>
+      <text x="24" y="66" font-size="9" font-weight="400" fill="#c4b5fd">Tracks wrist, thumb MCP/IP/tip, finger joints in 3D (x, y, z)</text>
+      <text x="24" y="79" font-size="9" font-weight="500" fill="#a78bfa">min_hand_detection_confidence=0.45</text>
+
+      <text x="14" y="108" font-size="10.5" font-weight="600" fill="#FAF6EE">Standby State Gating:</text>
+      <text x="14" y="124" font-size="9.5" font-weight="400" fill="#9AA69A">If no hand detected → <tspan fill="#f59e0b" font-weight="700">"NO HAND DETECTED"</tspan></text>
+      <text x="14" y="140" font-size="9.5" font-weight="400" fill="#9AA69A">Halts neural forward pass; suppresses ambient hallucinations</text>
+    </g>
+
+    <!-- Block 3.3: Adaptive 30% Margin & Letterboxing -->
+    <g transform="translate(16, 394)">
+      <rect width="323" height="216" rx="10" fill="#111422" stroke="rgba(255,255,255,0.06)" stroke-width="1" />
+      <text x="14" y="24" font-size="12" font-weight="700" fill="#FAF6EE">Adaptive ROI Extraction &amp; Letterboxing</text>
+
+      <rect x="14" y="36" width="295" height="58" rx="6" fill="#10251c" stroke="#10b981" stroke-opacity="0.3" stroke-width="1" />
+      <text x="24" y="52" font-size="10.5" font-weight="700" fill="#10b981">30% Safety Margin Expansion (margin=0.30)</text>
+      <text x="24" y="67" font-size="9" font-weight="400" fill="#a7f3d0">pad_x = max(w * 0.30, 20), pad_y = max(h * 0.30, 20)</text>
+      <text x="24" y="80" font-size="9" font-weight="500" fill="#10b981">Prevents fingertip clipping during upright thumb extension</text>
+
+      <!-- Geometry Steps -->
+      <g transform="translate(14, 102)">
+        <rect x="0" y="0" width="295" height="24" rx="4" fill="#171d2b" />
+        <text x="10" y="16" font-size="9.5" font-weight="600" fill="#FAF6EE">1. Center coordinates: cx, cy = (min + max) / 2</text>
+
+        <rect x="0" y="28" width="295" height="24" rx="4" fill="#171d2b" />
+        <text x="10" y="44" font-size="9.5" font-weight="600" fill="#FAF6EE">2. Square bounding box: max_side = max(w_pad, h_pad)</text>
+
+        <rect x="0" y="56" width="295" height="24" rx="4" fill="#171d2b" />
+        <text x="10" y="72" font-size="9.5" font-weight="600" fill="#FAF6EE">3. Boundary clamping: max(0, cx - side/2), min(W, cx + side/2)</text>
+
+        <rect x="0" y="84" width="295" height="24" rx="4" fill="#102834" />
+        <text x="10" y="100" font-size="9.5" font-weight="700" fill="#06b6d4">4. Letterboxed square resize ➔ 224×224 RGB</text>
+      </g>
+    </g>
+
+    <!-- Block 3.4: Normalization & CUDA Transfer -->
+    <g transform="translate(16, 624)">
+      <rect width="323" height="186" rx="10" fill="#111422" stroke="rgba(255,255,255,0.06)" stroke-width="1" />
+      <text x="14" y="24" font-size="12" font-weight="700" fill="#FAF6EE">Tensor Pipeline &amp; Device Memory</text>
+
+      <rect x="14" y="36" width="295" height="48" rx="6" fill="#182033" />
+      <text x="24" y="52" font-size="10" font-weight="700" fill="#06b6d4">CUDA ACCELERATED FORWARD PASS</text>
+      <text x="24" y="67" font-size="9" font-weight="400" fill="#FAF6EE">torch.cuda.is_available() → 'cuda:0' (NVIDIA GTX 1650)</text>
+      <text x="24" y="77" font-size="8.5" font-weight="500" fill="#9AA69A">Automatic CPU fallback with zero code divergence</text>
+
+      <text x="14" y="106" font-size="10" font-weight="400" fill="#9AA69A">• Memory Pinning: <tspan fill="#FAF6EE">tensor.to(device, non_blocking=True)</tspan></text>
+      <text x="14" y="122" font-size="10" font-weight="400" fill="#9AA69A">• ImageNet Normalize: <tspan fill="#FAF6EE">transforms.Normalize()</tspan></text>
+      <text x="14" y="138" font-size="10" font-weight="400" fill="#9AA69A">• Single frame latency: <tspan fill="#10b981" font-weight="700">&lt; 11 ms end-to-end</tspan></text>
+
+      <rect x="14" y="150" width="295" height="24" rx="4" fill="#3b82f6" fill-opacity="0.15" />
+      <text x="161" y="166" font-size="9.5" font-weight="700" fill="#3b82f6" text-anchor="middle">Feeds MobileNetV3-Large Classifier ➔</text>
+    </g>
+  </g>
+
+  <!-- Flow Connector 3 -> 4 -->
+  <path d="M 1190 500 L 1233 500" stroke="#8b5cf6" stroke-width="2.5" stroke-dasharray="4,3" fill="none" marker-end="url(#arrowPurple)" />
+
+  <!-- ========================================================================= -->
+  <!-- STAGE 4: PRODUCTION INFERENCE, XAI & HUD (Column 4)                       -->
+  <!-- ========================================================================= -->
+  <g transform="translate(1235, 134)">
+    <rect width="315" height="826" rx="16" fill="url(#cardGrad)" stroke="rgba(255,255,255,0.08)" stroke-width="1.2" filter="url(#dropShadow)" />
+    
+    <!-- Stage Header -->
+    <path d="M 0 16 C 0 7.16 7.16 0 16 0 L 299 0 C 307.84 0 315 7.16 315 16 L 315 52 L 0 52 Z" fill="url(#cardHeaderGrad)" />
+    <rect x="16" y="14" width="24" height="24" rx="6" fill="#10b981" fill-opacity="0.2" />
+    <text x="28" y="30" font-size="12" font-weight="800" fill="#10b981" text-anchor="middle">4</text>
+    <text x="48" y="28" font-size="13.5" font-weight="700" fill="#FAF6EE">INFERENCE, XAI &amp; HUD</text>
+    <text x="48" y="44" font-size="10.5" font-weight="500" fill="#9AA69A">MobileNetV3, Grad-CAM &amp; Tkinter</text>
+
+    <!-- Block 4.1: MobileNetV3-Large Classifier -->
+    <g transform="translate(16, 68)">
+      <rect width="283" height="152" rx="10" fill="#111422" stroke="rgba(255,255,255,0.06)" stroke-width="1" />
+      <text x="14" y="24" font-size="12" font-weight="700" fill="#FAF6EE">MobileNetV3 Neural Inference</text>
+
+      <rect x="14" y="36" width="255" height="52" rx="6" fill="#10251c" stroke="#10b981" stroke-opacity="0.3" stroke-width="1" />
+      <text x="22" y="52" font-size="10.5" font-weight="700" fill="#10b981">MobileNetV3-Large Classifier</text>
+      <text x="22" y="66" font-size="9" font-weight="400" fill="#a7f3d0">Parameters: 4.21M • Checkpoint: 16.2 MB</text>
+      <text x="22" y="78" font-size="9" font-weight="700" fill="#10b981">99.25% Test Accuracy on Subject 09</text>
+
+      <text x="14" y="106" font-size="10" font-weight="500" fill="#FAF6EE">• Softmax Probability Vector: <tspan fill="#06b6d4">4 classes</tspan></text>
+      <text x="14" y="122" font-size="9.5" font-weight="400" fill="#9AA69A">• F.softmax(output, dim=1) → [Fist, OK, Palm, Thumb]</text>
+      <text x="14" y="138" font-size="9.5" font-weight="400" fill="#9AA69A">• Pred Conf = max(probs), Pred Label = argmax</text>
+    </g>
+
+    <!-- Block 4.2: Rolling Temporal Smoothing Buffer -->
+    <g transform="translate(16, 234)">
+      <rect width="283" height="156" rx="10" fill="#111422" stroke="rgba(255,255,255,0.06)" stroke-width="1" />
+      <text x="14" y="24" font-size="12" font-weight="700" fill="#FAF6EE">Temporal Majority Voting Buffer</text>
+
+      <rect x="14" y="36" width="255" height="48" rx="6" fill="#182338" />
+      <text x="22" y="52" font-size="10" font-weight="700" fill="#06b6d4">collections.deque(maxlen=7)</text>
+      <text x="22" y="66" font-size="9" font-weight="400" fill="#9AA69A">Rolling 7-frame buffer applies majority consensus</text>
+      <text x="22" y="77" font-size="9" font-weight="500" fill="#06b6d4">Eliminates single-frame prediction flicker</text>
+
+      <!-- Deque Visualization -->
+      <g transform="translate(14, 94)">
+        <rect x="0" y="0" width="34" height="26" rx="4" fill="#102d24" stroke="#10b981" stroke-width="1" />
+        <text x="17" y="17" font-size="8" font-weight="700" fill="#10b981" text-anchor="middle">OK</text>
+
+        <rect x="37" y="0" width="34" height="26" rx="4" fill="#102d24" stroke="#10b981" stroke-width="1" />
+        <text x="54" y="17" font-size="8" font-weight="700" fill="#10b981" text-anchor="middle">OK</text>
+
+        <rect x="74" y="0" width="34" height="26" rx="4" fill="#102d24" stroke="#10b981" stroke-width="1" />
+        <text x="91" y="17" font-size="8" font-weight="700" fill="#10b981" text-anchor="middle">OK</text>
+
+        <rect x="111" y="0" width="34" height="26" rx="4" fill="#102d24" stroke="#10b981" stroke-width="1" />
+        <text x="128" y="17" font-size="8" font-weight="700" fill="#10b981" text-anchor="middle">OK</text>
+
+        <rect x="148" y="0" width="34" height="26" rx="4" fill="#102d24" stroke="#10b981" stroke-width="1" />
+        <text x="165" y="17" font-size="8" font-weight="700" fill="#10b981" text-anchor="middle">OK</text>
+
+        <rect x="185" y="0" width="34" height="26" rx="4" fill="#102d24" stroke="#10b981" stroke-width="1" />
+        <text x="202" y="17" font-size="8" font-weight="700" fill="#10b981" text-anchor="middle">OK</text>
+
+        <rect x="222" y="0" width="33" height="26" rx="4" fill="#102d24" stroke="#10b981" stroke-width="1" />
+        <text x="238" y="17" font-size="8" font-weight="700" fill="#10b981" text-anchor="middle">OK</text>
+      </g>
+      <text x="141" y="140" font-size="9" font-weight="600" fill="#10b981" text-anchor="middle">Consensus Output: "OK" (100% Stability)</text>
+    </g>
+
+    <!-- Block 4.3: Vectorized Grad-CAM Explainability -->
+    <g transform="translate(16, 404)">
+      <rect width="283" height="198" rx="10" fill="#111422" stroke="rgba(255,255,255,0.06)" stroke-width="1" />
+      <text x="14" y="24" font-size="12" font-weight="700" fill="#FAF6EE">Vectorized Grad-CAM Visualizer</text>
+
+      <rect x="14" y="36" width="255" height="52" rx="6" fill="#1b1730" stroke="rgba(139,92,246,0.2)" />
+      <text x="22" y="52" font-size="10.5" font-weight="700" fill="#a78bfa">GPU-Accelerated Activation Heatmaps</text>
+      <text x="22" y="66" font-size="9" font-weight="400" fill="#c4b5fd">Extracts gradients from final conv layer: features[16]</text>
+      <text x="22" y="78" font-size="9" font-weight="500" fill="#a78bfa">Weights channel maps by global average pooled gradients</text>
+
+      <!-- Saliency verification points -->
+      <g transform="translate(14, 96)">
+        <rect x="0" y="0" width="255" height="24" rx="4" fill="#181c2c" />
+        <text x="10" y="16" font-size="9" font-weight="600" fill="#FAF6EE">• ReLU(Σ w_k * A_k) → Smooth colormap blend</text>
+
+        <rect x="0" y="28" width="255" height="24" rx="4" fill="#181c2c" />
+        <text x="10" y="44" font-size="9" font-weight="600" fill="#FAF6EE">• Confirms attention focuses on finger loop &amp; tip</text>
+
+        <rect x="0" y="56" width="255" height="24" rx="4" fill="#10251c" />
+        <text x="10" y="72" font-size="9" font-weight="700" fill="#10b981">• Verifies ZERO background clutter distraction</text>
+      </g>
+    </g>
+
+    <!-- Block 4.4: Cybernetic Tkinter Desktop Workstation -->
+    <g transform="translate(16, 616)">
+      <rect width="283" height="194" rx="10" fill="#111422" stroke="rgba(255,255,255,0.06)" stroke-width="1" />
+      <text x="14" y="24" font-size="11.5" font-weight="700" fill="#FAF6EE">Cybernetic HUD Workstation (gui/app.py)</text>
+
+      <!-- Mini HUD Wireframe -->
+      <g transform="translate(14, 34)">
+        <rect width="255" height="114" rx="6" fill="#0d0f1a" stroke="rgba(255,255,255,0.08)" />
+        <rect x="6" y="6" width="160" height="102" rx="4" fill="#131726" />
+        
+        <!-- Live HUD elements -->
+        <rect x="30" y="24" width="110" height="68" rx="4" fill="none" stroke="#06b6d4" stroke-width="1.5" />
+        <text x="85" y="44" font-size="9" font-weight="800" fill="#10b981" text-anchor="middle">GESTURE: OK</text>
+        <text x="85" y="58" font-size="8" font-weight="700" fill="#06b6d4" text-anchor="middle">CONF: 100.0%</text>
+        <text x="85" y="72" font-size="7.5" font-weight="500" fill="#9AA69A" text-anchor="middle">LATENCY: 10.3 ms</text>
+
+        <!-- Right telemetry panel -->
+        <rect x="172" y="6" width="77" height="102" rx="4" fill="#171c2f" />
+        <text x="178" y="20" font-size="7.5" font-weight="800" fill="#06b6d4">PROBS</text>
+        <text x="178" y="34" font-size="7" font-weight="700" fill="#10b981">OK: 1.00</text>
+        <text x="178" y="47" font-size="7" font-weight="400" fill="#9AA69A">Fist: 0.00</text>
+        <text x="178" y="60" font-size="7" font-weight="400" fill="#9AA69A">Palm: 0.00</text>
+        <text x="178" y="73" font-size="7" font-weight="400" fill="#9AA69A">Thb: 0.00</text>
+        <text x="178" y="92" font-size="7.5" font-weight="700" fill="#FAF6EE">97.0 FPS</text>
+      </g>
+      <text x="141" y="172" font-size="9" font-weight="600" fill="#3b82f6" text-anchor="middle">Verified GUI: docs/images/gesture-recognition-demo-1.png</text>
+    </g>
+  </g>
+</svg>

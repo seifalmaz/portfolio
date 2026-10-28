@@ -1,4 +1,5 @@
 import HeroSection from "../components/sections/HeroSection";
+import DataToIntelligenceSection from "../components/sections/DataToIntelligenceSection";
 import AboutSection from "../components/sections/AboutSection";
 import SkillsSection from "../components/sections/SkillsSection";
 import FeaturedProjectsSection from "../components/sections/FeaturedProjectsSection";
@@ -17,6 +18,7 @@ function HomePage() {
     <PageTransition>
       <SEO pathname="/" />
       {vis.hero !== false && <HeroSection />}
+      {vis.hero !== false && <DataToIntelligenceSection />}
       {vis.about !== false && <AboutSection />}
       {vis.skills !== false && <SkillsSection />}
       {vis.projects !== false && <FeaturedProjectsSection />}

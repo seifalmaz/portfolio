@@ -21,7 +21,7 @@ function getStepIcon(stepTitle = "") {
   return <FaCode className="w-4 h-4 text-cyan-400" />;
 }
 
-function ProjectArchitectureDiagram({ architecture, pipeline = [], workflow = [], steps = [] }) {
+function ProjectArchitectureDiagram({ architecture, pipeline = [], workflow = [], steps = [], architectureImage }) {
   const stepsList = Array.isArray(pipeline) && pipeline.length > 0
     ? pipeline
     : Array.isArray(workflow) && workflow.length > 0
@@ -32,17 +32,35 @@ function ProjectArchitectureDiagram({ architecture, pipeline = [], workflow = []
 
   const hasArchitectureText = typeof architecture === "string" && architecture.trim() !== "";
   const hasSteps = stepsList.length > 0;
+  const hasImage = Boolean(architectureImage);
 
-  if (!hasArchitectureText && !hasSteps) return null;
+  if (!hasArchitectureText && !hasSteps && !hasImage) return null;
 
   return (
-    <section className="rounded-2xl border border-white/10 bg-slate-950/50 p-8 backdrop-blur-md">
-      <div className="flex items-center gap-3 mb-6 text-blue-400">
+    <section className="rounded-2xl border border-[#FAF6EE]/15 bg-[#211f1e] p-8 backdrop-blur-md">
+      <div className="flex items-center gap-3 mb-6 text-burgundy">
         <FaGears className="w-5 h-5" />
-        <h2 className="text-xl font-bold text-white tracking-tight">
+        <h2 className="text-xl font-bold text-[#FAF6EE] tracking-tight">
           System Architecture &amp; Execution Pipeline
         </h2>
       </div>
+
+      {/* High-Level Architecture Diagram Asset */}
+      {hasImage && (
+        <div className="mb-8 overflow-hidden rounded-xl border border-[#FAF6EE]/15 bg-[#141211] shadow-2xl">
+          <div className="px-4 py-2.5 bg-[#292725] border-b border-[#FAF6EE]/10 flex items-center justify-between text-xs text-[#9AA69A]">
+            <span className="font-semibold text-[#FAF6EE]">Verified High-Level System Architecture</span>
+            <span className="font-mono text-[11px] text-sage">Visual Pipeline Blueprint</span>
+          </div>
+          <div className="p-2 sm:p-4 bg-[#080a0f] flex items-center justify-center">
+            <img
+              src={architectureImage}
+              alt="System Architecture Diagram"
+              className="w-full h-auto max-h-[600px] object-contain rounded-lg"
+            />
+          </div>
+        </div>
+      )}
 
       {/* Visual Pipeline Flow */}
       {hasSteps && (
@@ -51,22 +69,22 @@ function ProjectArchitectureDiagram({ architecture, pipeline = [], workflow = []
             {stepsList.map((step, idx) => (
               <div
                 key={idx}
-                className="relative flex flex-col justify-between p-5 rounded-xl border border-white/10 bg-white/[0.03] backdrop-blur-sm transition hover:border-blue-500/30"
+                className="relative flex flex-col justify-between p-5 rounded-xl border border-[#FAF6EE]/10 bg-[#292725]/60 backdrop-blur-sm transition hover:border-burgundy/40"
               >
                 <div>
                   <div className="flex items-center justify-between gap-2 mb-3">
-                    <span className="flex items-center justify-center w-6 h-6 rounded-full bg-blue-500/20 text-blue-400 text-xs font-bold border border-blue-500/30">
+                    <span className="flex items-center justify-center w-6 h-6 rounded-full bg-burgundy/20 text-[#FAF6EE] text-xs font-bold border border-burgundy/40">
                       {idx + 1}
                     </span>
                     {step?.icon || getStepIcon(step?.title)}
                   </div>
                   {step?.title && (
-                    <h3 className="text-sm font-bold text-white mb-2">
+                    <h3 className="text-sm font-bold text-[#FAF6EE] mb-2">
                       {step.title}
                     </h3>
                   )}
                   {step?.description && (
-                    <p className="text-xs text-gray-400 leading-relaxed mb-4">
+                    <p className="text-xs text-[#9AA69A] leading-relaxed mb-4">
                       {step.description}
                     </p>
                   )}
@@ -74,7 +92,7 @@ function ProjectArchitectureDiagram({ architecture, pipeline = [], workflow = []
 
                 {step?.tech && (
                   <div className="pt-3 border-t border-white/5">
-                    <span className="text-[11px] font-medium text-blue-300 bg-blue-500/10 px-2 py-0.5 rounded border border-blue-500/20">
+                    <span className="text-[11px] font-mono font-medium text-sage bg-sage/10 px-2 py-0.5 rounded border border-sage/20">
                       {step.tech}
                     </span>
                   </div>

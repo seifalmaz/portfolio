@@ -9,13 +9,13 @@ function ProjectNav({ prev, next }) {
       {prev ? (
         <Link
           to={`/projects/${prev.slug}`}
-          className="group flex flex-col items-start gap-1 p-4 rounded-xl border border-white/5 bg-slate-950/40 hover:border-blue-500/30 hover:bg-blue-500/5 transition w-full sm:w-1/2"
+          className="group flex flex-col items-start gap-1 p-4 rounded-xl border border-[#FAF6EE]/10 bg-[#211f1e] hover:border-burgundy/50 hover:bg-burgundy/10 transition w-full sm:w-1/2"
         >
-          <span className="inline-flex items-center gap-1.5 text-xs text-gray-400 group-hover:text-blue-400 transition font-medium">
+          <span className="inline-flex items-center gap-1.5 text-xs text-sage group-hover:text-[#F2E8D5] transition font-medium">
             <FaArrowLeft className="w-3 h-3 transition-transform group-hover:-translate-x-1" />
             Previous Project
           </span>
-          <span className="text-sm font-bold text-white group-hover:text-blue-300 transition line-clamp-1">
+          <span className="text-sm font-bold text-white group-hover:text-[#FAF6EE] transition line-clamp-1">
             {prev.title}
           </span>
         </Link>
@@ -26,13 +26,13 @@ function ProjectNav({ prev, next }) {
       {next ? (
         <Link
           to={`/projects/${next.slug}`}
-          className="group flex flex-col items-end gap-1 p-4 rounded-xl border border-white/5 bg-slate-950/40 hover:border-blue-500/30 hover:bg-blue-500/5 transition w-full sm:w-1/2 text-right"
+          className="group flex flex-col items-end gap-1 p-4 rounded-xl border border-[#FAF6EE]/10 bg-[#211f1e] hover:border-burgundy/50 hover:bg-burgundy/10 transition w-full sm:w-1/2 text-right"
         >
-          <span className="inline-flex items-center gap-1.5 text-xs text-gray-400 group-hover:text-blue-400 transition font-medium">
+          <span className="inline-flex items-center gap-1.5 text-xs text-sage group-hover:text-[#F2E8D5] transition font-medium">
             Next Project
             <FaArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-1" />
           </span>
-          <span className="text-sm font-bold text-white group-hover:text-blue-300 transition line-clamp-1">
+          <span className="text-sm font-bold text-white group-hover:text-[#FAF6EE] transition line-clamp-1">
             {next.title}
           </span>
         </Link>

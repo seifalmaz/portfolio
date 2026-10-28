@@ -23,22 +23,22 @@ function ProjectHeader({ project }) {
       </Link>
 
       <div className="flex flex-wrap items-center gap-3 mb-4">
-        {project.category && <Badge variant="blue">{project.category}</Badge>}
+        {project.category && <Badge variant="burgundy">{project.category}</Badge>}
         {project.timeline && (
-          <span className="inline-flex items-center gap-1.5 text-xs text-gray-400 bg-white/5 border border-white/10 px-3 py-1 rounded-full font-medium">
-            <FaCalendar className="w-3 h-3 text-blue-400" />
+          <span className="inline-flex items-center gap-1.5 text-xs text-[#9AA69A] bg-[#FAF6EE]/5 border border-[#FAF6EE]/10 px-3 py-1 rounded-full font-medium">
+            <FaCalendar className="w-3 h-3 text-burgundy" />
             {project.timeline}
           </span>
         )}
         {project.role && (
-          <span className="inline-flex items-center gap-1.5 text-xs text-gray-300 bg-white/5 border border-white/10 px-3 py-1 rounded-full font-medium">
-            <FaUserGear className="w-3 h-3 text-indigo-400" />
+          <span className="inline-flex items-center gap-1.5 text-xs text-[#F2E8D5] bg-[#FAF6EE]/5 border border-[#FAF6EE]/10 px-3 py-1 rounded-full font-medium">
+            <FaUserGear className="w-3 h-3 text-sage" />
             {project.role}
           </span>
         )}
         {project.team && (
-          <span className="inline-flex items-center gap-1.5 text-xs text-gray-300 bg-white/5 border border-white/10 px-3 py-1 rounded-full font-medium">
-            <FaUsers className="w-3 h-3 text-cyan-400" />
+          <span className="inline-flex items-center gap-1.5 text-xs text-[#F2E8D5] bg-[#FAF6EE]/5 border border-[#FAF6EE]/10 px-3 py-1 rounded-full font-medium">
+            <FaUsers className="w-3 h-3 text-sage" />
             {project.team}
           </span>
         )}
@@ -47,13 +47,13 @@ function ProjectHeader({ project }) {
       <motion.h1
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight leading-tight mb-4"
+        className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#FAF6EE] tracking-tight leading-tight mb-4"
       >
         {project.title}
       </motion.h1>
 
       {project.subtitle && (
-        <p className="text-lg text-gray-300 max-w-3xl leading-relaxed mb-6 font-light">
+        <p className="text-lg text-[#F2E8D5]/80 max-w-3xl leading-relaxed mb-6 font-light">
           {project.subtitle}
         </p>
       )}
@@ -64,7 +64,7 @@ function ProjectHeader({ project }) {
           {stack.map((tech) => (
             <span
               key={tech}
-              className="text-xs font-medium text-blue-300 bg-blue-500/10 border border-blue-500/20 px-3 py-1 rounded-lg"
+              className="text-xs font-mono font-medium text-[#FAF6EE] bg-burgundy/15 border border-burgundy/30 px-3 py-1 rounded-lg"
             >
               {tech}
             </span>
@@ -76,7 +76,7 @@ function ProjectHeader({ project }) {
       {(demoLink || githubLink) && (
         <div className="flex flex-wrap items-center gap-4">
           {demoLink && (
-            <Button href={demoLink} target="_blank" rel="noopener noreferrer" variant="blue" className="gap-2 text-xs">
+            <Button href={demoLink} target="_blank" rel="noopener noreferrer" variant="burgundy" className="gap-2 text-xs">
               <FaGlobe className="w-4 h-4" />
               Live Demo
             </Button>
@@ -92,13 +92,13 @@ function ProjectHeader({ project }) {
 
       {/* Key Metrics Strip if available */}
       {project.keyMetrics && project.keyMetrics.length > 0 && (
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-10 p-6 rounded-2xl border border-white/10 bg-slate-950/60 backdrop-blur-md">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-10 p-6 rounded-2xl border border-[#FAF6EE]/15 bg-[#211f1e] backdrop-blur-md">
           {project.keyMetrics.map((m, idx) => (
             <div key={idx} className="flex flex-col">
-              <span className="text-xs font-medium text-gray-400 uppercase tracking-wider mb-1">
+              <span className="text-xs font-medium text-sage uppercase tracking-wider mb-1">
                 {m.label}
               </span>
-              <span className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+              <span className="text-xl sm:text-2xl font-bold text-[#FAF6EE] tracking-tight">
                 {m.value}
               </span>
             </div>

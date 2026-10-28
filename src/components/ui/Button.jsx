@@ -2,12 +2,13 @@ import { motion } from "framer-motion";
 
 function Button({ children, onClick, href, variant = "primary", className = "", ...props }) {
   const baseStyles =
-    "inline-flex items-center justify-center gap-2 rounded-full font-medium text-sm focus-visible:outline-2 focus-visible:outline-blue-400";
+    "inline-flex items-center justify-center gap-2 rounded-full font-semibold text-xs uppercase tracking-wider transition-all duration-200 focus-visible:outline-2 focus-visible:outline-[#6E2638]";
 
   const variants = {
-    primary: "bg-white text-black hover:bg-gray-200 px-6 py-3 shadow-lg shadow-white/10",
-    blue: "bg-blue-500 text-white hover:bg-blue-600 px-6 py-3 shadow-lg shadow-blue-500/25",
-    outline: "border border-white/20 bg-white/5 text-white hover:border-blue-400/50 hover:bg-blue-500/10 hover:text-blue-400 px-6 py-3 backdrop-blur-sm"
+    primary: "bg-[#6E2638] text-[#FAF6EE] hover:bg-[#451824] px-6 py-3 shadow-lg shadow-[#6E2638]/25 border border-[#6E2638]",
+    burgundy: "bg-[#6E2638] text-[#FAF6EE] hover:bg-[#451824] px-6 py-3 shadow-lg shadow-[#6E2638]/25 border border-[#6E2638]",
+    cream: "bg-[#F2E8D5] text-[#292725] hover:bg-[#FAF6EE] px-6 py-3 shadow-md border border-[#D2C7B6]",
+    outline: "border border-[#D2C7B6]/30 bg-[#292725]/40 text-[#FAF6EE] hover:border-[#6E2638] hover:bg-[#6E2638]/15 px-6 py-3 backdrop-blur-sm"
   };
 
   const combinedClass = `${baseStyles} ${variants[variant] || variants.primary} ${className}`;

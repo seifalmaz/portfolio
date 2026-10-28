@@ -57,17 +57,17 @@ function ProjectsPage() {
         description="Explore technical breakdowns, predictive models, Power BI executive dashboards, and computer vision systems built by Seif Almaz."
         pathname="/projects"
       />
-      <div className="min-h-screen bg-black pt-32 pb-24 text-white">
+      <div className="min-h-screen bg-[#292725] pt-32 pb-24 text-white">
         <div className="mx-auto max-w-7xl px-6">
           {/* Header */}
           <div className="mb-12">
-            <p className="mb-3 text-xs font-bold uppercase tracking-[0.3em] text-blue-400">
+            <p className="mb-3 text-xs font-bold uppercase tracking-[0.3em] text-sage">
               PORTFOLIO CATALOG
             </p>
-            <h1 className="text-4xl font-bold md:text-5xl lg:text-6xl tracking-tight">
-              Projects &amp; <span className="text-blue-400">Case Studies</span>
+            <h1 className="text-4xl font-bold md:text-5xl lg:text-6xl tracking-tight text-[#FAF6EE]">
+              Projects &amp; <span className="text-burgundy">Case Studies</span>
             </h1>
-            <p className="mt-4 max-w-2xl text-gray-400 leading-relaxed font-light">
+            <p className="mt-4 max-w-2xl text-[#9AA69A] leading-relaxed font-light">
               Explore complete technical breakdowns, system architectures, machine learning models, real-time computer vision applications, and executive dashboards.
             </p>
           </div>

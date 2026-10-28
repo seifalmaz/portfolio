@@ -34,6 +34,7 @@ export function fromDBRow(row) {
     businessProblem: row.business_problem || row.businessProblem || local?.businessProblem || '',
     datasetDescription: row.dataset_description || row.datasetDescription || local?.datasetDescription || '',
     architecture: row.architecture || local?.architecture || '',
+    architectureImage: local?.architectureImage || row.architecture_image || null,
     methodology: row.methodology || local?.methodology || '',
     keyMetrics: (row.key_metrics && row.key_metrics.length > 0) ? row.key_metrics : (local?.keyMetrics || []),
     metricsDeepDive: (row.metrics_deep_dive && row.metrics_deep_dive.length > 0) ? row.metrics_deep_dive : (local?.metricsDeepDive || []),

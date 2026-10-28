@@ -19,11 +19,11 @@ function Navbar() {
 
   const activeSection = useActiveSection(HOMEPAGE_SECTIONS, 140);
 
-  // Scroll detection for backdrop blur (only updates when boolean threshold transitions)
+  // Scroll detection for backdrop blur
   useEffect(() => {
     const handleScroll = () => {
-      const isPast = window.scrollY > 40;
-      setScrolled(prev => (prev !== isPast ? isPast : prev));
+      const isPast = window.scrollY > 30;
+      setScrolled((prev) => (prev !== isPast ? isPast : prev));
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -58,27 +58,32 @@ function Navbar() {
   };
 
   return (
-    <header className="fixed top-0 left-0 z-50 w-full">
+    <header className="fixed top-0 left-0 z-50 w-full transition-all duration-300">
       <nav
         aria-label="Main Navigation"
         className={`w-full transition-all duration-300 ${
           scrolled
-            ? "border-b border-white/10 bg-slate-950/80 backdrop-blur-md shadow-lg shadow-black/50 py-4"
-            : "bg-transparent py-6"
+            ? "border-b border-[#D2C7B6]/15 bg-[#1C1A19]/85 backdrop-blur-xl shadow-lg shadow-black/30 py-3.5"
+            : "bg-transparent py-5"
         }`}
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-8">
-          {/* Brand Logo */}
+          {/* Brand Logo with SA Monogram */}
           <Link
             to="/"
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="text-xl font-bold tracking-tight text-white transition duration-300 hover:text-blue-400 focus-visible:outline-2 focus-visible:outline-blue-400 rounded-md"
+            className="group flex items-center gap-2.5 rounded-lg focus-visible:outline-2 focus-visible:outline-[#6E2638]"
           >
-            Seif<span className="text-blue-400">.</span>
+            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#6E2638] text-xs font-bold text-[#FAF6EE] shadow-sm transition duration-200 group-hover:bg-[#451824]">
+              SA
+            </span>
+            <span className="text-base sm:text-lg font-bold tracking-tight text-[#FAF6EE] transition duration-200 group-hover:text-[#F2E8D5]">
+              Seif Almaz<span className="text-[#6E2638]">.</span>
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden items-center gap-1 md:flex">
+          <div className="hidden items-center gap-1 md:flex rounded-full border border-[#D2C7B6]/15 bg-[#292725]/60 px-2 py-1 backdrop-blur-md">
             {navItems.map((item) => {
               const active = isItemActive(item);
               return (
@@ -87,8 +92,8 @@ function Navbar() {
                     <Link
                       to={item.href}
                       onClick={() => setMobileMenuOpen(false)}
-                      className={`relative z-10 text-sm font-medium transition duration-200 focus-visible:outline-2 focus-visible:outline-blue-400 rounded-md px-1 py-0.5 ${
-                        active ? "text-white" : "text-gray-400 hover:text-white"
+                      className={`relative z-10 text-xs uppercase tracking-wider font-semibold transition duration-200 focus-visible:outline-2 focus-visible:outline-[#6E2638] rounded-md px-1.5 py-0.5 ${
+                        active ? "text-[#FAF6EE]" : "text-[#9AA69A] hover:text-[#FAF6EE]"
                       }`}
                       aria-current={active ? "page" : undefined}
                     >
@@ -98,8 +103,8 @@ function Navbar() {
                     <a
                       href={item.href}
                       onClick={(e) => handleItemClick(e, item)}
-                      className={`relative z-10 text-sm font-medium transition duration-200 focus-visible:outline-2 focus-visible:outline-blue-400 rounded-md px-1 py-0.5 ${
-                        active ? "text-white" : "text-gray-400 hover:text-white"
+                      className={`relative z-10 text-xs uppercase tracking-wider font-semibold transition duration-200 focus-visible:outline-2 focus-visible:outline-[#6E2638] rounded-md px-1.5 py-0.5 ${
+                        active ? "text-[#FAF6EE]" : "text-[#9AA69A] hover:text-[#FAF6EE]"
                       }`}
                       aria-current={active ? "page" : undefined}
                     >
@@ -111,7 +116,7 @@ function Navbar() {
                   {active && (
                     <motion.div
                       layoutId="activeNavPill"
-                      className="absolute inset-0 z-0 rounded-full bg-blue-500/10 border border-blue-500/20"
+                      className="absolute inset-0 z-0 rounded-full bg-[#6E2638]/20 border border-[#6E2638]/40"
                       transition={{ type: "spring", stiffness: 450, damping: 32 }}
                     />
                   )}
@@ -120,16 +125,16 @@ function Navbar() {
             })}
           </div>
 
-          {/* Right Action: Resume Download & Mobile Toggle */}
-          <div className="flex items-center gap-4">
+          {/* Right Action: Resume & Mobile Toggle */}
+          <div className="flex items-center gap-3">
             {settings?.show_resume_button !== false && (
               <a
                 href={currentProfile.resumeUrl || personalData.resumeUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-2 text-xs font-medium text-blue-300 backdrop-blur-sm transition duration-200 hover:border-blue-400/60 hover:bg-blue-500/20 hover:text-white shadow-[0_0_12px_rgba(59,130,246,0.15)] focus-visible:outline-2 focus-visible:outline-blue-400"
+                className="hidden sm:inline-flex items-center gap-1.5 rounded-full border border-[#6E2638] bg-[#6E2638] px-4 py-1.5 text-xs font-semibold text-[#FAF6EE] shadow-[0_2px_12px_rgba(110,38,56,0.3)] transition duration-200 hover:bg-[#451824] hover:border-[#451824] focus-visible:outline-2 focus-visible:outline-[#6E2638]"
               >
-                Resume
+                <span>Résumé</span>
               </a>
             )}
 
@@ -138,9 +143,9 @@ function Navbar() {
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-expanded={mobileMenuOpen}
               aria-label={mobileMenuOpen ? "Close Menu" : "Open Menu"}
-              className="flex h-10 w-10 items-center justify-center rounded-lg border border-blue-500/20 bg-blue-500/5 text-gray-300 transition duration-200 hover:text-white hover:border-blue-400/40 hover:bg-blue-500/10 focus-visible:outline-2 focus-visible:outline-blue-400 md:hidden"
+              className="flex h-9 w-9 items-center justify-center rounded-lg border border-[#D2C7B6]/20 bg-[#292725]/80 text-[#FAF6EE] transition duration-200 hover:text-[#FAF6EE] hover:border-[#6E2638] hover:bg-[#6E2638]/20 focus-visible:outline-2 focus-visible:outline-[#6E2638] md:hidden"
             >
-              {mobileMenuOpen ? <FaXmark className="h-5 w-5 text-blue-400" /> : <FaBars className="h-5 w-5" />}
+              {mobileMenuOpen ? <FaXmark className="h-4 w-4 text-[#FAF6EE]" /> : <FaBars className="h-4 w-4" />}
             </button>
           </div>
         </div>
@@ -157,7 +162,7 @@ function Navbar() {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
               onClick={() => setMobileMenuOpen(false)}
-              className="fixed inset-0 z-40 bg-black/80 backdrop-blur-md md:hidden"
+              className="fixed inset-0 z-40 bg-black/70 backdrop-blur-md md:hidden"
             />
 
             {/* Drawer Panel */}
@@ -166,24 +171,29 @@ function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", stiffness: 400, damping: 35 }}
-              className="fixed top-0 right-0 z-50 h-full w-4/5 max-w-sm border-l border-blue-500/20 bg-slate-950/95 bg-gradient-to-b from-blue-950/40 via-slate-950 to-slate-950 p-6 shadow-[-10px_0_35px_rgba(37,99,235,0.2)] backdrop-blur-xl md:hidden flex flex-col justify-between overflow-y-auto"
+              className="fixed top-0 right-0 z-50 h-full w-4/5 max-w-sm border-l border-[#D2C7B6]/20 bg-[#1C1A19]/95 p-6 shadow-2xl backdrop-blur-xl md:hidden flex flex-col justify-between overflow-y-auto"
             >
               <div>
-                <div className="flex items-center justify-between border-b border-blue-500/15 pb-4">
-                  <span className="text-lg font-bold text-white tracking-tight">
-                    Navigation<span className="text-blue-400">.</span>
-                  </span>
+                <div className="flex items-center justify-between border-b border-[#D2C7B6]/15 pb-4">
+                  <div className="flex items-center gap-2">
+                    <span className="flex h-7 w-7 items-center justify-center rounded-md bg-[#6E2638] text-xs font-bold text-[#FAF6EE]">
+                      SA
+                    </span>
+                    <span className="text-base font-bold text-[#FAF6EE] tracking-tight">
+                      Navigation<span className="text-[#6E2638]">.</span>
+                    </span>
+                  </div>
                   <button
                     onClick={() => setMobileMenuOpen(false)}
                     aria-label="Close Menu"
-                    className="rounded-lg p-2 text-gray-400 hover:text-white hover:bg-blue-500/10 transition duration-150"
+                    className="rounded-lg p-2 text-[#9AA69A] hover:text-[#FAF6EE] hover:bg-[#292725] transition duration-150"
                   >
-                    <FaXmark className="h-5 w-5 text-blue-400" />
+                    <FaXmark className="h-5 w-5 text-[#FAF6EE]" />
                   </button>
                 </div>
 
                 {/* Mobile Drawer Links */}
-                <div className="mt-8 flex flex-col gap-3">
+                <div className="mt-8 flex flex-col gap-2.5">
                   {navItems.map((item, index) => {
                     const active = isItemActive(item);
                     return (
@@ -191,33 +201,33 @@ function Navbar() {
                         key={item.label}
                         initial={{ opacity: 0, x: 20 }}
                         animate={{ opacity: 1, x: 0 }}
-                        transition={{ delay: index * 0.05 }}
+                        transition={{ delay: index * 0.04 }}
                       >
                         {item.type === "route" ? (
                           <Link
                             to={item.href}
                             onClick={() => setMobileMenuOpen(false)}
-                            className={`flex items-center justify-between rounded-xl px-4 py-3 text-base font-medium transition duration-200 ${
+                            className={`flex items-center justify-between rounded-xl px-4 py-3 text-sm font-semibold transition duration-200 ${
                               active
-                                ? "bg-blue-500/15 text-blue-300 border border-blue-500/30 shadow-[0_0_15px_rgba(59,130,246,0.15)]"
-                                : "text-gray-300 hover:bg-blue-500/10 hover:text-blue-200 hover:border hover:border-blue-500/20"
+                                ? "bg-[#6E2638]/20 text-[#FAF6EE] border border-[#6E2638]/40"
+                                : "text-[#9AA69A] hover:bg-[#292725] hover:text-[#FAF6EE]"
                             }`}
                           >
-                            {item.label}
-                            {active && <span className="h-2 w-2 rounded-full bg-blue-400 shadow-[0_0_8px_rgba(96,165,250,0.8)]" />}
+                            <span>{item.label}</span>
+                            {active && <span className="h-2 w-2 rounded-full bg-[#6E2638]" />}
                           </Link>
                         ) : (
                           <a
                             href={item.href}
                             onClick={(e) => handleItemClick(e, item)}
-                            className={`flex items-center justify-between rounded-xl px-4 py-3 text-base font-medium transition duration-200 ${
+                            className={`flex items-center justify-between rounded-xl px-4 py-3 text-sm font-semibold transition duration-200 ${
                               active
-                                ? "bg-blue-500/15 text-blue-300 border border-blue-500/30 shadow-[0_0_15px_rgba(59,130,246,0.15)]"
-                                : "text-gray-300 hover:bg-blue-500/10 hover:text-blue-200 hover:border hover:border-blue-500/20"
+                                ? "bg-[#6E2638]/20 text-[#FAF6EE] border border-[#6E2638]/40"
+                                : "text-[#9AA69A] hover:bg-[#292725] hover:text-[#FAF6EE]"
                             }`}
                           >
-                            {item.label}
-                            {active && <span className="h-2 w-2 rounded-full bg-blue-400 shadow-[0_0_8px_rgba(96,165,250,0.8)]" />}
+                            <span>{item.label}</span>
+                            {active && <span className="h-2 w-2 rounded-full bg-[#6E2638]" />}
                           </a>
                         )}
                       </motion.div>
@@ -228,15 +238,15 @@ function Navbar() {
 
               {/* Mobile Footer Action */}
               {settings?.show_resume_button !== false && (
-                <div className="mt-12 pt-6 border-t border-blue-500/15 text-center">
+                <div className="mt-12 pt-6 border-t border-[#D2C7B6]/15 text-center">
                   <a
                     href={currentProfile.resumeUrl || personalData.resumeUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     download={currentProfile.resumeFilename || personalData.resumeFilename || "Seif_Almaz_CV.pdf"}
-                    className="block w-full rounded-full bg-gradient-to-r from-blue-600 to-blue-500 py-3 text-center text-sm font-semibold text-white transition hover:from-blue-500 hover:to-blue-400 shadow-lg shadow-blue-500/30 border border-blue-400/30"
+                    className="block w-full rounded-full bg-[#6E2638] py-3 text-center text-sm font-semibold text-[#FAF6EE] transition hover:bg-[#451824] shadow-md shadow-[#6E2638]/25"
                   >
-                    Download Resume (PDF)
+                    Download Résumé (PDF)
                   </a>
                 </div>
               )}
