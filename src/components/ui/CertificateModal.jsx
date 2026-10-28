@@ -23,15 +23,19 @@ const PdfDocumentViewer = lazy(() => import("./PdfDocumentViewer"));
 function CertificateModal({ isOpen, onClose, certificate }) {
   const closeButtonRef = useRef(null);
 
-  // Lock background scroll while open; restore on unmount/close
+  // Lock background scroll and mark modal state on document.body; restore on unmount/close
   useEffect(() => {
     if (isOpen) {
       const originalOverflow = document.body.style.overflow;
       document.body.style.overflow = "hidden";
+      document.body.classList.add("modal-open", "certificate-modal-open");
       setTimeout(() => closeButtonRef.current?.focus(), 50);
       return () => {
         document.body.style.overflow = originalOverflow;
+        document.body.classList.remove("modal-open", "certificate-modal-open");
       };
+    } else {
+      document.body.classList.remove("modal-open", "certificate-modal-open");
     }
   }, [isOpen]);
 
@@ -81,7 +85,7 @@ function CertificateModal({ isOpen, onClose, certificate }) {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
             style={{ zIndex: 99998 }}
-            className="fixed inset-0 bg-black/85 backdrop-blur-md"
+            className="fixed inset-0 bg-black/85 backdrop-blur-md certificate-modal-backdrop cursor-pointer"
             onClick={onClose}
             aria-hidden="true"
           />
@@ -92,14 +96,16 @@ function CertificateModal({ isOpen, onClose, certificate }) {
             role="dialog"
             aria-modal="true"
             aria-labelledby="cert-modal-title"
+            data-modal="certificate"
             initial={{ opacity: 0, scale: 0.96, y: 10 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.96, y: 10 }}
             transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
             style={{ zIndex: 99999 }}
-            className="fixed inset-0 overflow-y-auto p-3 sm:p-6 md:p-8 flex items-center justify-center pointer-events-none"
+            className="fixed inset-0 overflow-y-auto p-3 sm:p-6 md:p-8 flex items-center justify-center pointer-events-none certificate-modal-container"
           >
             <div
+              data-modal="certificate"
               className={`relative w-full ${
                 isPdf ? "max-w-5xl" : "max-w-4xl"
               } m-auto pointer-events-auto rounded-2xl border border-[#D2C7B6]/25 bg-[#1C1A19] shadow-2xl flex flex-col overflow-hidden`}

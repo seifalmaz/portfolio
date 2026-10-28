@@ -75,6 +75,23 @@ function Cursor() {
       mouseX = e.clientX;
       mouseY = e.clientY;
 
+      const isModalActive =
+        document.body.classList.contains("modal-open") ||
+        document.body.classList.contains("certificate-modal-open") ||
+        Boolean(
+          e.target &&
+          typeof e.target.closest === "function" &&
+          e.target.closest("[data-modal='certificate'], .certificate-modal-container, .certificate-modal-backdrop")
+        );
+
+      if (isModalActive) {
+        if (containerRef.current && isVisible) {
+          containerRef.current.style.opacity = "0";
+          isVisible = false;
+        }
+        return;
+      }
+
       if (!isVisible && containerRef.current) {
         isVisible = true;
         containerRef.current.style.opacity = "1";
@@ -84,6 +101,23 @@ function Cursor() {
     };
 
     const handleMouseOver = (e) => {
+      const isModalActive =
+        document.body.classList.contains("modal-open") ||
+        document.body.classList.contains("certificate-modal-open") ||
+        Boolean(
+          e.target &&
+          typeof e.target.closest === "function" &&
+          e.target.closest("[data-modal='certificate'], .certificate-modal-container, .certificate-modal-backdrop")
+        );
+
+      if (isModalActive) {
+        if (containerRef.current && isVisible) {
+          containerRef.current.style.opacity = "0";
+          isVisible = false;
+        }
+        return;
+      }
+
       if (e.target && typeof e.target.closest === "function") {
         const target = e.target.closest(
           "button, a, select, [role='button'], .cursor-pointer, input[type='checkbox'], input[type='submit']"
@@ -113,6 +147,11 @@ function Cursor() {
     };
 
     const handleMouseEnter = () => {
+      const isModalActive =
+        document.body.classList.contains("modal-open") ||
+        document.body.classList.contains("certificate-modal-open");
+      if (isModalActive) return;
+
       if (containerRef.current) {
         containerRef.current.style.opacity = "1";
       }
@@ -151,7 +190,7 @@ function Cursor() {
   return (
     <div
       ref={containerRef}
-      className="pointer-events-none fixed inset-0 z-[9999] overflow-hidden opacity-0 transition-opacity duration-150"
+      className="pointer-events-none fixed inset-0 z-[100000] overflow-hidden opacity-0 transition-opacity duration-150"
       aria-hidden="true"
     >
       {/* Outer Ring - 32px diameter, transformed and scaled via GPU without layout reflow */}

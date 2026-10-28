@@ -27,17 +27,57 @@
 }
 
 @media (pointer: fine) {
-  body, 
-  a, 
-  button, 
-  input, 
-  select, 
-  textarea, 
-  label, 
-  [role="button"], 
-  .cursor-pointer {
+  /* Hide native cursor globally on desktop ONLY when no modal is open */
+  body:not(.modal-open):not(.certificate-modal-open), 
+  body:not(.modal-open):not(.certificate-modal-open) a:not([data-native-cursor]), 
+  body:not(.modal-open):not(.certificate-modal-open) button:not([data-native-cursor]), 
+  body:not(.modal-open):not(.certificate-modal-open) input:not([data-native-cursor]), 
+  body:not(.modal-open):not(.certificate-modal-open) select:not([data-native-cursor]), 
+  body:not(.modal-open):not(.certificate-modal-open) textarea:not([data-native-cursor]), 
+  body:not(.modal-open):not(.certificate-modal-open) label:not([data-native-cursor]), 
+  body:not(.modal-open):not(.certificate-modal-open) [role="button"]:not([data-native-cursor]), 
+  body:not(.modal-open):not(.certificate-modal-open) .cursor-pointer:not([data-native-cursor]) {
     cursor: none !important;
   }
+}
+
+/* Explicit native cursor feedback inside certificate inspection modal */
+.certificate-modal-backdrop {
+  cursor: pointer !important;
+}
+
+.certificate-modal-container,
+[data-modal="certificate"] {
+  cursor: default !important;
+}
+
+[data-modal="certificate"] a,
+[data-modal="certificate"] button,
+[data-modal="certificate"] [role="button"],
+[data-modal="certificate"] .cursor-pointer,
+[data-modal="certificate"] select,
+[data-modal="certificate"] input[type="button"],
+[data-modal="certificate"] input[type="submit"] {
+  cursor: pointer !important;
+}
+
+[data-modal="certificate"] button:disabled,
+[data-modal="certificate"] [disabled] {
+  cursor: not-allowed !important;
+}
+
+[data-modal="certificate"] img,
+[data-modal="certificate"] canvas {
+  cursor: default !important;
+}
+
+[data-modal="certificate"] p,
+[data-modal="certificate"] span,
+[data-modal="certificate"] h1,
+[data-modal="certificate"] h2,
+[data-modal="certificate"] h3,
+[data-modal="certificate"] h4 {
+  cursor: text;
 }
 
 /* Respect user's reduced motion preferences */
