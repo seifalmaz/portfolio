@@ -137,7 +137,7 @@ function FeaturedProjectsSection() {
         {/* ================================================================= */}
         {/* 1. CINEMATIC FLAGSHIP PRODUCT SHOWCASE (Apple Keynote Presentation) */}
         {/* ================================================================= */}
-        <div className="mb-20 rounded-3xl border border-[#D2C7B6]/15 bg-[#292725]/75 p-6 sm:p-10 backdrop-blur-xl shadow-2xl overflow-hidden">
+        <div className="mb-20 rounded-3xl border border-[#D2C7B6]/15 bg-[#211f1e] p-6 sm:p-10 shadow-2xl overflow-hidden">
           {/* Flagship Selector Tabs */}
           <div className="flex items-center gap-2 sm:gap-3 overflow-x-auto pb-4 border-b border-[#D2C7B6]/15 mb-8">
             {FLAGSHIPS.map((f, idx) => {
@@ -188,7 +188,7 @@ function FeaturedProjectsSection() {
 
                 {/* Sub-view toggle if secondary image exists */}
                 {currentFlagship.secondaryImage && (
-                  <div className="absolute bottom-4 right-4 z-10 flex items-center gap-2 rounded-full border border-[#D2C7B6]/20 bg-[#1C1A19]/85 px-3 py-1.5 backdrop-blur-md shadow-md text-xs">
+                  <div className="absolute bottom-4 right-4 z-10 flex items-center gap-2 rounded-full border border-[#D2C7B6]/20 bg-[#1C1A19] px-3 py-1.5 shadow-md text-xs">
                     <button
                       onClick={() => setActiveViewMode("primary")}
                       className={`px-2.5 py-1 rounded-full font-medium transition ${
@@ -231,7 +231,7 @@ function FeaturedProjectsSection() {
 
               {/* Key Metrics Callouts */}
               <div className="grid grid-cols-2 gap-3 pt-1">
-                <div className="rounded-xl border border-[#D2C7B6]/15 bg-[#1C1A19]/60 p-3.5 backdrop-blur-sm">
+                <div className="rounded-xl border border-[#D2C7B6]/15 bg-[#1C1A19] p-3.5">
                   <span className="text-[10px] font-medium uppercase tracking-wider text-[#9AA69A]">
                     Primary Benchmark
                   </span>
@@ -239,7 +239,7 @@ function FeaturedProjectsSection() {
                     {currentFlagship.metric}
                   </div>
                 </div>
-                <div className="rounded-xl border border-[#D2C7B6]/15 bg-[#1C1A19]/60 p-3.5 backdrop-blur-sm">
+                <div className="rounded-xl border border-[#D2C7B6]/15 bg-[#1C1A19] p-3.5">
                   <span className="text-[10px] font-medium uppercase tracking-wider text-[#9AA69A]">
                     Throughput / Scale
                   </span>

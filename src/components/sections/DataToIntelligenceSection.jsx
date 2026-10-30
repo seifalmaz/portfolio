@@ -117,27 +117,33 @@ function DataToIntelligenceSection() {
     const ctx = canvas.getContext("2d");
     let animationFrameId;
 
-    let width = (canvas.width = canvas.offsetWidth * (window.devicePixelRatio || 1));
-    let height = (canvas.height = canvas.offsetHeight * (window.devicePixelRatio || 1));
+    const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+    const dpr = isMobile ? 1 : Math.min(window.devicePixelRatio || 1, 1.25);
+
+    let width = (canvas.width = Math.floor(canvas.offsetWidth * dpr));
+    let height = (canvas.height = Math.floor(canvas.offsetHeight * dpr));
 
     let resizeTimeout = null;
     const handleResize = () => {
       if (resizeTimeout) clearTimeout(resizeTimeout);
       resizeTimeout = setTimeout(() => {
         if (!canvas) return;
-        width = canvas.width = canvas.offsetWidth * (window.devicePixelRatio || 1);
-        height = canvas.height = canvas.offsetHeight * (window.devicePixelRatio || 1);
+        const currentIsMobile = window.innerWidth < 768;
+        const currentDpr = currentIsMobile ? 1 : Math.min(window.devicePixelRatio || 1, 1.25);
+        width = canvas.width = Math.floor(canvas.offsetWidth * currentDpr);
+        height = canvas.height = Math.floor(canvas.offsetHeight * currentDpr);
       }, 150);
     };
-    window.addEventListener("resize", handleResize);
+    window.addEventListener("resize", handleResize, { passive: true });
 
-    // Particle nodes for visualization
-    const nodes = Array.from({ length: 42 }, () => ({
+    // Streamlined particle nodes for 60 FPS performance (16 on mobile, 24 on desktop)
+    const nodeCount = isMobile ? 16 : 24;
+    const nodes = Array.from({ length: nodeCount }, () => ({
       x: Math.random() * width,
       y: Math.random() * height,
-      vx: (Math.random() - 0.5) * 0.9,
-      vy: (Math.random() - 0.5) * 0.9,
-      size: Math.random() * 2.8 + 1.6,
+      vx: (Math.random() - 0.5) * 0.75,
+      vy: (Math.random() - 0.5) * 0.75,
+      size: (Math.random() * 2.2 + 1.4) * dpr,
       cat: Math.floor(Math.random() * 3) // 0: Metal, 1: Organic, 2: Glass/Plastic
     }));
 
@@ -145,9 +151,17 @@ function DataToIntelligenceSection() {
     let isVisible = true;
     let isTabActive = !document.hidden;
     let isRunning = false;
+    let lastFrameTime = 0;
 
-    const render = () => {
+    const render = (currentTime = 0) => {
       if (!isRunning) return;
+
+      // Throttle mobile rendering to smooth 30 FPS to preserve GPU fill rate
+      if (isMobile && currentTime - lastFrameTime < 32) {
+        animationFrameId = requestAnimationFrame(render);
+        return;
+      }
+      lastFrameTime = currentTime;
 
       tick++;
       ctx.clearRect(0, 0, width, height);
@@ -155,7 +169,6 @@ function DataToIntelligenceSection() {
       const stageIndex = activeStageRef.current;
       const centerX = width / 2;
       const centerY = height / 2;
-      const dpr = window.devicePixelRatio || 1;
 
       // =======================================================================
       // STAGE 0: RAW DATA (Dispersed chaotic points with streaming packets)
@@ -424,7 +437,7 @@ function DataToIntelligenceSection() {
           stopAnimation();
         }
       },
-      { threshold: 0.05 }
+      { threshold: 0.08, rootMargin: "-40px 0px" }
     );
 
     if (section) {
@@ -535,7 +548,7 @@ function DataToIntelligenceSection() {
             {/* Stage 5 Overlay: Verified Case-Study Insights Matrix */}
             {activeStage === 4 && (
               <div className="relative z-10 mt-auto pt-4">
-                <div className="rounded-2xl border border-[#D2C7B6]/20 bg-[#292725]/90 p-4 backdrop-blur-md">
+                <div className="rounded-2xl border border-[#D2C7B6]/20 bg-[#292725] p-4">
                   <div className="flex items-center justify-between mb-3 border-b border-[#D2C7B6]/10 pb-2">
                     <span className="text-xs font-bold text-[#FAF6EE] uppercase tracking-wider flex items-center gap-1.5">
                       <FaCircleCheck className="text-[#6E2638]" />
@@ -579,7 +592,7 @@ function DataToIntelligenceSection() {
 
             {/* Bottom Status Overlay (Stages 0-3) */}
             {activeStage !== 4 && (
-              <div className="relative z-10 flex items-center justify-between bg-[#292725]/85 backdrop-blur-md rounded-2xl px-4 py-2.5 border border-[#D2C7B6]/10 text-xs mt-auto">
+              <div className="relative z-10 flex items-center justify-between bg-[#292725] rounded-2xl px-4 py-2.5 border border-[#D2C7B6]/10 text-xs mt-auto">
                 <span className="text-[#9AA69A] font-medium hidden sm:inline">Active State:</span>
                 <span className="font-semibold text-[#FAF6EE] text-[11px] sm:text-xs">{curr.badge}</span>
               </div>
@@ -624,7 +637,7 @@ function DataToIntelligenceSection() {
                     {curr.tech.map((t) => (
                       <span
                         key={t}
-                        className="rounded-lg border border-[#D2C7B6]/20 bg-[#1C1A19]/60 px-3 py-1.5 text-xs font-medium text-[#FAF6EE] backdrop-blur-sm"
+                        className="rounded-lg border border-[#D2C7B6]/20 bg-[#1C1A19] px-3 py-1.5 text-xs font-medium text-[#FAF6EE]"
                       >
                         {t}
                       </span>

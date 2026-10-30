@@ -33,7 +33,7 @@ function EducationSection() {
           {eduList.map((edu) => (
             <div
               key={edu.id || edu.institution}
-              className="group relative rounded-2xl border border-[#D2C7B6]/20 bg-[#292725]/60 p-6 sm:p-8 backdrop-blur-md transition-all duration-300 hover:border-[#6E2638] hover:shadow-[0_8px_30px_rgba(110,38,56,0.18)]"
+              className="group relative rounded-2xl border border-[#D2C7B6]/20 bg-[#211f1e] p-6 sm:p-8 transition-all duration-300 hover:border-[#6E2638] hover:shadow-[0_8px_30px_rgba(110,38,56,0.18)]"
             >
               <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
                 {/* Left: Icon & Core Academic Details */}

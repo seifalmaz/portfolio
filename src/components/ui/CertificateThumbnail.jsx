@@ -99,12 +99,12 @@ export default function CertificateThumbnail({ cert, onClick }) {
         {/* Format Badge in top-left */}
         <div className="absolute top-2.5 left-2.5 z-10 pointer-events-none">
           {isPdf ? (
-            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#1C1A19]/90 backdrop-blur-md border border-[#6E2638]/40 text-[#FAF6EE] text-[10px] font-bold uppercase tracking-wider shadow-md">
+            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#1C1A19] border border-[#6E2638]/40 text-[#FAF6EE] text-[10px] font-bold uppercase tracking-wider shadow-md">
               <FaFilePdf className="w-3 h-3 text-[#6E2638]" />
               <span>PDF Document</span>
             </span>
           ) : (
-            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#1C1A19]/90 backdrop-blur-md border border-[#D2C7B6]/30 text-[#FAF6EE] text-[10px] font-bold uppercase tracking-wider shadow-md">
+            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#1C1A19] border border-[#D2C7B6]/30 text-[#FAF6EE] text-[10px] font-bold uppercase tracking-wider shadow-md">
               <FaCheck className="w-2.5 h-2.5 text-[#6E2638]" />
               <span>Verified Certificate</span>
             </span>
@@ -113,7 +113,7 @@ export default function CertificateThumbnail({ cert, onClick }) {
 
         {/* Hover overlay with action button */}
         <div className="absolute inset-0 bg-gradient-to-t from-[#1C1A19]/95 via-[#1C1A19]/40 to-transparent opacity-0 transition-opacity duration-300 group-hover/thumb:opacity-100 flex items-center justify-center gap-2">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-[#6E2638] px-4 py-1.5 text-xs font-semibold text-[#FAF6EE] shadow-xl backdrop-blur-sm transform translate-y-1 group-hover/thumb:translate-y-0 transition-transform duration-300">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-[#6E2638] px-4 py-1.5 text-xs font-semibold text-[#FAF6EE] shadow-xl transform translate-y-1 group-hover/thumb:translate-y-0 transition-transform duration-300">
             {isPdf ? <FaFilePdf className="h-3.5 w-3.5" /> : <FaEye className="h-3.5 w-3.5" />}
             <span>{isPdf ? "Preview PDF Certificate" : "Inspect Document"}</span>
           </span>

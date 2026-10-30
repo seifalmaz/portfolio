@@ -63,7 +63,7 @@ function Navbar() {
         aria-label="Main Navigation"
         className={`w-full border-none border-b-0 transition-all duration-300 ${
           scrolled
-            ? "bg-[#1C1A19]/90 backdrop-blur-xl shadow-lg shadow-black/40 py-3.5"
+            ? "bg-[#1C1A19]/95 backdrop-blur-md shadow-lg shadow-black/40 py-3.5"
             : "bg-transparent py-5"
         }`}
       >
@@ -83,7 +83,7 @@ function Navbar() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden items-center gap-1 md:flex rounded-full border border-[#D2C7B6]/15 bg-[#292725]/60 px-2 py-1 backdrop-blur-md">
+          <div className="hidden items-center gap-1 md:flex rounded-full border border-[#D2C7B6]/15 bg-[#292725] px-2 py-1">
             {navItems.map((item) => {
               const active = isItemActive(item);
               return (

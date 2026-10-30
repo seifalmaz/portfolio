@@ -8,7 +8,7 @@ function Button({ children, onClick, href, variant = "primary", className = "", 
     primary: "bg-[#6E2638] text-[#FAF6EE] hover:bg-[#451824] px-6 py-3 shadow-lg shadow-[#6E2638]/25 border border-[#6E2638]",
     burgundy: "bg-[#6E2638] text-[#FAF6EE] hover:bg-[#451824] px-6 py-3 shadow-lg shadow-[#6E2638]/25 border border-[#6E2638]",
     cream: "bg-[#F2E8D5] text-[#292725] hover:bg-[#FAF6EE] px-6 py-3 shadow-md border border-[#D2C7B6]",
-    outline: "border border-[#D2C7B6]/30 bg-[#292725]/40 text-[#FAF6EE] hover:border-[#6E2638] hover:bg-[#6E2638]/15 px-6 py-3 backdrop-blur-sm"
+    outline: "border border-[#D2C7B6]/30 bg-[#292725]/80 text-[#FAF6EE] hover:border-[#6E2638] hover:bg-[#6E2638]/20 px-6 py-3"
   };
 
   const combinedClass = `${baseStyles} ${variants[variant] || variants.primary} ${className}`;

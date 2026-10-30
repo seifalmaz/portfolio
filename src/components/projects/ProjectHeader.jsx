@@ -92,7 +92,7 @@ function ProjectHeader({ project }) {
 
       {/* Key Metrics Strip if available */}
       {project.keyMetrics && project.keyMetrics.length > 0 && (
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-10 p-6 rounded-2xl border border-[#FAF6EE]/15 bg-[#211f1e] backdrop-blur-md">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-10 p-6 rounded-2xl border border-[#FAF6EE]/15 bg-[#211f1e]">
           {project.keyMetrics.map((m, idx) => (
             <div key={idx} className="flex flex-col">
               <span className="text-xs font-medium text-sage uppercase tracking-wider mb-1">

@@ -17,7 +17,7 @@ function ProjectGallery({ gallery = [], images = [], screenshots = [] }) {
   if (items.length === 0) return null;
 
   return (
-    <section className="rounded-2xl border border-[#FAF6EE]/15 bg-[#211f1e] p-8 backdrop-blur-md">
+    <section className="rounded-2xl border border-[#FAF6EE]/15 bg-[#211f1e] p-8">
       <div className="flex items-center gap-3 mb-6 text-burgundy">
         <FaImages className="w-5 h-5" />
         <h2 className="text-xl font-bold text-[#FAF6EE] tracking-tight">

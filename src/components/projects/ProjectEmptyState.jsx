@@ -7,7 +7,7 @@ function ProjectEmptyState({ onReset }) {
     <motion.div
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
-      className="flex flex-col items-center justify-center text-center p-12 my-8 rounded-2xl border border-[#D2C7B6]/15 bg-[#1C1A19]/60 backdrop-blur-md"
+      className="flex flex-col items-center justify-center text-center p-12 my-8 rounded-2xl border border-[#D2C7B6]/15 bg-[#211f1e]"
     >
       <div className="w-16 h-16 rounded-2xl bg-[#6E2638]/15 border border-[#6E2638]/30 flex items-center justify-center text-[#F2E8D5] mb-4 shadow-lg shadow-[#6E2638]/15">
         <FaFolderOpen className="w-8 h-8" />

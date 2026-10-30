@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
 import { FaGithub, FaArrowRight, FaChartLine } from "react-icons/fa6";
 import Badge from "./Badge";
 
@@ -20,10 +19,8 @@ function ProjectCard({ project, onTagClick }) {
   const thumbnailSrc = !imgError && project.thumbnail ? project.thumbnail : null;
 
   return (
-    <motion.article
-      whileHover={{ y: -4 }}
-      transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-      className="group relative flex h-full w-full flex-col justify-between rounded-2xl border border-[#D2C7B6]/15 bg-[#1C1A19]/85 p-6 backdrop-blur-md transition-all duration-300 hover:border-[#6E2638] hover:shadow-[0_8px_30px_rgba(110,38,56,0.18)]"
+    <article
+      className="group relative flex h-full w-full flex-col justify-between rounded-2xl border border-[#D2C7B6]/15 bg-[#211f1e] p-6 transition duration-200 ease-out hover:border-[#6E2638] hover:shadow-[0_8px_30px_rgba(110,38,56,0.18)] md:hover:-translate-y-1"
     >
       {/* Top Content Block */}
       <div className="flex flex-1 flex-col">
@@ -149,7 +146,7 @@ function ProjectCard({ project, onTagClick }) {
           <FaArrowRight className="h-3 w-3 transition-transform duration-200 group-hover:translate-x-1" />
         </Link>
       </div>
-    </motion.article>
+    </article>
   );
 }
 

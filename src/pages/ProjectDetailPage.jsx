@@ -123,7 +123,7 @@ function ProjectDetailPage() {
 
             {/* 2. Business Problem & Context (Optional) */}
             {problemText && (
-              <section className="rounded-2xl border border-[#FAF6EE]/15 bg-[#211f1e] p-8 backdrop-blur-md">
+              <section className="rounded-2xl border border-[#FAF6EE]/15 bg-[#211f1e] p-8">
                 <div className="flex items-center gap-3 mb-4 text-burgundy">
                   <FaLightbulb className="w-5 h-5" />
                   <h2 className="text-xl font-bold text-[#FAF6EE] tracking-tight">Business Problem &amp; Context</h2>
@@ -134,7 +134,7 @@ function ProjectDetailPage() {
 
             {/* 3. Core Objectives (Optional) */}
             {Array.isArray(project.objectives) && project.objectives.length > 0 && (
-              <section className="rounded-2xl border border-[#FAF6EE]/15 bg-[#211f1e] p-8 backdrop-blur-md">
+              <section className="rounded-2xl border border-[#FAF6EE]/15 bg-[#211f1e] p-8">
                 <div className="flex items-center gap-3 mb-4 text-burgundy">
                   <FaCircleCheck className="w-5 h-5" />
                   <h2 className="text-xl font-bold text-[#FAF6EE] tracking-tight">Core Objectives</h2>
@@ -152,7 +152,7 @@ function ProjectDetailPage() {
 
             {/* 4. Methodology & Data Preparation (Optional) */}
             {methodologyText && (
-              <section className="rounded-2xl border border-[#FAF6EE]/15 bg-[#211f1e] p-8 backdrop-blur-md">
+              <section className="rounded-2xl border border-[#FAF6EE]/15 bg-[#211f1e] p-8">
                 <div className="flex items-center gap-3 mb-4 text-sage">
                   <FaSliders className="w-5 h-5" />
                   <h2 className="text-xl font-bold text-[#FAF6EE] tracking-tight">Methodology &amp; Data Preparation</h2>
@@ -186,7 +186,7 @@ function ProjectDetailPage() {
 
             {/* 8. Key Features & Capabilities (Optional) */}
             {Array.isArray(featuresList) && featuresList.length > 0 && (
-              <section className="rounded-2xl border border-[#FAF6EE]/15 bg-[#211f1e] p-8 backdrop-blur-md">
+              <section className="rounded-2xl border border-[#FAF6EE]/15 bg-[#211f1e] p-8">
                 <h2 className="text-xl font-bold text-[#FAF6EE] tracking-tight mb-4">Key Capabilities &amp; Features</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                   {featuresList.map((feat, idx) => (
@@ -200,7 +200,7 @@ function ProjectDetailPage() {
 
             {/* 9. Challenges & Applied Solutions (Optional) */}
             {Array.isArray(challengesList) && challengesList.length > 0 && (
-              <section className="rounded-2xl border border-[#FAF6EE]/15 bg-[#211f1e] p-8 backdrop-blur-md">
+              <section className="rounded-2xl border border-[#FAF6EE]/15 bg-[#211f1e] p-8">
                 <div className="flex items-center gap-3 mb-6 text-burgundy">
                   <FaTriangleExclamation className="w-5 h-5" />
                   <h2 className="text-xl font-bold text-[#FAF6EE] tracking-tight">Challenges &amp; Applied Solutions</h2>
@@ -222,7 +222,7 @@ function ProjectDetailPage() {
 
             {/* 10. Business Insights & Discoveries (Optional) */}
             {Array.isArray(businessInsightsList) && businessInsightsList.length > 0 && (
-              <section className="rounded-2xl border border-[#FAF6EE]/15 bg-[#211f1e] p-8 backdrop-blur-md">
+              <section className="rounded-2xl border border-[#FAF6EE]/15 bg-[#211f1e] p-8">
                 <div className="flex items-center gap-3 mb-4 text-sage">
                   <FaComments className="w-5 h-5" />
                   <h2 className="text-xl font-bold text-[#FAF6EE] tracking-tight">Business Insights &amp; Findings</h2>
@@ -240,7 +240,7 @@ function ProjectDetailPage() {
 
             {/* 11. Results & Business Impact (Optional) */}
             {Array.isArray(resultsList) && resultsList.length > 0 && (
-              <section className="rounded-2xl border border-burgundy/40 bg-burgundy/10 p-8 backdrop-blur-md">
+              <section className="rounded-2xl border border-burgundy/40 bg-[#211f1e] p-8">
                 <div className="flex items-center gap-3 mb-4 text-sage">
                   <FaChartLine className="w-5 h-5" />
                   <h2 className="text-xl font-bold text-[#FAF6EE] tracking-tight">Results &amp; Measurable Impact</h2>
@@ -258,7 +258,7 @@ function ProjectDetailPage() {
 
             {/* 12. Lessons Learned (Optional) */}
             {Array.isArray(lessonsList) && lessonsList.length > 0 && (
-              <section className="rounded-2xl border border-[#FAF6EE]/15 bg-[#211f1e] p-8 backdrop-blur-md">
+              <section className="rounded-2xl border border-[#FAF6EE]/15 bg-[#211f1e] p-8">
                 <h2 className="text-xl font-bold text-[#FAF6EE] tracking-tight mb-4">Engineering Lessons Learned</h2>
                 <ul className="space-y-2 text-sm text-[#F2E8D5]/80 list-disc list-inside">
                   {lessonsList.map((lesson, idx) => (
@@ -270,7 +270,7 @@ function ProjectDetailPage() {
 
             {/* 13. Future Roadmap & Improvements (Optional) */}
             {Array.isArray(futureImprovementsList) && futureImprovementsList.length > 0 && (
-              <section className="rounded-2xl border border-[#FAF6EE]/15 bg-[#211f1e] p-8 backdrop-blur-md">
+              <section className="rounded-2xl border border-[#FAF6EE]/15 bg-[#211f1e] p-8">
                 <div className="flex items-center gap-3 mb-4 text-burgundy">
                   <FaRocket className="w-5 h-5" />
                   <h2 className="text-xl font-bold text-[#FAF6EE] tracking-tight">Future Roadmap &amp; Improvements</h2>

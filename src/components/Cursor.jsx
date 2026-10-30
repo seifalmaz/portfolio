@@ -1,26 +1,27 @@
 import { useEffect, useRef, useState } from "react";
 
 /**
- * Ultra-high-performance custom cursor styled with Sage, Cream & Burgundy palette.
- * Uses requestAnimationFrame and direct DOM transforms via refs to achieve 60-120 FPS
- * with ZERO React component re-renders on mousemove.
- * Idles automatically when the mouse is stationary, avoiding CPU/GPU waste.
+ * Ultra-lightweight custom cursor for desktop (60-120 FPS).
+ * Completely disabled on mobile, tablet, and touch screens (<1024px or coarse pointers).
+ * Uses rAF lerping and idles automatically when stationary with ZERO React rerenders.
  */
 function Cursor() {
   const ringRef = useRef(null);
   const dotRef = useRef(null);
   const containerRef = useRef(null);
+
   const [isDisabled] = useState(() => {
-    if (typeof window === "undefined" || !window.matchMedia) return false;
-    const isTouch =
-      window.matchMedia("(pointer: coarse)").matches &&
-      !window.matchMedia("(pointer: fine)").matches;
+    if (typeof window === "undefined" || !window.matchMedia) return true;
+    const isTouch = window.matchMedia("(pointer: coarse)").matches;
+    const isSmall = window.innerWidth < 1024;
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    return isTouch || prefersReducedMotion;
+    return isTouch || isSmall || prefersReducedMotion;
   });
 
   useEffect(() => {
     if (isDisabled) return;
+
+    document.body.classList.add("has-custom-cursor");
 
     let mouseX = -100;
     let mouseY = -100;
@@ -43,11 +44,10 @@ function Cursor() {
       const dx = mouseX - ringX;
       const dy = mouseY - ringY;
 
-      // Smooth lerp for outer ring
-      ringX += dx * 0.28;
-      ringY += dy * 0.28;
+      ringX += dx * 0.32;
+      ringY += dy * 0.32;
 
-      const scale = isHovering ? 1.75 : 1;
+      const scale = isHovering ? 1.6 : 1;
 
       if (ringRef.current) {
         ringRef.current.style.transform = `translate3d(${ringX - 16}px, ${ringY - 16}px, 0) scale(${scale})`;
@@ -57,7 +57,7 @@ function Cursor() {
       }
 
       // Idle sleep: if distance converged and mouse is stationary, pause rAF
-      if (Math.abs(dx) < 0.15 && Math.abs(dy) < 0.15) {
+      if (Math.abs(dx) < 0.2 && Math.abs(dy) < 0.2) {
         ringX = mouseX;
         ringY = mouseY;
         if (ringRef.current) {
@@ -75,68 +75,33 @@ function Cursor() {
       mouseX = e.clientX;
       mouseY = e.clientY;
 
-      const isModalActive =
-        document.body.classList.contains("modal-open") ||
-        document.body.classList.contains("certificate-modal-open") ||
-        Boolean(
-          e.target &&
-          typeof e.target.closest === "function" &&
-          e.target.closest("[data-modal='certificate'], .certificate-modal-container, .certificate-modal-backdrop")
-        );
-
-      if (isModalActive) {
-        if (containerRef.current && isVisible) {
-          containerRef.current.style.opacity = "0";
-          isVisible = false;
-        }
-        return;
-      }
-
       if (!isVisible && containerRef.current) {
         isVisible = true;
         containerRef.current.style.opacity = "1";
       }
 
-      startLoop();
-    };
+      // Lightweight hover detection without deep recursive closest()
+      const targetTag = e.target?.tagName;
+      const shouldHover =
+        targetTag === "BUTTON" ||
+        targetTag === "A" ||
+        targetTag === "SELECT" ||
+        Boolean(e.target?.closest && e.target.closest("button, a, [role='button']"));
 
-    const handleMouseOver = (e) => {
-      const isModalActive =
-        document.body.classList.contains("modal-open") ||
-        document.body.classList.contains("certificate-modal-open") ||
-        Boolean(
-          e.target &&
-          typeof e.target.closest === "function" &&
-          e.target.closest("[data-modal='certificate'], .certificate-modal-container, .certificate-modal-backdrop")
-        );
-
-      if (isModalActive) {
-        if (containerRef.current && isVisible) {
-          containerRef.current.style.opacity = "0";
-          isVisible = false;
-        }
-        return;
-      }
-
-      if (e.target && typeof e.target.closest === "function") {
-        const target = e.target.closest(
-          "button, a, select, [role='button'], .cursor-pointer, input[type='checkbox'], input[type='submit']"
-        );
-        const shouldHover = Boolean(target);
-        if (shouldHover !== isHovering) {
-          isHovering = shouldHover;
-          if (ringRef.current) {
-            if (isHovering) {
-              ringRef.current.classList.add("border-[#6E2638]", "bg-[#6E2638]/10");
-              ringRef.current.classList.remove("border-[#9AA69A]/60");
-            } else {
-              ringRef.current.classList.remove("border-[#6E2638]", "bg-[#6E2638]/10");
-              ringRef.current.classList.add("border-[#9AA69A]/60");
-            }
+      if (shouldHover !== isHovering) {
+        isHovering = shouldHover;
+        if (ringRef.current) {
+          if (isHovering) {
+            ringRef.current.classList.add("border-[#6E2638]", "bg-[#6E2638]/15");
+            ringRef.current.classList.remove("border-[#9AA69A]/60");
+          } else {
+            ringRef.current.classList.remove("border-[#6E2638]", "bg-[#6E2638]/15");
+            ringRef.current.classList.add("border-[#9AA69A]/60");
           }
-          startLoop();
         }
       }
+
+      startLoop();
     };
 
     const handleMouseLeave = () => {
@@ -147,11 +112,6 @@ function Cursor() {
     };
 
     const handleMouseEnter = () => {
-      const isModalActive =
-        document.body.classList.contains("modal-open") ||
-        document.body.classList.contains("certificate-modal-open");
-      if (isModalActive) return;
-
       if (containerRef.current) {
         containerRef.current.style.opacity = "1";
       }
@@ -170,14 +130,13 @@ function Cursor() {
     };
 
     window.addEventListener("mousemove", handleMouseMove, { passive: true });
-    document.addEventListener("mouseover", handleMouseOver, { passive: true });
     document.addEventListener("mouseleave", handleMouseLeave, { passive: true });
     document.addEventListener("mouseenter", handleMouseEnter, { passive: true });
     document.addEventListener("visibilitychange", handleVisibility);
 
     return () => {
+      document.body.classList.remove("has-custom-cursor");
       window.removeEventListener("mousemove", handleMouseMove);
-      document.removeEventListener("mouseover", handleMouseOver);
       document.removeEventListener("mouseleave", handleMouseLeave);
       document.removeEventListener("mouseenter", handleMouseEnter);
       document.removeEventListener("visibilitychange", handleVisibility);
@@ -190,19 +149,19 @@ function Cursor() {
   return (
     <div
       ref={containerRef}
-      className="pointer-events-none fixed inset-0 z-[100000] overflow-hidden opacity-0 transition-opacity duration-150"
+      className="pointer-events-none fixed inset-0 z-50 transition-opacity duration-200"
+      style={{ opacity: 0 }}
       aria-hidden="true"
     >
-      {/* Outer Ring - 32px diameter, transformed and scaled via GPU without layout reflow */}
       <div
         ref={ringRef}
-        className="pointer-events-none fixed top-0 left-0 h-8 w-8 rounded-full border border-[#9AA69A]/60 transition-[border-color,background-color] duration-150 ease-out will-change-transform"
+        className="pointer-events-none absolute top-0 left-0 h-8 w-8 rounded-full border border-[#9AA69A]/60 transition-colors duration-200 will-change-transform"
+        style={{ transform: "translate3d(-100px, -100px, 0)" }}
       />
-
-      {/* Inner Dot */}
       <div
         ref={dotRef}
-        className="pointer-events-none fixed top-0 left-0 h-2 w-2 rounded-full bg-[#6E2638] shadow-[0_0_8px_rgba(110,38,56,0.6)] will-change-transform"
+        className="pointer-events-none absolute top-0 left-0 h-2 w-2 rounded-full bg-[#6E2638] will-change-transform"
+        style={{ transform: "translate3d(-100px, -100px, 0)" }}
       />
     </div>
   );

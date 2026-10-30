@@ -116,7 +116,7 @@ function ExperienceSection() {
                 <ExperienceLogoBadge exp={exp} />
 
                 {/* Experience Details Card */}
-                <div className="flex-1 rounded-3xl border border-[#D2C7B6]/15 bg-[#292725]/80 p-6 md:p-8 backdrop-blur-md shadow-xl transition-all duration-300 hover:border-[#6E2638]/60">
+                <div className="flex-1 rounded-3xl border border-[#D2C7B6]/15 bg-[#211f1e] p-6 md:p-8 shadow-xl transition-all duration-300 hover:border-[#6E2638]/60">
                   {/* Top Bar: Role & Timing */}
                   <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 border-b border-[#D2C7B6]/10 pb-4 mb-4">
                     <div>

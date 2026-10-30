@@ -37,7 +37,7 @@ function ProjectArchitectureDiagram({ architecture, pipeline = [], workflow = []
   if (!hasArchitectureText && !hasSteps && !hasImage) return null;
 
   return (
-    <section className="rounded-2xl border border-[#FAF6EE]/15 bg-[#211f1e] p-8 backdrop-blur-md">
+    <section className="rounded-2xl border border-[#FAF6EE]/15 bg-[#211f1e] p-8">
       <div className="flex items-center gap-3 mb-6 text-burgundy">
         <FaGears className="w-5 h-5 text-[#6E2638]" />
         <h2 className="text-xl font-bold text-[#FAF6EE] tracking-tight">
@@ -71,7 +71,7 @@ function ProjectArchitectureDiagram({ architecture, pipeline = [], workflow = []
             {stepsList.map((step, idx) => (
               <div
                 key={idx}
-                className="relative flex flex-col justify-between p-5 rounded-xl border border-[#FAF6EE]/10 bg-[#292725]/60 backdrop-blur-sm transition hover:border-burgundy/40"
+                className="relative flex flex-col justify-between p-5 rounded-xl border border-[#FAF6EE]/10 bg-[#292725] transition hover:border-burgundy/40"
               >
                 <div>
                   <div className="flex items-center justify-between gap-2 mb-3">

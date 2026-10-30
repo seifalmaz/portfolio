@@ -35,7 +35,7 @@ function ContactSection() {
         <div className="mx-auto max-w-3xl text-center">
           {/* Availability Status Badge */}
           {profile?.isAvailable !== false && (
-            <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-sage/40 bg-sage/10 px-4 py-2 text-xs font-semibold text-[#FAF6EE] backdrop-blur-md">
+            <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-sage/40 bg-sage/10 px-4 py-2 text-xs font-semibold text-[#FAF6EE]">
               <span className="h-2 w-2 rounded-full bg-sage animate-pulse" />
               <span>{profile?.availabilityStatus || "Open for Full-Time Roles, Internships & Projects"}</span>
             </div>
