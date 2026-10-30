@@ -19,8 +19,9 @@ export const socialLinks = [
 
 /**
  * Handles hybrid navigation:
- * - If on home page and target is a section anchor, performs smooth scrolling.
- * - If on another route and target is a section anchor, navigates to "/" and scrolls after mount.
+ * - If already at the target hash on the homepage, smoothly scrolls to the element.
+ * - Otherwise navigates to the target URL; the single-source-of-truth ScrollToTop manager
+ *   coordinates smooth scrolling once the target page and element are ready.
  */
 export function handleHybridNavigation(e, item, location, navigate) {
   if (item.type === "route") {
@@ -29,27 +30,24 @@ export function handleHybridNavigation(e, item, location, navigate) {
   }
 
   if (item.type === "hybrid") {
-    e.preventDefault();
-    const isHomePage = location.pathname === "/";
+    if (e && typeof e.preventDefault === "function") {
+      e.preventDefault();
+    }
 
-    if (isHomePage) {
-      const element = document.getElementById(item.sectionId);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-      } else if (item.sectionId === "hero") {
+    const targetHash = item.sectionId === "hero" ? "" : `#${item.sectionId}`;
+    const targetUrl = targetHash ? `/${targetHash}` : "/";
+
+    if (location.pathname === "/" && location.hash === targetHash) {
+      if (item.sectionId === "hero") {
         window.scrollTo({ top: 0, behavior: "smooth" });
-      }
-    } else {
-      // Navigate to homepage first, then scroll
-      navigate(`/#${item.sectionId}`);
-      setTimeout(() => {
+      } else {
         const element = document.getElementById(item.sectionId);
         if (element) {
           element.scrollIntoView({ behavior: "smooth" });
-        } else if (item.sectionId === "hero") {
-          window.scrollTo({ top: 0, behavior: "smooth" });
         }
-      }, 100);
+      }
+    } else {
+      navigate(targetUrl);
     }
   }
 }

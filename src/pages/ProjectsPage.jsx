@@ -35,6 +35,11 @@ function ProjectsPage() {
     sortBy: initialSort
   });
 
+  // Ensure scroll is at the top on mount
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   // Sync state to URL search parameters for shareable/bookmarkable search links
   useEffect(() => {
     const params = {};

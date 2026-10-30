@@ -43,7 +43,7 @@ function Navbar() {
 
   // Determine if a navigation link is currently active
   const isItemActive = (item) => {
-    if (location.pathname === "/projects" && item.href === "/projects") {
+    if (location.pathname.startsWith("/projects") && item.href === "/projects") {
       return true;
     }
     if (location.pathname === "/" && item.sectionId === activeSection) {
@@ -71,7 +71,16 @@ function Navbar() {
           {/* Brand Logo with SA Monogram */}
           <Link
             to="/"
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            onClick={(e) => {
+              setMobileMenuOpen(false);
+              if (location.pathname === "/") {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: "smooth" });
+                if (location.hash) {
+                  navigate("/", { replace: false });
+                }
+              }
+            }}
             className="group flex items-center gap-2.5 rounded-lg focus-visible:outline-2 focus-visible:outline-[#6E2638]"
           >
             <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#6E2638] text-xs font-bold text-[#FAF6EE] shadow-sm transition duration-200 group-hover:bg-[#451824]">
@@ -91,7 +100,12 @@ function Navbar() {
                   {item.type === "route" ? (
                     <Link
                       to={item.href}
-                      onClick={() => setMobileMenuOpen(false)}
+                      onClick={() => {
+                        setMobileMenuOpen(false);
+                        if (location.pathname === item.href) {
+                          window.scrollTo({ top: 0, behavior: "smooth" });
+                        }
+                      }}
                       className={`relative z-10 text-xs uppercase tracking-wider font-semibold transition duration-200 focus-visible:outline-2 focus-visible:outline-[#6E2638] rounded-md px-1.5 py-0.5 ${
                         active ? "text-[#FAF6EE]" : "text-[#9AA69A] hover:text-[#FAF6EE]"
                       }`}
@@ -206,7 +220,12 @@ function Navbar() {
                         {item.type === "route" ? (
                           <Link
                             to={item.href}
-                            onClick={() => setMobileMenuOpen(false)}
+                            onClick={() => {
+                              setMobileMenuOpen(false);
+                              if (location.pathname === item.href) {
+                                window.scrollTo({ top: 0, behavior: "smooth" });
+                              }
+                            }}
                             className={`flex items-center justify-between rounded-xl px-4 py-3 text-sm font-semibold transition duration-200 ${
                               active
                                 ? "bg-[#6E2638]/20 text-[#FAF6EE] border border-[#6E2638]/40"
