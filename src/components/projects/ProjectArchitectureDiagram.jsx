@@ -1,24 +1,24 @@
 import { FaGears, FaDatabase, FaCode, FaChartPie, FaBrain, FaServer, FaSliders } from "react-icons/fa6";
 
-// Keyword-based fallback icon mapper
+// Keyword-based fallback icon mapper aligned with brand palette
 function getStepIcon(stepTitle = "") {
   const t = (stepTitle || "").toLowerCase();
   if (t.includes("extract") || t.includes("sql") || t.includes("data") || t.includes("storage") || t.includes("ingest")) {
-    return <FaDatabase className="w-4 h-4 text-blue-400" />;
+    return <FaDatabase className="w-4 h-4 text-sage" />;
   }
   if (t.includes("preprocess") || t.includes("clean") || t.includes("feature") || t.includes("pipeline") || t.includes("prep")) {
-    return <FaSliders className="w-4 h-4 text-indigo-400" />;
+    return <FaSliders className="w-4 h-4 text-[#F2E8D5]" />;
   }
   if (t.includes("model") || t.includes("train") || t.includes("neural") || t.includes("ai") || t.includes("learn")) {
-    return <FaBrain className="w-4 h-4 text-purple-400" />;
+    return <FaBrain className="w-4 h-4 text-[#FAF6EE]" />;
   }
   if (t.includes("deploy") || t.includes("api") || t.includes("server") || t.includes("engine") || t.includes("service")) {
-    return <FaServer className="w-4 h-4 text-emerald-400" />;
+    return <FaServer className="w-4 h-4 text-sage" />;
   }
   if (t.includes("dashboard") || t.includes("bi") || t.includes("visual") || t.includes("report") || t.includes("chart")) {
-    return <FaChartPie className="w-4 h-4 text-amber-400" />;
+    return <FaChartPie className="w-4 h-4 text-[#F2E8D5]" />;
   }
-  return <FaCode className="w-4 h-4 text-cyan-400" />;
+  return <FaCode className="w-4 h-4 text-sage" />;
 }
 
 function ProjectArchitectureDiagram({ architecture, pipeline = [], workflow = [], steps = [], architectureImage }) {
@@ -39,7 +39,7 @@ function ProjectArchitectureDiagram({ architecture, pipeline = [], workflow = []
   return (
     <section className="rounded-2xl border border-[#FAF6EE]/15 bg-[#211f1e] p-8 backdrop-blur-md">
       <div className="flex items-center gap-3 mb-6 text-burgundy">
-        <FaGears className="w-5 h-5" />
+        <FaGears className="w-5 h-5 text-[#6E2638]" />
         <h2 className="text-xl font-bold text-[#FAF6EE] tracking-tight">
           System Architecture &amp; Execution Pipeline
         </h2>
@@ -52,10 +52,12 @@ function ProjectArchitectureDiagram({ architecture, pipeline = [], workflow = []
             <span className="font-semibold text-[#FAF6EE]">Verified High-Level System Architecture</span>
             <span className="font-mono text-[11px] text-sage">Visual Pipeline Blueprint</span>
           </div>
-          <div className="p-2 sm:p-4 bg-[#080a0f] flex items-center justify-center">
+          <div className="p-2 sm:p-4 bg-[#1C1A19] flex items-center justify-center">
             <img
               src={architectureImage}
               alt="System Architecture Diagram"
+              loading="lazy"
+              decoding="async"
               className="w-full h-auto max-h-[600px] object-contain rounded-lg"
             />
           </div>

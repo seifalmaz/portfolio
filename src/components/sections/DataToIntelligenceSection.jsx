@@ -6,9 +6,7 @@ import {
   FaChartLine, 
   FaBrain, 
   FaCircleCheck,
-  FaCheck,
   FaArrowRight,
-  FaSliders,
   FaTrainSubway,
   FaRecycle,
   FaMusic

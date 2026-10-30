@@ -6,6 +6,7 @@ export const navItems = [
   { label: "Skills", href: "/#skills", sectionId: "skills", type: "hybrid" },
   { label: "Projects", href: "/projects", sectionId: "projects", type: "route" },
   { label: "Experience", href: "/#experience", sectionId: "experience", type: "hybrid" },
+  { label: "Education", href: "/#education", sectionId: "education", type: "hybrid" },
   { label: "Contact", href: "/#contact", sectionId: "contact", type: "hybrid" }
 ];
 

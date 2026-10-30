@@ -5,6 +5,7 @@ import SkillsSection from "../components/sections/SkillsSection";
 import FeaturedProjectsSection from "../components/sections/FeaturedProjectsSection";
 import ExperienceSection from "../components/sections/ExperienceSection";
 import CertificationsSection from "../components/sections/CertificationsSection";
+import EducationSection from "../components/sections/EducationSection";
 import ContactSection from "../components/sections/ContactSection";
 import PageTransition from "../components/layout/PageTransition";
 import SEO from "../components/common/SEO";
@@ -24,6 +25,7 @@ function HomePage() {
       {vis.projects !== false && <FeaturedProjectsSection />}
       {vis.experience !== false && <ExperienceSection />}
       {vis.certifications !== false && <CertificationsSection />}
+      {vis.education !== false && <EducationSection />}
       {vis.contact !== false && <ContactSection />}
     </PageTransition>
   );

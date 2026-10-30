@@ -29,10 +29,10 @@ export default function ProtectedRoute({ children }) {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-black flex items-center justify-center">
+      <div className="min-h-screen bg-[#292725] flex items-center justify-center">
         <div className="flex flex-col items-center gap-4">
-          <div className="w-10 h-10 border-4 border-blue-500/20 border-t-blue-500 rounded-full animate-spin" />
-          <p className="text-slate-400 text-sm tracking-wider uppercase font-mono">Authenticating...</p>
+          <div className="w-10 h-10 border-4 border-[#D2C7B6]/20 border-t-[#6E2638] rounded-full animate-spin" />
+          <p className="text-[#9AA69A] text-xs tracking-widest uppercase font-mono">Authenticating...</p>
         </div>
       </div>
     );

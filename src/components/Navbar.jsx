@@ -7,7 +7,7 @@ import { personalData } from "../data/personalData";
 import { usePortfolio } from "../context/PortfolioContext";
 import { useActiveSection } from "../hooks/useActiveSection";
 
-const HOMEPAGE_SECTIONS = ["hero", "about", "skills", "projects", "experience", "contact"];
+const HOMEPAGE_SECTIONS = ["hero", "about", "skills", "projects", "experience", "education", "contact"];
 
 function Navbar() {
   const { profile, settings } = usePortfolio();

@@ -82,6 +82,21 @@ test('personalData contains verified social destinations and valid email', () =>
   assert.ok(fileContent.includes('https://github.com/seifalmaz'), 'GitHub link must be present');
   assert.ok(fileContent.includes('https://www.linkedin.com/in/seif-almaz'), 'LinkedIn link must be present');
   assert.ok(fileContent.includes('https://kaggle.com/seifalmaz'), 'Kaggle link must be present');
+  assert.ok(fileContent.includes('email: "siefalmaz3@gmail.com"'), 'Primary email must be siefalmaz3@gmail.com');
+  assert.ok(!fileContent.includes('seifalmaz.dev'), 'Outdated email must not be present');
+});
+
+test('Footer and Hero narrative do not contain student or university claims', () => {
+  const footerContent = fs.readFileSync(path.join(rootDir, 'src/components/layout/Footer.jsx'), 'utf-8');
+  assert.ok(!footerContent.includes('Helwan National University'), 'University must be removed from footer');
+  const heroContent = fs.readFileSync(path.join(rootDir, 'src/components/sections/HeroSection.jsx'), 'utf-8');
+  assert.ok(!heroContent.includes('Computer Science student'), 'Student title must be removed from hero');
+  assert.ok(!heroContent.includes('Helwan National University'), 'University must be removed from hero');
+});
+
+test('Dedicated EducationSection is present on HomePage', () => {
+  const homeContent = fs.readFileSync(path.join(rootDir, 'src/pages/HomePage.jsx'), 'utf-8');
+  assert.ok(homeContent.includes('EducationSection'), 'EducationSection must be imported and rendered in HomePage');
 });
 
 test('Floating DEPI ML & Analytics badge remains removed from About section', () => {
@@ -181,6 +196,9 @@ test('index.html contains valid title, description, open graph, and JSON-LD sche
   assert.ok(html.includes('name="description"'), 'Meta description must be present');
   assert.ok(html.includes('property="og:image"'), 'og:image must be present');
   assert.ok(html.includes('application/ld+json'), 'JSON-LD schema must be present');
+  assert.ok(html.includes('mailto:siefalmaz3@gmail.com'), 'Correct contact email in JSON-LD schema');
+  assert.ok(!html.includes('seifalmaz.dev'), 'Outdated email must not be present in index.html');
+  assert.ok(html.includes('theme-color" content="#292725"'), 'Consistent warm charcoal theme-color');
 });
 
 test('public/ contains robots.txt, sitemap.xml, _redirects, and vercel.json for SPA routing', () => {

@@ -1,15 +1,7 @@
 import { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  FaGithub,
-  FaArrowRight,
-  FaChartPie,
-  FaBrain,
-  FaCodeBranch,
-  FaEye,
-  FaSliders
-} from "react-icons/fa6";
+import { FaGithub, FaArrowRight } from "react-icons/fa6";
 import SectionHeader from "../ui/SectionHeader";
 import ProjectCard from "../ui/ProjectCard";
 import Button from "../ui/Button";
@@ -106,7 +98,6 @@ const FLAGSHIPS = [
 
 function FeaturedProjectsSection() {
   const { projects: contextProjects } = usePortfolio();
-  const allProjects = Array.isArray(contextProjects) ? contextProjects : [];
 
   const [activeFlagshipIdx, setActiveFlagshipIdx] = useState(0);
   const [activeViewMode, setActiveViewMode] = useState("primary"); // 'primary' | 'secondary'
@@ -116,14 +107,15 @@ function FeaturedProjectsSection() {
 
   // Filter catalog items with useMemo to prevent recomputation on unrelated state changes
   const filteredProjects = useMemo(() => {
-    return allProjects.filter((p) => {
+    const list = Array.isArray(contextProjects) ? contextProjects : [];
+    return list.filter((p) => {
       if (catalogFilter === "ALL") return true;
       if (catalogFilter === "CV" && (p.category?.includes("Vision") || p.category?.includes("Learning"))) return true;
       if (catalogFilter === "BI" && (p.category?.includes("Analytics") || p.category?.includes("Intelligence"))) return true;
       if (catalogFilter === "ENG" && (p.category?.includes("Engineering") || p.category?.includes("Database"))) return true;
       return true;
     });
-  }, [allProjects, catalogFilter]);
+  }, [contextProjects, catalogFilter]);
 
   return (
     <section
@@ -184,9 +176,11 @@ function FeaturedProjectsSection() {
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 1.02 }}
                     transition={{ duration: 0.35, ease: "easeOut" }}
+                    loading="lazy"
+                    decoding="async"
                     className={`h-full w-full ${
                       activeViewMode === "secondary"
-                        ? "object-contain bg-[#080a0f] p-1 sm:p-2"
+                        ? "object-contain bg-[#1C1A19] p-1 sm:p-2"
                         : "object-cover object-top"
                     }`}
                   />

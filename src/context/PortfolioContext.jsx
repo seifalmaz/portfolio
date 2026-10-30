@@ -34,9 +34,9 @@ export function PortfolioProvider({ children }) {
     },
     section_order: ['hero', 'about', 'skills', 'projects', 'experience', 'certifications', 'education', 'contact'],
     show_resume_button: true,
-    site_title: 'Seif Ahmed Almaz | Data Analytics & AI Engineer',
-    site_description: 'Personal Portfolio & Case Studies for Data Analytics, Machine Learning, and Business Intelligence.',
-    accent_color: '#3b82f6'
+    site_title: 'Seif Ahmed Almaz | Data Science & AI Engineer',
+    site_description: 'Personal Portfolio & Case Studies in Data Science, Machine Learning, and Business Intelligence.',
+    accent_color: '#6E2638'
   });
   const [loading, setLoading] = useState(true);
 

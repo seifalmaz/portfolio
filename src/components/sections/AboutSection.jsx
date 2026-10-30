@@ -1,7 +1,5 @@
-import { motion, useReducedMotion } from "framer-motion";
 import {
   FaGraduationCap,
-  FaLocationDot,
   FaCircleCheck,
   FaLaptopCode,
   FaRocket,
@@ -9,26 +7,22 @@ import {
   FaLinkedin,
   FaKaggle,
   FaEnvelope,
-  FaChartLine
+  FaChartLine,
+  FaBrain
 } from "react-icons/fa6";
 import aboutImageWebp from "../../assets/about-profile.webp";
-import aboutImageDefault from "../../assets/about-profile.png";
-import SectionHeader from "../ui/SectionHeader";
 import MostaqlIcon from "../ui/MostaqlIcon";
 import { usePortfolio } from "../../context/PortfolioContext";
 import { personalData } from "../../data/personalData";
 
 function AboutSection() {
-  const { profile, education } = usePortfolio();
-  const shouldReduceMotion = useReducedMotion();
+  const { profile } = usePortfolio();
 
   const currentProfile = profile || personalData;
   const bioParagraphs =
     currentProfile.bioParagraphs && currentProfile.bioParagraphs.length > 0
       ? currentProfile.bioParagraphs
       : personalData.bioParagraphs;
-
-  const primaryEdu = education && education.length > 0 ? education[0] : null;
 
   const socials = {
     ...personalData.socials,
@@ -71,10 +65,9 @@ function AboutSection() {
           {/* Left Column: Portrait & Quick Credentials */}
           <div className="lg:col-span-5 flex flex-col items-center lg:items-start space-y-6">
             <div className="relative w-full max-w-sm rounded-3xl border border-[#D2C7B6] bg-[#F2E8D5] p-3 shadow-xl overflow-hidden">
-              <picture className="block aspect-[4/5] w-full overflow-hidden rounded-2xl bg-[#E8DEC9]">
-                <source srcSet={aboutImageWebp} type="image/webp" />
+              <div className="block aspect-[4/5] w-full overflow-hidden rounded-2xl bg-[#E8DEC9]">
                 <img
-                  src={aboutImageDefault}
+                  src={aboutImageWebp}
                   alt="Seif Ahmed Almaz"
                   loading="lazy"
                   decoding="async"
@@ -82,7 +75,7 @@ function AboutSection() {
                   height="450"
                   className="h-full w-full object-cover object-center filter saturate-[0.95]"
                 />
-              </picture>
+              </div>
 
               {/* Verified Status Tag */}
               <div className="mt-3 flex items-center justify-between px-2 py-1 text-xs">
@@ -163,23 +156,23 @@ function AboutSection() {
               ))}
             </div>
 
-            {/* Education & Core Focus Card */}
+            {/* Core Focus & Engineering Foundation Card */}
             <div className="rounded-2xl border border-[#D2C7B6] bg-[#F2E8D5] p-6 shadow-sm">
               <div className="flex items-center gap-3">
                 <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#6E2638] text-[#FAF6EE]">
-                  <FaGraduationCap className="h-5 w-5" />
+                  <FaBrain className="h-5 w-5" />
                 </span>
                 <div>
                   <h4 className="text-base font-bold text-[#292725]">
-                    {currentProfile.degree || "Data Science Major"}
+                    Data Science &amp; AI Systems
                   </h4>
                   <p className="text-xs text-[#687568]">
-                    {currentProfile.university || "Helwan National University"} • Cairo, Egypt
+                    Production Machine Learning, Vision &amp; Analytics • Cairo, Egypt
                   </p>
                 </div>
               </div>
               <p className="mt-3 text-xs text-[#292725]/80 leading-relaxed font-light">
-                Rigorous computer science curriculum emphasizing statistical inference, computational linear algebra, database design, algorithmic time-complexity analysis, and deep learning architectures.
+                Grounded in statistical inference, computational linear algebra, database architecture, algorithmic optimization, and production deep learning systems.
               </p>
             </div>
 

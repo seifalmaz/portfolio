@@ -106,10 +106,10 @@ export const experienceData = [
     period: "Feb 2025 – Jul 2025",
     location: "Helwan, Egypt",
     description:
-      "Mentored 50+ university students in advanced algorithms, data structures, and competitive programming to prepare them for regional ICPC contests.",
+      "Mentored 50+ competitors in advanced algorithms, data structures, and competitive programming to prepare them for regional ICPC contests.",
     highlights: [
       "Designed weekly problem sets and held live code walk-through sessions on graph algorithms and dynamic programming.",
-      "Coached student teams on time complexity analysis and optimal problem-solving techniques."
+      "Coached competitive teams on time complexity analysis and optimal problem-solving techniques."
     ],
     technologies: ["C++", "Python", "Algorithms", "Data Structures", "Problem Solving"]
     // No certificate for this entry

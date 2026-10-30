@@ -248,8 +248,8 @@ export default function AdminDashboardPage() {
           {/* Initial Data Loading State */}
           {loading && !lastUpdated ? (
             <div className="py-24 flex flex-col items-center justify-center gap-4 text-center">
-              <div className="w-10 h-10 border-4 border-blue-500/20 border-t-blue-500 rounded-full animate-spin" />
-              <p className="text-xs uppercase tracking-widest text-slate-400 font-mono">Loading CMS Data...</p>
+              <div className="w-10 h-10 border-4 border-[#D2C7B6]/20 border-t-[#6E2638] rounded-full animate-spin" />
+              <p className="text-xs uppercase tracking-widest text-[#9AA69A] font-mono">Loading CMS Data...</p>
             </div>
           ) : (
             <>

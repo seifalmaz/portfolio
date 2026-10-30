@@ -1,15 +1,14 @@
 import { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { FaArrowDown, FaGraduationCap, FaLocationDot } from "react-icons/fa6";
+import { FaArrowDown, FaBrain, FaChartLine } from "react-icons/fa6";
 import { personalData } from "../../data/personalData";
 import { usePortfolio } from "../../context/PortfolioContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
 function HeroSection() {
-  const { profile, settings } = usePortfolio();
+  const { profile } = usePortfolio();
   const currentProfile = profile || personalData;
 
   const sectionRef = useRef(null);
@@ -401,20 +400,19 @@ function HeroSection() {
           className="mt-8 max-w-3xl will-change-transform"
         >
           <p className="text-sm sm:text-base text-[#9AA69A] leading-relaxed max-w-2xl mx-auto">
-            Computer Science student specializing in Data Science at{" "}
-            <span className="text-[#FAF6EE] font-medium">Helwan National University</span>.
-            Bridging raw numerical complexity with production deep learning, computer vision,
-            and executive business intelligence.
+            Data Science &amp; AI Engineer specializing in machine learning, deep neural architectures,
+            and executive data intelligence. Architecting verified models, end-to-end pipelines,
+            and interactive analytics platforms that transform raw data into measurable operational value.
           </p>
 
           <div className="mt-6 flex flex-wrap items-center justify-center gap-3 text-xs text-[#F2E8D5]">
             <span className="inline-flex items-center gap-1.5 rounded-full border border-[#D2C7B6]/20 bg-[#292725]/50 px-3.5 py-1.5 backdrop-blur-sm">
-              <FaGraduationCap className="text-[#6E2638]" />
-              {currentProfile.degree || "Data Science Major"}
+              <FaBrain className="text-[#6E2638]" />
+              Machine Learning &amp; AI
             </span>
             <span className="inline-flex items-center gap-1.5 rounded-full border border-[#D2C7B6]/20 bg-[#292725]/50 px-3.5 py-1.5 backdrop-blur-sm">
-              <FaLocationDot className="text-[#6E2638]" />
-              {currentProfile.university || "Helwan National University"}
+              <FaChartLine className="text-[#6E2638]" />
+              Predictive Models &amp; BI
             </span>
             <span className="inline-flex items-center gap-1.5 rounded-full border border-[#6E2638]/40 bg-[#6E2638]/15 px-3.5 py-1.5 text-[#FAF6EE] backdrop-blur-sm">
               <span className="h-1.5 w-1.5 rounded-full bg-[#6E2638]" />

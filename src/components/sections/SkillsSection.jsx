@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
 import {
   FaBrain,
   FaChartPie,
@@ -10,9 +9,6 @@ import {
   FaLink
 } from "react-icons/fa6";
 import SectionHeader from "../ui/SectionHeader";
-import Card from "../ui/Card";
-import Badge from "../ui/Badge";
-import { usePortfolio } from "../../context/PortfolioContext";
 
 // Explicit verified mapping connecting skills to real projects
 const SKILL_PROJECT_MAP = {
@@ -71,7 +67,7 @@ const SKILL_PROJECT_MAP = {
     { title: "ICPC Competitive Programming & Mentorship", slug: "gesture-recognition" }
   ],
   "Algorithms & Data Structures": [
-    { title: "ICPC Community Coaching (50+ Students)", slug: "gesture-recognition" }
+    { title: "ICPC Community Coaching (50+ Mentees)", slug: "gesture-recognition" }
   ]
 };
 

@@ -168,7 +168,7 @@ function Footer() {
         {/* Bottom Bar */}
         <div className="mt-12 pt-8 border-t border-[#D2C7B6]/10 flex flex-col items-center justify-between gap-4 text-xs text-[#9AA69A] sm:flex-row">
           <p>&copy; {new Date().getFullYear()} Seif Ahmed Almaz. All rights reserved.</p>
-          <p className="text-[#687568]">Helwan National University • Data Science Major</p>
+          <p className="text-[#687568]">Data Science &amp; AI Engineer • Cairo, Egypt</p>
         </div>
       </div>
     </footer>

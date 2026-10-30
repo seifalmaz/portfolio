@@ -108,7 +108,7 @@ function About() {
                       Data Science
                     </p>
                     <p className="text-gray-500">
-                      Helwan National University
+                      Cairo, Egypt
                     </p>
                   </div>
                 </div>
@@ -197,7 +197,7 @@ function About() {
             <p className="mb-8 text-lg leading-relaxed text-gray-400">
               Through internships at CIB and Banque du Caire,
               participation in two Digital Egypt Pioneers Initiative
-              (DEPI) tracks, and mentoring students within the ICPC
+              (DEPI) tracks, and mentoring peers within the ICPC
               community, I've gained practical exposure to analytics,
               machine learning, software development, and data-driven
               decision making.

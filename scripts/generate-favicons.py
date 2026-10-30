@@ -158,7 +158,7 @@ def generate_assets():
     # Features the official SA logo, Seif Almaz name, title, and key expertise badges
     # ----------------------------------------------------
     W, H = 1200, 630
-    og_card = Image.new("RGBA", (W, H), (4, 11, 27, 255)) # #040b1b portfolio theme
+    og_card = Image.new("RGBA", (W, H), (41, 39, 37, 255)) # #292725 portfolio theme
     
     # Ambient background glow
     glow = Image.new("RGBA", (W, H), (0, 0, 0, 0))

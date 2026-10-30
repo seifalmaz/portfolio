@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { FaFilePdf, FaEye, FaAward, FaCheck } from "react-icons/fa6";
 import { isPdfUrl } from "../../utils/fileUtils";
-import { getPdfThumbnail } from "../../utils/pdfThumbnail";
 import { certificationsData } from "../../data/certificationsData";
 
 /**
@@ -45,7 +44,8 @@ export default function CertificateThumbnail({ cert, onClick }) {
 
     if (isPdf && docUrl) {
       setLoading(true);
-      getPdfThumbnail(docUrl, { targetWidth: 600, quality: 0.85 })
+      import("../../utils/pdfThumbnail")
+        .then(({ getPdfThumbnail }) => getPdfThumbnail(docUrl, { targetWidth: 600, quality: 0.85 }))
         .then((dataUrl) => {
           if (!isMounted) return;
           if (dataUrl) {

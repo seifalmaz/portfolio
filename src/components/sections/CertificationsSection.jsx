@@ -11,10 +11,13 @@ import { isPdfUrl } from "../../utils/fileUtils";
 
 function CertificationsSection() {
   const { certifications } = usePortfolio();
-  const certList = Array.isArray(certifications) ? certifications : [];
 
   const [activeCategory, setActiveCategory] = useState("All");
   const [selectedCert, setSelectedCert] = useState(null);
+
+  const certList = useMemo(() => {
+    return Array.isArray(certifications) ? certifications : [];
+  }, [certifications]);
 
   // Extract unique categories (memoized)
   const categories = useMemo(() => {

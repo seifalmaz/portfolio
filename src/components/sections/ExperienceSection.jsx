@@ -2,8 +2,6 @@ import { useState, useCallback } from "react";
 import { motion } from "framer-motion";
 import { FaAward, FaCalendarDays, FaLocationDot, FaCheck } from "react-icons/fa6";
 import SectionHeader from "../ui/SectionHeader";
-import Card from "../ui/Card";
-import Badge from "../ui/Badge";
 import CertificateModal from "../ui/CertificateModal";
 import { usePortfolio } from "../../context/PortfolioContext";
 import { experienceData } from "../../data/experienceData";
