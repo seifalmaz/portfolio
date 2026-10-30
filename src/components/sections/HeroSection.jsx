@@ -1,11 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { FaArrowDown, FaBrain, FaChartLine } from "react-icons/fa6";
 import { personalData } from "../../data/personalData";
 import { usePortfolio } from "../../context/PortfolioContext";
-
-gsap.registerPlugin(ScrollTrigger);
 
 function HeroSection() {
   const { profile } = usePortfolio();
@@ -74,9 +71,13 @@ function HeroSection() {
     }));
 
     let scrollProgress = 0;
-    canvas.__setScrollProgress = (val) => {
-      scrollProgress = val;
+    const handleScroll = () => {
+      const scrollY = window.scrollY || window.pageYOffset || 0;
+      const heroHeight = section ? section.offsetHeight : window.innerHeight;
+      scrollProgress = Math.min(Math.max(scrollY / heroHeight, 0), 1);
     };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
 
     let tick = 0;
     let orbitAngle = 0;
@@ -270,77 +271,57 @@ function HeroSection() {
       observer.disconnect();
       document.removeEventListener("visibilitychange", handleVisibilityChange);
       window.removeEventListener("resize", handleResize);
+      window.removeEventListener("scroll", handleScroll);
       if (resizeTimeout) clearTimeout(resizeTimeout);
     };
   }, [prefersReducedMotion]);
 
   // ---------------------------------------------------------------------------
-  // GSAP ScrollTrigger Pinned Narrative Sequence
+  // Hero Entrance Sequence (Fast, Refined, Non-Blocking)
+  // Eliminates all pinning & scroll hijacking; natural browser scrolling is 100% preserved.
   // ---------------------------------------------------------------------------
   useEffect(() => {
-    if (prefersReducedMotion) return;
-
     const section = sectionRef.current;
     const headline = headlineRef.current;
     const subtext = subtextRef.current;
     const metrics = metricsRef.current;
     const cta = ctaRef.current;
-    const canvas = canvasRef.current;
 
     if (!section || !headline) return;
 
+    if (prefersReducedMotion) {
+      gsap.set([headline, subtext, metrics, cta], { opacity: 1, y: 0 });
+      return;
+    }
+
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: section,
-          start: "top top",
-          end: "+=140%",
-          pin: true,
-          scrub: 0.8,
-          anticipatePin: 1,
-          onUpdate: (self) => {
-            if (canvas && canvas.__setScrollProgress) {
-              canvas.__setScrollProgress(self.progress);
-            }
-          }
-        }
+        defaults: { ease: "power2.out" }
       });
 
-      // Stage 1: Headline layers separate & disperse in 3D perspective (GPU opacity/transform only)
-      tl.to(
+      tl.fromTo(
         headline,
-        {
-          yPercent: -45,
-          scale: 0.9,
-          opacity: 0.12,
-          ease: "power2.out",
-          duration: 0.5
-        },
-        0
-      );
-
-      // Stage 2: Secondary technical message and credentials scale into view
-      tl.fromTo(
-        subtext,
-        { y: 60, opacity: 0, scale: 0.95 },
-        { y: 0, opacity: 1, scale: 1, ease: "power2.out", duration: 0.4 },
-        0.3
-      );
-
-      // Stage 3: Metrics & CTA elements emerge with refined contrast
-      tl.fromTo(
-        metrics,
-        { y: 40, opacity: 0 },
-        { y: 0, opacity: 1, ease: "power2.out", duration: 0.35 },
-        0.55
-      );
-
-      tl.fromTo(
-        cta,
-        { y: 30, opacity: 0 },
-        { y: 0, opacity: 1, ease: "power2.out", duration: 0.3 },
-        0.7
-      );
+        { y: 22, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.65, delay: 0.08 }
+      )
+        .fromTo(
+          subtext,
+          { y: 18, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.55 },
+          "-=0.35"
+        )
+        .fromTo(
+          metrics,
+          { y: 15, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.5 },
+          "-=0.3"
+        )
+        .fromTo(
+          cta,
+          { y: 12, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.4 },
+          "-=0.25"
+        );
     }, section);
 
     return () => ctx.revert();

@@ -5,6 +5,7 @@ import RootLayout from "./components/layout/RootLayout";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import { PortfolioProvider } from "./context/PortfolioContext";
 import Cursor from "./components/Cursor";
+import InitialPreloader from "./components/ui/InitialPreloader";
 import HomePage from "./pages/HomePage";
 
 // Lazy-loaded secondary route components for optimal initial bundle performance
@@ -16,16 +17,18 @@ const AdminDashboardPage = lazy(() => import("./pages/AdminDashboardPage"));
 
 function PageLoader() {
   return (
-    <div className="min-h-screen bg-[#292725] flex flex-col items-center justify-center gap-4 transition-colors duration-300">
-      <div className="relative flex items-center justify-center">
-        <div className="h-12 w-12 rounded-full border-2 border-[#D2C7B6]/20 border-t-[#6E2638] animate-spin" />
-        <span className="absolute text-xs font-black tracking-tight text-[#FAF6EE] select-none">
+    <div className="min-h-screen bg-[#1C1A19] flex flex-col items-center justify-center gap-3 transition-opacity duration-300">
+      <div className="flex items-center gap-2.5">
+        <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#6E2638] text-xs font-bold text-[#FAF6EE] shadow-sm">
           SA
         </span>
+        <span className="text-base font-bold tracking-tight text-[#FAF6EE]">
+          Seif Almaz<span className="text-[#6E2638]">.</span>
+        </span>
       </div>
-      <p className="text-[11px] font-mono uppercase tracking-widest text-[#9AA69A]">
-        Loading
-      </p>
+      <div className="mt-3 h-[2px] w-28 overflow-hidden rounded-full bg-[#FAF6EE]/10">
+        <div className="h-full w-full bg-gradient-to-r from-[#6E2638] via-[#FAF6EE] to-[#6E2638] animate-pulse" />
+      </div>
     </div>
   );
 }
@@ -35,6 +38,7 @@ function App() {
 
   return (
     <PortfolioProvider>
+      <InitialPreloader />
       <Cursor />
       <Suspense fallback={<PageLoader />}>
         <AnimatePresence mode="wait">

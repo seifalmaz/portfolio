@@ -89,6 +89,7 @@ export default function CertificateThumbnail({ cert, onClick }) {
         <img
           src={thumbnailSrc}
           alt={`${cert.title} Certificate`}
+          loading="lazy"
           decoding="async"
           width="400"
           height="176"

@@ -58,12 +58,12 @@ function Navbar() {
   };
 
   return (
-    <header className="fixed top-0 left-0 z-50 w-full transition-all duration-300">
+    <header className="fixed top-0 left-0 z-50 w-full border-none border-b-0 transition-all duration-300">
       <nav
         aria-label="Main Navigation"
-        className={`w-full transition-all duration-300 ${
+        className={`w-full border-none border-b-0 transition-all duration-300 ${
           scrolled
-            ? "border-b border-[#D2C7B6]/15 bg-[#1C1A19]/85 backdrop-blur-xl shadow-lg shadow-black/30 py-3.5"
+            ? "bg-[#1C1A19]/90 backdrop-blur-xl shadow-lg shadow-black/40 py-3.5"
             : "bg-transparent py-5"
         }`}
       >
