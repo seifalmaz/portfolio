@@ -43,7 +43,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="relative min-h-screen bg-[#1C1A19] flex items-center justify-center px-4 py-12 selection:bg-[#6E2638]/40 selection:text-[#FAF6EE]">
+    <div className="relative min-h-screen bg-[#1C1A19] flex items-center justify-center px-4 py-12 selection:bg-[#6E2638]/40 selection:text-[#FAF6EE] overflow-hidden">
       {/* Background ambient lighting */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 bg-[#6E2638]/15 rounded-full blur-[128px] pointer-events-none" />
       <div className="absolute bottom-1/4 left-1/3 w-80 h-80 bg-[#9AA69A]/10 rounded-full blur-[100px] pointer-events-none" />

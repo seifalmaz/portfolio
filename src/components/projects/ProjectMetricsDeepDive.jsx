@@ -27,7 +27,7 @@ function ProjectMetricsDeepDive({
   }
 
   return (
-    <section className="rounded-2xl border border-[#FAF6EE]/15 bg-[#211f1e] p-8">
+    <section className="rounded-2xl border border-[#FAF6EE]/15 bg-[#211f1e] p-4 sm:p-8">
       <div className="flex items-center gap-3 mb-6 text-burgundy">
         <FaChartLine className="w-5 h-5" />
         <h2 className="text-xl font-bold text-[#FAF6EE] tracking-tight">
@@ -51,14 +51,19 @@ function ProjectMetricsDeepDive({
       {/* Candidate Models Benchmark Table if present */}
       {hasBenchmark && (
         <div className="mb-8 rounded-xl border border-[#FAF6EE]/10 bg-[#292725]/80 overflow-hidden shadow-lg">
-          <div className="px-5 py-3.5 bg-white/[0.03] border-b border-[#FAF6EE]/10 flex flex-wrap items-center justify-between gap-2">
+          <div className="px-4 sm:px-5 py-3 sm:py-3.5 bg-white/[0.03] border-b border-[#FAF6EE]/10 flex flex-wrap items-center justify-between gap-2">
             <span className="text-xs font-semibold text-[#FAF6EE] uppercase tracking-wider flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-burgundy" />
-              Candidate Models Empirical Evaluation (Independent Test Split)
+              Candidate Models Empirical Evaluation
             </span>
-            <span className="text-[11px] text-[#9AA69A] font-mono">
-              LeapGestRecog Subject 09 · 800 Unseen Samples
-            </span>
+            <div className="flex items-center gap-2">
+              <span className="text-[11px] text-[#9AA69A] font-mono hidden sm:inline">
+                LeapGestRecog Subject 09 · 800 Unseen Samples
+              </span>
+              <span className="text-[10px] text-sage font-mono sm:hidden flex items-center gap-1">
+                Scroll &rarr;
+              </span>
+            </div>
           </div>
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs text-[#F2E8D5]/90">

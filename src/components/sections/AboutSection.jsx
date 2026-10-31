@@ -44,7 +44,7 @@ function AboutSection() {
   return (
     <section
       id="about"
-      className="relative scroll-mt-24 bg-[#FAF6EE] px-6 py-28 text-[#292725] border-t border-[#D2C7B6]"
+      className="relative scroll-mt-24 bg-[#FAF6EE] px-4 sm:px-6 py-16 sm:py-28 text-[#292725] border-t border-[#D2C7B6]"
     >
       <div className="mx-auto max-w-7xl">
         {/* Section Header */}
@@ -89,15 +89,15 @@ function AboutSection() {
               </div>
             </div>
 
-            {/* Social Connectivity Links */}
-            <div className="flex items-center gap-3 pt-2">
+            {/* Social Connectivity Links - Minimum 44x44px touch targets */}
+            <div className="flex items-center gap-2.5 sm:gap-3 pt-2">
               {socials.github && (
                 <a
                   href={socials.github}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="GitHub Profile"
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-[#D2C7B6] bg-[#FAF6EE] text-[#292725] transition duration-200 hover:scale-105 hover:border-[#6E2638] hover:text-[#6E2638] shadow-sm"
+                  className="flex h-11 w-11 items-center justify-center rounded-full border border-[#D2C7B6] bg-[#FAF6EE] text-[#292725] transition duration-200 hover:scale-105 hover:border-[#6E2638] hover:text-[#6E2638] shadow-sm cursor-pointer"
                 >
                   <FaGithub className="h-4 w-4" />
                 </a>
@@ -108,7 +108,7 @@ function AboutSection() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="LinkedIn Profile"
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-[#D2C7B6] bg-[#FAF6EE] text-[#292725] transition duration-200 hover:scale-105 hover:border-[#6E2638] hover:text-[#6E2638] shadow-sm"
+                  className="flex h-11 w-11 items-center justify-center rounded-full border border-[#D2C7B6] bg-[#FAF6EE] text-[#292725] transition duration-200 hover:scale-105 hover:border-[#6E2638] hover:text-[#6E2638] shadow-sm cursor-pointer"
                 >
                   <FaLinkedin className="h-4 w-4" />
                 </a>
@@ -119,7 +119,7 @@ function AboutSection() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Kaggle Profile"
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-[#D2C7B6] bg-[#FAF6EE] text-[#292725] transition duration-200 hover:scale-105 hover:border-[#6E2638] hover:text-[#6E2638] shadow-sm"
+                  className="flex h-11 w-11 items-center justify-center rounded-full border border-[#D2C7B6] bg-[#FAF6EE] text-[#292725] transition duration-200 hover:scale-105 hover:border-[#6E2638] hover:text-[#6E2638] shadow-sm cursor-pointer"
                 >
                   <FaKaggle className="h-4 w-4" />
                 </a>
@@ -129,7 +129,7 @@ function AboutSection() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Mostaql Freelance Profile"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-[#D2C7B6] bg-[#FAF6EE] text-[#292725] transition duration-200 hover:scale-105 hover:border-[#6E2638] hover:text-[#6E2638] shadow-sm"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-[#D2C7B6] bg-[#FAF6EE] text-[#292725] transition duration-200 hover:scale-105 hover:border-[#6E2638] hover:text-[#6E2638] shadow-sm cursor-pointer"
               >
                 <MostaqlIcon className="h-3.5 w-auto max-w-[20px]" />
               </a>
@@ -137,7 +137,7 @@ function AboutSection() {
                 <a
                   href={socials.email.startsWith("mailto:") ? socials.email : `mailto:${socials.email}`}
                   aria-label="Send Email"
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-[#D2C7B6] bg-[#FAF6EE] text-[#292725] transition duration-200 hover:scale-105 hover:border-[#6E2638] hover:text-[#6E2638] shadow-sm"
+                  className="flex h-11 w-11 items-center justify-center rounded-full border border-[#D2C7B6] bg-[#FAF6EE] text-[#292725] transition duration-200 hover:scale-105 hover:border-[#6E2638] hover:text-[#6E2638] shadow-sm cursor-pointer"
                 >
                   <FaEnvelope className="h-4 w-4" />
                 </a>

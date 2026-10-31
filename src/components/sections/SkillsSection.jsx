@@ -138,7 +138,7 @@ function SkillsSection() {
   return (
     <section
       id="skills"
-      className="relative scroll-mt-24 bg-[#1C1A19] px-6 py-28 text-[#FAF6EE] border-t border-[#D2C7B6]/15"
+      className="relative scroll-mt-24 bg-[#1C1A19] px-4 sm:px-6 py-16 sm:py-28 text-[#FAF6EE] border-t border-[#D2C7B6]/15"
     >
       <div className="mx-auto max-w-7xl">
         <SectionHeader
@@ -148,24 +148,25 @@ function SkillsSection() {
           description="A structured presentation of my technical core. Select any skill to view verified case studies where it is actively deployed."
         />
 
-        {/* Category Navigation Pills */}
-        <div className="flex flex-wrap gap-2.5 mb-12 border-b border-[#D2C7B6]/15 pb-4">
+        {/* Category Navigation Pills - 2x2 grid on mobile, flexible pills on desktop */}
+        <div className="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap sm:gap-2.5 mb-8 sm:mb-12 border-b border-[#D2C7B6]/15 pb-4">
           {CATEGORIES_METADATA.map((cat, idx) => {
             const active = idx === activeCatIdx;
             return (
               <button
                 key={cat.name}
+                type="button"
                 onClick={() => {
                   setActiveCatIdx(idx);
                   if (cat.skills[0]) setSelectedSkill(cat.skills[0].name);
                 }}
-                className={`flex items-center gap-2 rounded-full px-5 py-2.5 text-xs font-semibold uppercase tracking-wider transition duration-200 border ${
+                className={`flex items-center justify-center text-center rounded-xl sm:rounded-full px-3 py-2.5 sm:px-5 sm:py-2.5 text-[11px] sm:text-xs font-semibold uppercase tracking-wider transition duration-200 border cursor-pointer min-h-[44px] ${
                   active
                     ? "border-[#6E2638] bg-[#6E2638] text-[#FAF6EE] shadow-md shadow-[#6E2638]/20"
                     : "border-[#D2C7B6]/20 bg-[#292725] text-[#9AA69A] hover:text-[#FAF6EE] hover:border-[#D2C7B6]/40"
                 }`}
               >
-                <span>{cat.name}</span>
+                <span className="line-clamp-2 sm:line-clamp-1">{cat.name}</span>
               </button>
             );
           })}

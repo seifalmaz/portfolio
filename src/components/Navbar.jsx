@@ -41,6 +41,17 @@ function Navbar() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [mobileMenuOpen]);
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      const originalOverflow = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+      return () => {
+        document.body.style.overflow = originalOverflow;
+      };
+    }
+  }, [mobileMenuOpen]);
+
   // Determine if a navigation link is currently active
   const isItemActive = (item) => {
     if (location.pathname.startsWith("/projects") && item.href === "/projects") {
@@ -58,7 +69,7 @@ function Navbar() {
   };
 
   return (
-    <header className="fixed top-0 left-0 z-50 w-full border-none border-b-0 transition-all duration-300">
+    <header className="fixed top-0 left-0 z-40 w-full border-none border-b-0 transition-all duration-300">
       <nav
         aria-label="Main Navigation"
         className={`w-full border-none border-b-0 transition-all duration-300 ${
@@ -152,14 +163,14 @@ function Navbar() {
               </a>
             )}
 
-            {/* Mobile Menu Button */}
+            {/* Mobile Menu Button - 44x44px minimum touch target */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-expanded={mobileMenuOpen}
               aria-label={mobileMenuOpen ? "Close Menu" : "Open Menu"}
-              className="flex h-9 w-9 items-center justify-center rounded-lg border border-[#D2C7B6]/20 bg-[#292725]/80 text-[#FAF6EE] transition duration-200 hover:text-[#FAF6EE] hover:border-[#6E2638] hover:bg-[#6E2638]/20 focus-visible:outline-2 focus-visible:outline-[#6E2638] md:hidden"
+              className="flex h-11 w-11 items-center justify-center rounded-xl border border-[#D2C7B6]/20 bg-[#292725]/80 text-[#FAF6EE] transition duration-200 hover:text-[#FAF6EE] hover:border-[#6E2638] hover:bg-[#6E2638]/20 focus-visible:outline-2 focus-visible:outline-[#6E2638] md:hidden active:scale-95 cursor-pointer"
             >
-              {mobileMenuOpen ? <FaXmark className="h-4 w-4 text-[#FAF6EE]" /> : <FaBars className="h-4 w-4" />}
+              {mobileMenuOpen ? <FaXmark className="h-5 w-5 text-[#FAF6EE]" /> : <FaBars className="h-5 w-5" />}
             </button>
           </div>
         </div>
@@ -185,7 +196,7 @@ function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", stiffness: 400, damping: 35 }}
-              className="fixed top-0 right-0 z-50 h-full w-4/5 max-w-sm border-l border-[#D2C7B6]/20 bg-[#1C1A19]/95 p-6 shadow-2xl backdrop-blur-xl md:hidden flex flex-col justify-between overflow-y-auto"
+              className="fixed top-0 right-0 z-50 h-full w-4/5 max-w-sm border-l border-[#D2C7B6]/20 bg-[#1C1A19]/95 p-6 pt-[max(1.5rem,env(safe-area-inset-top))] pb-[max(1.5rem,env(safe-area-inset-bottom))] shadow-2xl backdrop-blur-xl md:hidden flex flex-col justify-between overflow-y-auto"
             >
               <div>
                 <div className="flex items-center justify-between border-b border-[#D2C7B6]/15 pb-4">
@@ -200,7 +211,7 @@ function Navbar() {
                   <button
                     onClick={() => setMobileMenuOpen(false)}
                     aria-label="Close Menu"
-                    className="rounded-lg p-2 text-[#9AA69A] hover:text-[#FAF6EE] hover:bg-[#292725] transition duration-150"
+                    className="flex h-11 w-11 items-center justify-center rounded-xl text-[#9AA69A] hover:text-[#FAF6EE] hover:bg-[#292725] transition duration-150 cursor-pointer"
                   >
                     <FaXmark className="h-5 w-5 text-[#FAF6EE]" />
                   </button>

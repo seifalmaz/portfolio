@@ -20,8 +20,8 @@ function Footer() {
 
   return (
     <footer className="relative z-10 border-t border-[#D2C7B6]/15 bg-[#1C1A19] text-[#FAF6EE]">
-      <div className="mx-auto max-w-7xl px-6 py-16">
-        <div className="grid gap-12 lg:grid-cols-12">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 py-12 sm:py-16">
+        <div className="grid gap-10 lg:gap-12 lg:grid-cols-12">
           {/* Column 1: Brand & Tagline */}
           <div className="lg:col-span-5">
             <Link to="/" className="group flex items-center gap-2.5">
@@ -36,15 +36,15 @@ function Footer() {
               {currentProfile.tagline || personalData.tagline}
             </p>
 
-            {/* Social Icons */}
-            <div className="mt-6 flex items-center gap-3">
+            {/* Social Icons - Minimum 44x44px touch targets */}
+            <div className="mt-6 flex items-center gap-2.5 sm:gap-3">
               {socials.github && (
                 <a
                   href={socials.github}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="GitHub Profile"
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-[#D2C7B6]/20 bg-[#292725] text-[#9AA69A] transition duration-200 hover:scale-110 hover:border-[#6E2638] hover:text-[#FAF6EE] hover:bg-[#6E2638]/20"
+                  className="flex h-11 w-11 items-center justify-center rounded-full border border-[#D2C7B6]/20 bg-[#292725] text-[#9AA69A] transition duration-200 hover:scale-110 hover:border-[#6E2638] hover:text-[#FAF6EE] hover:bg-[#6E2638]/20 cursor-pointer"
                 >
                   <FaGithub className="h-4 w-4" />
                 </a>
@@ -56,7 +56,7 @@ function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="LinkedIn Profile"
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-[#D2C7B6]/20 bg-[#292725] text-[#9AA69A] transition duration-200 hover:scale-110 hover:border-[#6E2638] hover:text-[#FAF6EE] hover:bg-[#6E2638]/20"
+                  className="flex h-11 w-11 items-center justify-center rounded-full border border-[#D2C7B6]/20 bg-[#292725] text-[#9AA69A] transition duration-200 hover:scale-110 hover:border-[#6E2638] hover:text-[#FAF6EE] hover:bg-[#6E2638]/20 cursor-pointer"
                 >
                   <FaLinkedin className="h-4 w-4" />
                 </a>
@@ -68,7 +68,7 @@ function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Kaggle Profile"
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-[#D2C7B6]/20 bg-[#292725] text-[#9AA69A] transition duration-200 hover:scale-110 hover:border-[#6E2638] hover:text-[#FAF6EE] hover:bg-[#6E2638]/20"
+                  className="flex h-11 w-11 items-center justify-center rounded-full border border-[#D2C7B6]/20 bg-[#292725] text-[#9AA69A] transition duration-200 hover:scale-110 hover:border-[#6E2638] hover:text-[#FAF6EE] hover:bg-[#6E2638]/20 cursor-pointer"
                 >
                   <FaKaggle className="h-4 w-4" />
                 </a>
@@ -81,7 +81,7 @@ function Footer() {
                 rel="noopener noreferrer"
                 aria-label="Mostaql freelance profile"
                 title="Mostaql Freelance Profile"
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-[#D2C7B6]/20 bg-[#292725] text-[#9AA69A] transition duration-200 hover:scale-110 hover:border-[#6E2638] hover:text-[#FAF6EE] hover:bg-[#6E2638]/20"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-[#D2C7B6]/20 bg-[#292725] text-[#9AA69A] transition duration-200 hover:scale-110 hover:border-[#6E2638] hover:text-[#FAF6EE] hover:bg-[#6E2638]/20 cursor-pointer"
               >
                 <MostaqlIcon className="h-3.5 w-auto max-w-[24px]" />
               </a>
@@ -90,7 +90,7 @@ function Footer() {
                 <a
                   href={socials.email.startsWith("mailto:") ? socials.email : `mailto:${socials.email}`}
                   aria-label="Send Email"
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-[#D2C7B6]/20 bg-[#292725] text-[#9AA69A] transition duration-200 hover:scale-110 hover:border-[#6E2638] hover:text-[#FAF6EE] hover:bg-[#6E2638]/20"
+                  className="flex h-11 w-11 items-center justify-center rounded-full border border-[#D2C7B6]/20 bg-[#292725] text-[#9AA69A] transition duration-200 hover:scale-110 hover:border-[#6E2638] hover:text-[#FAF6EE] hover:bg-[#6E2638]/20 cursor-pointer"
                 >
                   <FaEnvelope className="h-4 w-4" />
                 </a>

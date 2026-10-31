@@ -19,7 +19,7 @@ function ProjectFilterBar({
   const isFiltered = search || category !== "All" || technology !== "All" || sortBy !== "featured";
 
   return (
-    <div className="flex flex-col gap-5 p-5 rounded-2xl border border-[#FAF6EE]/10 bg-[#211f1e] mb-8">
+    <div className="flex flex-col gap-4 sm:gap-5 p-3.5 sm:p-5 rounded-2xl border border-[#FAF6EE]/10 bg-[#211f1e] mb-8">
       {/* Upper Bar: Search & Sort Controls */}
       <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
         <SearchInput value={search} onChange={onSearchChange} />

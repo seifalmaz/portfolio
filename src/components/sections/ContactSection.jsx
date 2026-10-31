@@ -21,7 +21,7 @@ function ContactSection() {
   };
 
   return (
-    <section id="contact" className="scroll-mt-28 bg-[#292725] px-6 py-28 text-white border-t border-[#FAF6EE]/10 relative">
+    <section id="contact" className="scroll-mt-28 bg-[#292725] px-4 sm:px-6 py-16 sm:py-28 text-white border-t border-[#FAF6EE]/10 relative">
       <div className="mx-auto max-w-5xl">
         <SectionHeader
           subtitle="GET IN TOUCH"
@@ -35,21 +35,21 @@ function ContactSection() {
         <div className="mx-auto max-w-3xl text-center">
           {/* Availability Status Badge */}
           {profile?.isAvailable !== false && (
-            <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-sage/40 bg-sage/10 px-4 py-2 text-xs font-semibold text-[#FAF6EE]">
-              <span className="h-2 w-2 rounded-full bg-sage animate-pulse" />
+            <div className="mb-6 sm:mb-8 inline-flex items-center gap-2 rounded-full border border-sage/40 bg-sage/10 px-3.5 sm:px-4 py-1.5 sm:py-2 text-xs font-semibold text-[#FAF6EE]">
+              <span className="h-2 w-2 rounded-full bg-sage animate-pulse shrink-0" />
               <span>{profile?.availabilityStatus || "Open for Full-Time Roles, Internships & Projects"}</span>
             </div>
           )}
 
           {/* Copy Email Card */}
-          <Card hover={false} className="mb-12 p-8 text-center bg-[#211f1e] border border-[#FAF6EE]/10 shadow-2xl">
+          <Card hover={false} className="mb-10 sm:mb-12 p-5 sm:p-8 text-center bg-[#211f1e] border border-[#FAF6EE]/10 shadow-2xl">
             <p className="text-xs uppercase tracking-widest text-sage font-mono font-semibold mb-2">Direct Email Address</p>
-            <p className="text-2xl font-black text-[#FAF6EE] md:text-3xl tracking-tight mb-6">
+            <p className="text-xl sm:text-2xl md:text-3xl font-black text-[#FAF6EE] tracking-tight mb-6 break-all sm:break-normal">
               {directEmail}
             </p>
 
-            <div className="flex flex-wrap items-center justify-center gap-4">
-              <Button onClick={handleCopyEmail} variant="burgundy" className="px-6 py-3 text-xs font-semibold">
+            <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+              <Button onClick={handleCopyEmail} variant="burgundy" className="px-5 sm:px-6 py-2.5 sm:py-3 text-xs font-semibold min-h-[44px]">
                 {copied ? (
                   <>
                     <FaCheck className="h-4 w-4 text-[#F2E8D5]" />
@@ -65,7 +65,7 @@ function ContactSection() {
 
               <a
                 href={socials.email || `mailto:${directEmail}`}
-                className="inline-flex items-center gap-2 rounded-full border border-[#FAF6EE]/20 bg-[#FAF6EE]/5 px-6 py-3 text-xs font-medium text-[#FAF6EE] transition hover:border-burgundy/60 hover:bg-burgundy/15 hover:text-white"
+                className="inline-flex items-center gap-2 rounded-full border border-[#FAF6EE]/20 bg-[#FAF6EE]/5 px-5 sm:px-6 py-2.5 sm:py-3 text-xs font-medium text-[#FAF6EE] transition hover:border-burgundy/60 hover:bg-burgundy/15 hover:text-white min-h-[44px]"
               >
                 Open Email Client
               </a>
@@ -142,7 +142,7 @@ function ContactSection() {
             <a
               href={socials.email || `mailto:${directEmail}`}
               aria-label="Direct Email"
-              className="flex flex-col items-center gap-3 rounded-2xl border border-[#FAF6EE]/10 bg-[#FAF6EE]/5 p-5 text-[#F2E8D5] transition duration-300 hover:-translate-y-1 hover:border-burgundy/50 hover:bg-burgundy/15 hover:text-white group"
+              className="col-span-2 sm:col-span-1 flex flex-col items-center gap-3 rounded-2xl border border-[#FAF6EE]/10 bg-[#FAF6EE]/5 p-5 text-[#F2E8D5] transition duration-300 hover:-translate-y-1 hover:border-burgundy/50 hover:bg-burgundy/15 hover:text-white group"
             >
               <FaEnvelope className="h-6 w-6 text-sage group-hover:text-[#FAF6EE] transition-colors" />
               <span className="text-xs font-semibold">Direct Email</span>

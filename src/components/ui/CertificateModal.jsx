@@ -102,7 +102,7 @@ function CertificateModal({ isOpen, onClose, certificate }) {
             exit={{ opacity: 0, scale: 0.96, y: 10 }}
             transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
             style={{ zIndex: 99999 }}
-            className="fixed inset-0 overflow-y-auto p-3 sm:p-6 md:p-8 flex items-center justify-center pointer-events-none certificate-modal-container"
+            className="fixed inset-0 overflow-y-auto p-2 sm:p-6 md:p-8 flex items-center justify-center pointer-events-none certificate-modal-container"
           >
             <div
               data-modal="certificate"
@@ -110,19 +110,19 @@ function CertificateModal({ isOpen, onClose, certificate }) {
                 isPdf ? "max-w-5xl" : "max-w-4xl"
               } m-auto pointer-events-auto rounded-2xl border border-[#D2C7B6]/25 bg-[#1C1A19] shadow-2xl flex flex-col overflow-hidden`}
               style={{
-                maxHeight: "calc(100dvh - 2rem)",
+                maxHeight: "calc(100dvh - 1.5rem)",
                 height: isPdf ? "min(88dvh, 850px)" : "auto",
               }}
               onClick={(e) => e.stopPropagation()}
             >
               {/* Modal Header - Guaranteed sticky top, unobstructed and visible */}
-              <div className="sticky top-0 z-30 shrink-0 bg-[#292725] px-4 sm:px-6 py-3 border-b border-[#D2C7B6]/15 flex items-center justify-between gap-3 shadow-md">
-                <div className="flex items-center gap-3 min-w-0 pr-2">
-                  <div className="p-2 rounded-xl shrink-0 bg-[#6E2638]/20 text-[#FAF6EE] border border-[#6E2638]/30">
+              <div className="sticky top-0 z-30 shrink-0 bg-[#292725] px-3.5 sm:px-6 py-2.5 sm:py-3 border-b border-[#D2C7B6]/15 flex items-center justify-between gap-2 sm:gap-3 shadow-md">
+                <div className="flex items-center gap-2 sm:gap-3 min-w-0 pr-1 sm:pr-2">
+                  <div className="p-1.5 sm:p-2 rounded-xl shrink-0 bg-[#6E2638]/20 text-[#FAF6EE] border border-[#6E2638]/30">
                     {isPdf ? <FaFilePdf className="w-4 h-4" /> : <FaAward className="w-4 h-4" />}
                   </div>
                   <div className="min-w-0">
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-1.5 sm:gap-2">
                       <p
                         id="cert-modal-title"
                         className="text-xs sm:text-sm font-bold text-[#FAF6EE] leading-tight truncate"
@@ -130,12 +130,12 @@ function CertificateModal({ isOpen, onClose, certificate }) {
                         {certificate.title}
                       </p>
                       {isPdf && (
-                        <span className="shrink-0 px-2 py-0.5 rounded text-[10px] font-bold bg-[#6E2638]/20 text-[#FAF6EE] border border-[#6E2638]/40 uppercase tracking-wider">
+                        <span className="shrink-0 px-1.5 sm:px-2 py-0.5 rounded text-[9.5px] sm:text-[10px] font-bold bg-[#6E2638]/20 text-[#FAF6EE] border border-[#6E2638]/40 uppercase tracking-wider">
                           PDF
                         </span>
                       )}
                     </div>
-                    <p className="text-[11px] sm:text-xs text-[#9AA69A] mt-0.5 truncate">
+                    <p className="text-[10px] sm:text-xs text-[#9AA69A] mt-0.5 truncate">
                       {certificate.issuer}
                     </p>
                   </div>
@@ -147,7 +147,7 @@ function CertificateModal({ isOpen, onClose, certificate }) {
                       href={docUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#6E2638] hover:bg-[#451824] text-xs font-semibold text-[#FAF6EE] shadow-md shadow-[#6E2638]/20 transition focus-visible:outline-2 focus-visible:outline-[#6E2638]"
+                      className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-2 sm:py-1.5 rounded-full bg-[#6E2638] hover:bg-[#451824] text-[11px] sm:text-xs font-semibold text-[#FAF6EE] shadow-md shadow-[#6E2638]/20 transition focus-visible:outline-2 focus-visible:outline-[#6E2638] min-h-[36px]"
                       title={isPdf ? "Open original PDF in full tab" : "Open full-resolution image"}
                     >
                       <span className="hidden sm:inline">
@@ -175,7 +175,7 @@ function CertificateModal({ isOpen, onClose, certificate }) {
                     type="button"
                     onClick={onClose}
                     aria-label="Close certificate viewer"
-                    className="flex items-center justify-center w-8 h-8 rounded-full bg-[#292725] border border-[#D2C7B6]/20 text-[#9AA69A] hover:text-[#FAF6EE] hover:bg-[#6E2638]/20 transition focus-visible:outline-2 focus-visible:outline-[#6E2638] cursor-pointer"
+                    className="flex items-center justify-center w-11 h-11 sm:w-9 sm:h-9 rounded-full bg-[#292725] border border-[#D2C7B6]/20 text-[#9AA69A] hover:text-[#FAF6EE] hover:bg-[#6E2638]/20 transition focus-visible:outline-2 focus-visible:outline-[#6E2638] cursor-pointer shrink-0"
                   >
                     <FaXmark className="w-4 h-4" />
                   </button>

@@ -121,7 +121,7 @@ function FeaturedProjectsSection() {
     <section
       id="projects"
       data-section="projects"
-      className="relative scroll-mt-24 bg-[#1C1A19] px-6 py-28 text-[#FAF6EE] border-t border-[#D2C7B6]/15"
+      className="relative scroll-mt-24 bg-[#1C1A19] px-4 sm:px-6 py-16 sm:py-28 text-[#FAF6EE] border-t border-[#D2C7B6]/15"
     >
       <span id="featured-projects" className="absolute -top-24" aria-hidden="true" />
 
@@ -137,7 +137,7 @@ function FeaturedProjectsSection() {
         {/* ================================================================= */}
         {/* 1. CINEMATIC FLAGSHIP PRODUCT SHOWCASE (Apple Keynote Presentation) */}
         {/* ================================================================= */}
-        <div className="mb-20 rounded-3xl border border-[#D2C7B6]/15 bg-[#211f1e] p-6 sm:p-10 shadow-2xl overflow-hidden">
+        <div className="mb-14 sm:mb-20 rounded-3xl border border-[#D2C7B6]/15 bg-[#211f1e] p-4 sm:p-8 md:p-10 shadow-2xl overflow-hidden">
           {/* Flagship Selector Tabs */}
           <div className="flex items-center gap-2 sm:gap-3 overflow-x-auto pb-4 border-b border-[#D2C7B6]/15 mb-8">
             {FLAGSHIPS.map((f, idx) => {

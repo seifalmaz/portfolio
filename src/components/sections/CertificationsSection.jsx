@@ -32,7 +32,7 @@ function CertificationsSection() {
   }, [certList, activeCategory]);
 
   return (
-    <section id="certifications" className="scroll-mt-28 bg-[#292725] px-6 py-28 text-white border-t border-[#FAF6EE]/10 relative">
+    <section id="certifications" className="scroll-mt-28 bg-[#292725] px-4 sm:px-6 py-16 sm:py-28 text-white border-t border-[#FAF6EE]/10 relative">
       <div className="mx-auto max-w-7xl relative z-10">
         <SectionHeader
           subtitle="CREDENTIALS &amp; PROFESSIONAL DEVELOPMENT"

@@ -33,7 +33,7 @@ function ExperienceLogoBadge({ exp }) {
 
   return (
     <div className="relative z-10 shrink-0">
-      <div className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-2xl border border-[#D2C7B6]/30 bg-[#FAF6EE] shadow-lg p-2 transition-all duration-300 hover:scale-105 hover:border-[#6E2638] md:h-16 md:w-16">
+      <div className="flex h-11 w-11 sm:h-14 sm:w-14 items-center justify-center overflow-hidden rounded-xl sm:rounded-2xl border border-[#D2C7B6]/30 bg-[#FAF6EE] shadow-lg p-1.5 sm:p-2 transition-all duration-300 hover:scale-105 hover:border-[#6E2638] md:h-16 md:w-16">
         {candidateLogo ? (
           <img
             src={candidateLogo}
@@ -87,7 +87,7 @@ function ExperienceSection() {
   return (
     <section
       id="experience"
-      className="relative scroll-mt-24 bg-[#1C1A19] px-6 py-28 text-[#FAF6EE] border-t border-[#D2C7B6]/15"
+      className="relative scroll-mt-24 bg-[#1C1A19] px-4 sm:px-6 py-16 sm:py-28 text-[#FAF6EE] border-t border-[#D2C7B6]/15"
     >
       <div className="mx-auto max-w-7xl">
         <SectionHeader
@@ -100,9 +100,9 @@ function ExperienceSection() {
         {/* Timeline Container */}
         <div className="relative mx-auto max-w-4xl">
           {/* Vertical Timeline Guide */}
-          <div className="absolute left-7 top-0 bottom-0 w-[2px] bg-gradient-to-b from-[#6E2638] via-[#D2C7B6]/20 to-transparent md:left-8" />
+          <div className="absolute left-5 sm:left-7 top-0 bottom-0 w-[2px] bg-gradient-to-b from-[#6E2638] via-[#D2C7B6]/20 to-transparent md:left-8" />
 
-          <div className="space-y-12">
+          <div className="space-y-8 sm:space-y-12">
             {experiences.map((exp) => (
               <motion.div
                 key={exp.id || `${exp.organization}-${exp.role}`}
@@ -110,13 +110,13 @@ function ExperienceSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.35, ease: "easeOut" }}
-                className="relative flex items-start gap-5 md:gap-8"
+                className="relative flex items-start gap-3 sm:gap-5 md:gap-8"
               >
                 {/* Organization Logo Badge */}
                 <ExperienceLogoBadge exp={exp} />
 
                 {/* Experience Details Card */}
-                <div className="flex-1 rounded-3xl border border-[#D2C7B6]/15 bg-[#211f1e] p-6 md:p-8 shadow-xl transition-all duration-300 hover:border-[#6E2638]/60">
+                <div className="flex-1 min-w-0 rounded-2xl sm:rounded-3xl border border-[#D2C7B6]/15 bg-[#211f1e] p-4 sm:p-6 md:p-8 shadow-xl transition-all duration-300 hover:border-[#6E2638]/60">
                   {/* Top Bar: Role & Timing */}
                   <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 border-b border-[#D2C7B6]/10 pb-4 mb-4">
                     <div>

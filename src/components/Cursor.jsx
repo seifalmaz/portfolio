@@ -1,25 +1,40 @@
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 
 /**
  * Ultra-lightweight custom cursor for desktop (60-120 FPS).
  * Completely disabled on mobile, tablet, and touch screens (<1024px or coarse pointers).
  * Uses rAF lerping and idles automatically when stationary with ZERO React rerenders.
+ * Rendered via createPortal to document.body at z-[9990] so it glides above fixed navigation bars.
  */
 function Cursor() {
   const ringRef = useRef(null);
   const dotRef = useRef(null);
   const containerRef = useRef(null);
-
-  const [isDisabled] = useState(() => {
-    if (typeof window === "undefined" || !window.matchMedia) return true;
-    const isTouch = window.matchMedia("(pointer: coarse)").matches;
-    const isSmall = window.innerWidth < 1024;
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    return isTouch || isSmall || prefersReducedMotion;
-  });
+  const [mounted, setMounted] = useState(false);
+  const [isDisabled, setIsDisabled] = useState(false);
 
   useEffect(() => {
-    if (isDisabled) return;
+    setMounted(true);
+    const checkDisabled = () => {
+      if (typeof window === "undefined" || !window.matchMedia) return true;
+      const isTouch = window.matchMedia("(pointer: coarse)").matches;
+      const isSmall = window.innerWidth < 1024;
+      const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      return isTouch || isSmall || prefersReducedMotion;
+    };
+
+    setIsDisabled(checkDisabled());
+
+    const handleResize = () => {
+      setIsDisabled(checkDisabled());
+    };
+    window.addEventListener("resize", handleResize, { passive: true });
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    if (isDisabled || !mounted) return;
 
     document.body.classList.add("has-custom-cursor");
 
@@ -80,23 +95,23 @@ function Cursor() {
         containerRef.current.style.opacity = "1";
       }
 
-      // Lightweight hover detection without deep recursive closest()
+      // Hover detection on interactive elements
       const targetTag = e.target?.tagName;
       const shouldHover =
         targetTag === "BUTTON" ||
         targetTag === "A" ||
         targetTag === "SELECT" ||
-        Boolean(e.target?.closest && e.target.closest("button, a, [role='button']"));
+        Boolean(e.target?.closest && e.target.closest("button, a, [role='button'], [role='tab']"));
 
       if (shouldHover !== isHovering) {
         isHovering = shouldHover;
         if (ringRef.current) {
           if (isHovering) {
-            ringRef.current.classList.add("border-[#6E2638]", "bg-[#6E2638]/15");
-            ringRef.current.classList.remove("border-[#9AA69A]/60");
+            ringRef.current.classList.add("border-[#6E2638]", "bg-[#6E2638]/20");
+            ringRef.current.classList.remove("border-[#9AA69A]/70");
           } else {
-            ringRef.current.classList.remove("border-[#6E2638]", "bg-[#6E2638]/15");
-            ringRef.current.classList.add("border-[#9AA69A]/60");
+            ringRef.current.classList.remove("border-[#6E2638]", "bg-[#6E2638]/20");
+            ringRef.current.classList.add("border-[#9AA69A]/70");
           }
         }
       }
@@ -142,28 +157,29 @@ function Cursor() {
       document.removeEventListener("visibilitychange", handleVisibility);
       if (rafId) cancelAnimationFrame(rafId);
     };
-  }, [isDisabled]);
+  }, [isDisabled, mounted]);
 
-  if (isDisabled) return null;
+  if (isDisabled || !mounted) return null;
 
-  return (
+  return createPortal(
     <div
       ref={containerRef}
-      className="pointer-events-none fixed inset-0 z-50 transition-opacity duration-200"
+      className="pointer-events-none fixed inset-0 z-[9990] transition-opacity duration-200 hidden lg:block"
       style={{ opacity: 0 }}
       aria-hidden="true"
     >
       <div
         ref={ringRef}
-        className="pointer-events-none absolute top-0 left-0 h-8 w-8 rounded-full border border-[#9AA69A]/60 transition-colors duration-200 will-change-transform"
+        className="pointer-events-none absolute top-0 left-0 h-8 w-8 rounded-full border border-[#9AA69A]/70 transition-colors duration-200 will-change-transform shadow-sm"
         style={{ transform: "translate3d(-100px, -100px, 0)" }}
       />
       <div
         ref={dotRef}
-        className="pointer-events-none absolute top-0 left-0 h-2 w-2 rounded-full bg-[#6E2638] will-change-transform"
+        className="pointer-events-none absolute top-0 left-0 h-2 w-2 rounded-full bg-[#6E2638] will-change-transform shadow-sm"
         style={{ transform: "translate3d(-100px, -100px, 0)" }}
       />
-    </div>
+    </div>,
+    document.body
   );
 }
 
